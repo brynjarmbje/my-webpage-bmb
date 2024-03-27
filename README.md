@@ -1,70 +1,69 @@
-# Getting Started with Create React App
+# Brynjar Már Björnsson's Webpage
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to the repository for [Brynjar Már Björnsson's personal webpage](https://github.com/brynjarmbje/my-webpage-bmb). This project showcases my journey through music and technology, featuring a collection of my compositions, projects, and a glimpse into my professional biography. Built with React, this website serves as a digital portfolio demonstrating my dual expertise in music composition and web development.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- **Home Page**: A welcoming entry point that introduces visitors to my world, highlighting key aspects of my journey and recent accomplishments.
+- **Music Page**: Dive into my musical compositions, listen to selected works, and explore the projects I've contributed to.
+- **Bio Page**: Read about my educational background, my progression from music to computer science, and my visions for the future.
+- **Contact**: A call-to-action for potential collaborations, opportunities, or just to say hi.
 
-### `npm start`
+## Technologies Used
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **React**: For building the user interface with reusable components.
+- **React Router**: To enable navigation between the different sections of the website without reloading the page.
+- **Sass/SCSS**: For styling components with advanced CSS features.
+- **Vercel**: For deploying and hosting the website, ensuring it's accessible worldwide.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Setup and Installation
 
-### `npm test`
+To get this project running on your local machine, follow these steps:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. **Clone the repository**
 
-### `npm run build`
+git clone https://github.com/brynjarmbje/my-webpage-bmb.git
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+markdown
+Copy code
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. **Navigate to the project directory**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+cd my-webpage-bmb
 
-### `npm run eject`
+markdown
+Copy code
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+3. **Install dependencies**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Make sure you have [Node.js](https://nodejs.org/) installed, then run:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+npm install
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+markdown
+Copy code
 
-## Learn More
+4. **Start the development server**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+npm start
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+less
+Copy code
 
-### Code Splitting
+This command runs the app in development mode. Open [http://localhost:3000](http://localhost:3000) to view it in your browser. The page will reload when you make changes.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Deployment
 
-### Analyzing the Bundle Size
+This website is deployed on Vercel. To deploy your version, follow the [official Vercel documentation](https://vercel.com/docs) for connecting your GitHub repository and setting up continuous deployment.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Contributing
 
-### Making a Progressive Web App
+I welcome contributions, whether it's feedback on my music, suggestions for the website, or code improvements. Feel free to open an issue or pull request.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Contact
 
-### Advanced Configuration
+- **Email**: [brynjarbmb@gmail.com](mailto:brynjarbmb@gmail.com)
+- **LinkedIn**: [Brynjar Már Björnsson](https://www.linkedin.com/in/brynjarmb/)
+- **SoundCloud**: [Brynjar Mar Bjornsson](https://soundcloud.com/brynjar-mar-bjornsson)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Thank you for visiting my project!
