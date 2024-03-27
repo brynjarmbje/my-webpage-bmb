@@ -22,17 +22,14 @@ To get this project running on your local machine, follow these steps:
 
 1. **Clone the repository**
 
+
 git clone https://github.com/brynjarmbje/my-webpage-bmb.git
 
-markdown
-Copy code
 
 2. **Navigate to the project directory**
 
 cd my-webpage-bmb
 
-markdown
-Copy code
 
 3. **Install dependencies**
 
@@ -40,15 +37,11 @@ Make sure you have [Node.js](https://nodejs.org/) installed, then run:
 
 npm install
 
-markdown
-Copy code
 
 4. **Start the development server**
 
 npm start
 
-less
-Copy code
 
 This command runs the app in development mode. Open [http://localhost:3000](http://localhost:3000) to view it in your browser. The page will reload when you make changes.
 
