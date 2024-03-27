@@ -9,3 +9,11 @@
   .my-bio-container h1 {
     text-align: center;
   }
+
+  .my-bio-container h4 {
+    font-size: 1.25rem; /* Adjust size as needed */
+    margin-bottom: 0.5rem; /* Adds some space below the heading */
+    padding-bottom: 0.25rem; /* Adds a little space between the text and the underline */
+    display: inline-block; /* This helps the underline not stretch full width */
+    margin-top: 2rem; /* Adds more space above the heading if it's not the first element */
+  }
