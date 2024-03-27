@@ -3,7 +3,9 @@
       "origin": [
         "https://my-webpage-bmb.vercel.app",
         "https://brynjarmar.com",
-        "https://www.brynjarmar.com"
+        "https://www.brynjarmar.com",
+        "https://my-webpage-bmb-git-main-brynjarmbjes-projects.vercel.app",
+        "https://my-webpage-j3ij6ft25-brynjarmbjes-projects.vercel.app"
       ],
       "responseHeader": ["Content-Type"],
       "method": ["GET", "HEAD"],
