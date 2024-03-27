@@ -127,3 +127,27 @@ main > div > div {
 main > div > div h3 {
   margin-bottom: 10px;
 }
+
+App-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #333;
+  color: #fff;
+}
+
+.App-header nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.App-header nav ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.App-header nav ul li a:hover {
+  color: #ddd;
+}
