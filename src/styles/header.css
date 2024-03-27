@@ -1,0 +1,60 @@
+/* header.css */
+.App-header {
+    background-color: rgba(0, 0, 0, 0.1);
+    color: rgb(255, 238, 232);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0; /* Adjust padding as needed */
+}
+
+nav a, h1 {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+nav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+nav a.active {
+    background-color: #fff2e5;
+    color: rgb(39, 0, 0);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.nav-links ul, .social-links {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.logo img {
+    width: 3rem; /* Adjust as needed */
+    height: auto; /* Keeps the aspect ratio */
+}
+
+@media (max-width: 768px) {
+    .App-header {
+        flex-direction: column;
+    }
+    .nav-links ul, .social-links {
+        flex-direction: column;
+    }
+    .nav-links ul li, .social-links a {
+        width: 100%;
+        text-align: center;
+    }
+}

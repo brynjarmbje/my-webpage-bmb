@@ -1,0 +1,12 @@
+[
+    {
+      "origin": [
+        "https://my-webpage-bmb.vercel.app",
+        "https://brynjarmar.com",
+        "https://www.brynjarmar.com"
+      ],
+      "responseHeader": ["Content-Type"],
+      "method": ["GET", "HEAD"],
+      "maxAgeSeconds": 3600
+    }
+  ]

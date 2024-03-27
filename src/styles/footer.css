@@ -1,0 +1,45 @@
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.1); /* Semi-transparent background for contrast */
+    font-size: 16px; /* Adjust based on your design */
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    padding: 1rem 0;
+  }
+  
+footer a {
+    color: #fff; /* Ensures links are white */
+    text-decoration: none; /* Removes underline from links */
+    transition: color 0.3s; /* Smooth transition for hover effect */
+  }
+  
+  footer a:hover {
+    background-color: #ddd;
+    color: black;
+}
+  
+  .footer-branding {
+    display: flex;
+    align-items: center;
+  }
+  
+  footer img {
+    width: 100px; /* Adjust based on your logo's size */
+    margin-right: 20px; /* Spacing between logo and brand text */
+  }
+  
+  @media (max-width: 768px) {
+    footer {
+      flex-direction: column;
+      text-align: center;
+      align-items: center;
+      padding: 20px;
+    }
+  
+    footer li {
+      margin: 10px 0; /* Adjust vertical spacing for mobile */
+    }
+  }
