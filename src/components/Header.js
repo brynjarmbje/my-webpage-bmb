@@ -1,7 +1,8 @@
 import React from 'react';
-import { FaGithub, FaHome, FaMusic, FaSoundcloud, FaUser } from 'react-icons/fa';
+import { FaGithub, FaMusic, FaSoundcloud, FaUser } from 'react-icons/fa';
 import { NavLink } from 'react-router-dom';
 import '../styles/header.css';
+import logo from '../images/bmb-logo5.png';
 
 function Header() {
     return (
@@ -10,7 +11,7 @@ function Header() {
                 {/* Left-aligned links */}
                 <div className="nav-links">
                     <ul>
-                        <li><NavLink to="/" end><FaHome /> Heim</NavLink></li>
+                        <li><NavLink to="/" end><img src={logo} alt="Logo" className='nav-logo' />Heim</NavLink></li>
                         <li><NavLink to="/music"><FaMusic /> Tónlist</NavLink></li>
                         <li><NavLink to="/bio"><FaUser /> Um mig</NavLink></li>
                     </ul>

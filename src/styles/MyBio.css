@@ -1,19 +1,51 @@
-.my-bio-container {
-    padding: 20px;
-    max-width: 800px;
-    margin: 10% auto;
-    text-align: left;
-    background-color: rgba(0, 0, 0, 0.3);
-  }
-  
-  .my-bio-container h1 {
-    text-align: center;
-  }
+.bio-and-photo-container {
+  display: flex;
+  gap: 20px; /* Adds space between the logo and the bio text */
+  padding: 20px;
+  margin: 2% 0;
+}
 
-  .my-bio-container h4 {
-    font-size: 1.25rem; /* Adjust size as needed */
-    margin-bottom: 0.5rem; /* Adds some space below the heading */
-    padding-bottom: 0.25rem; /* Adds a little space between the text and the underline */
-    display: inline-block; /* This helps the underline not stretch full width */
-    margin-top: 2rem; /* Adds more space above the heading if it's not the first element */
+/* Styling for the container that holds the logo image */
+.my-bio-photo {
+  flex-basis: 28%;
+}
+
+.my-bio-photo img {
+  width: 300px; /* Or any size you prefer */
+  height: auto; /* Keeps the aspect ratio of the image */
+  margin-top: 30%;
+  padding-bottom: 1rem;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Styling for the bio text container */
+.my-bio-container {
+  text-align: left;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  max-width: 700px;
+}
+
+
+
+.my-bio-container h1 {
+  text-align: center;
+}
+
+.my-bio-container h4 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.25rem;
+  display: inline-block;
+  margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+  .bio-and-photo-container {
+      flex-direction: column;
+    }
+
+    .my-bio-photo img {
+      margin-top: 0;
+    }
   }

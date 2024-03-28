@@ -42,12 +42,6 @@ button:hover {
   border: 2px solid #4CAF50;
 }
 
-@media (max-width: 600px) {
-  body {
-      background-size: 200% 200%;
-  }
-}
-
 html, body, #root {
   height: 100%;
   margin: 0;
