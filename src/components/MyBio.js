@@ -1,6 +1,6 @@
 import React from 'react';
 import '../styles/MyBio.css'; // Optional: Create a CSS file for styling if needed
-import logo from '../images/bmb-self.png'; 
+import logo from '../images/bmb-self2.png'; 
 
 const MyBio = () => {
   return (

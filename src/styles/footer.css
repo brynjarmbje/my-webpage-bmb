@@ -20,6 +20,10 @@ footer a {
     background-color: #ddd;
     color: black;
 }
+
+footer p {
+  padding: 0 2rem;
+}
   
   .footer-branding {
     display: flex;
@@ -36,10 +40,10 @@ footer a {
       flex-direction: column;
       text-align: center;
       align-items: center;
-      padding: 20px;
+      padding: 1rem 0;
     }
   
-    footer li {
+    footer p {
       margin: 10px 0; /* Adjust vertical spacing for mobile */
     }
   }
