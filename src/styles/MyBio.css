@@ -48,6 +48,6 @@
       border-radius: 2%; /* Rounds the corners of the image */
     }
     .my-bio-container h1 {
-      width: 100%;
+      width: 85%;    
     }
   }

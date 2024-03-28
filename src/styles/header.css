@@ -52,10 +52,13 @@ nav a.active {
     
       .nav-links {
         order: 1; /* Lower order values are placed first */
+        margin: auto;        
         
     }
     
       .social-links {
         order: 2;
+        margin: auto;        
+
       }
 }
