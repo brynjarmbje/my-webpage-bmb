@@ -1,29 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FaGithub, FaMusic, FaSoundcloud, FaUser } from 'react-icons/fa';
 import { NavLink } from 'react-router-dom';
 import '../styles/header.css';
 import logo from '../images/bmb-logo5.png';
 
 function Header() {
+    const [isNavVisible, setIsNavVisible] = useState(false);
+
+    const toggleNav = () => {
+        setIsNavVisible(!isNavVisible);
+    };
+
     return (
         <header className="App-header">
-            <nav className="nav-container">
-                {/* Left-aligned links */}
-                <div className="nav-links">
+            <h3>Brynjar Mar</h3>
+            <NavLink to="/" end>
+                <img src={logo} alt="Logo" className='nav-logo' />
+            </NavLink>
+            <div className="hamburger" onClick={toggleNav}>
+                <div className={`icon ${isNavVisible ? 'open' : ''}`}></div>
+            </div>
+            {isNavVisible && (
+                <nav className="mobile-nav">
                     <ul>
-                        <li><NavLink to="/" end><img src={logo} alt="Logo" className='nav-logo' />Heim</NavLink></li>
-                        <li><NavLink to="/music"><FaMusic /> Tónlist</NavLink></li>
-                        <li><NavLink to="/bio"><FaUser /> Um mig</NavLink></li>
+                        <li><NavLink to="/music" onClick={() => setIsNavVisible(false)}><FaMusic /> Music</NavLink></li>
+                        <li><NavLink to="/bio" onClick={() => setIsNavVisible(false)}><FaUser /> Bio</NavLink></li>
+                        <li><a href="https://github.com/brynjarmbje" target="_blank" rel="noopener noreferrer" onClick={() => setIsNavVisible(false)}><FaGithub /> GitHub</a></li>
+                        <li><a href="https://soundcloud.com/brynjar-mar-bjornsson" target="_blank" rel="noopener noreferrer" onClick={() => setIsNavVisible(false)}><FaSoundcloud /> SoundCloud</a></li>
                     </ul>
-                </div>
-
-
-                {/* Right-aligned links */}
-                <div className="social-links">
-                    <a href="https://github.com/brynjarmbje" target="_blank" rel="noopener noreferrer"><FaGithub /></a>
-                    <a href="https://soundcloud.com/brynjar-mar-bjornsson" target="_blank" rel="noopener noreferrer"><FaSoundcloud /></a>
-                </div>
-            </nav>
+                </nav>
+            )}
+            
         </header>
     );
 }

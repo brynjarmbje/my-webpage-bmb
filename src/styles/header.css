@@ -1,64 +1,90 @@
-/* header.css */
 .App-header {
     background-color: rgba(0, 0, 0, 0.1);
     color: rgb(255, 238, 232);
     display: flex;
-    padding: 0; /* Adjust padding as needed */
-}
-
-nav a, h1 {
-    float: left;
+    justify-content: space-between; /* Align items to each side */
+    padding: 0.5rem 1rem; /* Adjusted padding */
+    align-items: center;
+    position: relative;
+  }
+  
+  .App-header a {
     color: #f2f2f2;
     text-align: center;
-    padding: 1rem 2rem;
     text-decoration: none;
     font-size: 17px;
-}
-
-nav a:hover {
-    background-color: #ddd;
+  }
+  
+  .App-header a:hover {
+    background-color: #fff6e9;
     color: black;
-}
-
-nav a.active {
+  }
+  
+  .App-header a.active {
     background-color: #fff2e5;
     color: rgb(39, 0, 0);
-}
-
-.nav-container {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-}
-
-.nav-links ul, .social-links {
-    display: flex;
-    padding: 0;
-    margin: 0;
-    list-style: none;
-}
-
-.nav-logo {
-    height: 1rem; /* Adjust based on your preference */
+  }
+  
+  .nav-logo {
+    height: 3rem; /* Adjust based on your preference */
     width: auto; /* Maintains the aspect ratio */
-    vertical-align: middle; /* Aligns the logo vertically with the text */
-    margin-right: 8px; /* Adds some space between the logo and the text */
+  }
+  
+  .mobile-nav {
+    position: absolute;
+    top: 100%; /* Position right below the header */
+    right: 0;
+    background-color: #fff7ec; /* Example background color */
+    width: 100%; /* Full width */
+  }
+  
+  .mobile-nav.active {
+    display: block; /* Show when active */
+  }
+  
+  .mobile-nav ul {
+    list-style-type: none;
+  }
+  
+  .mobile-nav li {
+    text-align: center;
+    padding: 10px 0;
+  }
+  
+  .mobile-nav a {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 1); /* Example color */
+    display: block;
   }
 
-@media (max-width: 768px) {
-    .nav-container {
-        flex-direction: column;
-      }
-    
-      .nav-links {
-        order: 1; /* Lower order values are placed first */
-        margin: auto;        
-        
-    }
-    
-      .social-links {
-        order: 2;
-        margin: auto;        
-
-      }
-}
+  .hamburger {
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px; /* This padding increases the clickable area */
+    width: 48px; /* Adjust the width as needed */
+    height: 48px; /* Adjust the height as needed */
+    position: relative; /* Positions the icon lines within */
+    order: -1; /* Ensures the hamburger is always on the left */
+  }
+  
+  .hamburger .icon,
+  .hamburger .icon::before,
+  .hamburger .icon::after {
+    content: '';
+    background-color: #ffebeb; /* or any color that stands out against your header */
+    height: 2px;
+    width: 30px; /* Adjust based on your design preference */
+    position: absolute;
+    transition: transform 0.3s ease;
+  }
+  
+  .hamburger .icon::before { transform: translateY(-10px) translateX(-50%); }
+  .hamburger .icon::after { transform: translateY(10px) translateX(-50%); }
+  
+  .hamburger .icon.open::before { transform: rotate(45deg) translateX(-50%) translate(5px, 10px); }
+  .hamburger .icon.open::after { transform: rotate(-45deg) translateX(-50%) translate(5px, -10px); }
+  .hamburger .icon.open { background-color: transparent; }
