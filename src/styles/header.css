@@ -64,7 +64,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px; /* This padding increases the clickable area */
     width: 48px; /* Adjust the width as needed */
     height: 48px; /* Adjust the height as needed */
     position: relative; /* Positions the icon lines within */

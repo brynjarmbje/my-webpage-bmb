@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { FaGithub, FaMusic, FaSoundcloud, FaUser } from 'react-icons/fa';
 import { NavLink } from 'react-router-dom';
 import '../styles/header.css';
@@ -6,10 +6,24 @@ import logo from '../images/bmb-logo5.png';
 
 function Header() {
     const [isNavVisible, setIsNavVisible] = useState(false);
+    const menuRef = useRef(); // Ref for the menu
 
     const toggleNav = () => {
         setIsNavVisible(!isNavVisible);
     };
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (menuRef.current && !menuRef.current.contains(event.target)) {
+                setIsNavVisible(false);
+            }
+        };
+    
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, []);
 
     return (
         <header className="App-header">
@@ -21,7 +35,7 @@ function Header() {
                 <div className={`icon ${isNavVisible ? 'open' : ''}`}></div>
             </div>
             {isNavVisible && (
-                <nav className="mobile-nav">
+                <nav ref={menuRef} className="mobile-nav">
                     <ul>
                         <li><NavLink to="/music" onClick={() => setIsNavVisible(false)}><FaMusic /> Music</NavLink></li>
                         <li><NavLink to="/bio" onClick={() => setIsNavVisible(false)}><FaUser /> Bio</NavLink></li>
