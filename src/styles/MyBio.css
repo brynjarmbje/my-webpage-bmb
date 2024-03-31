@@ -1,32 +1,28 @@
 .bio-and-photo-container {
   display: flex;
   gap: 20px; /* Adds space between the logo and the bio text */
-  padding: 20px;
-  margin: 2% 0;
+  padding: 3% 20px;
+  background-color: rgb(214, 185, 213);
+  color: rgb(51, 46, 33)
 }
 
-/* Styling for the container that holds the logo image */
 .my-bio-photo {
   flex-basis: 28%;
 }
 
 .my-bio-photo img {
-  width: 300px; /* Or any size you prefer */
-  height: auto; /* Keeps the aspect ratio of the image */
-  margin-top: 30%;
-  border-radius: 3%; /* Rounds the corners of the image */
+  width: 500px; /* Or any size you prefer */
+  height: auto;
+  margin-top: 10%;
+  border-radius: 5%; /* Rounds the corners of the image */
 }
 
 /* Styling for the bio text container */
 .my-bio-container {
   text-align: left;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0);
   padding: 20px;
   max-width: 700px;
-}
-
-.my-bio-container h1 {
-  text-align: center;
 }
 
 .my-bio-container h4 {

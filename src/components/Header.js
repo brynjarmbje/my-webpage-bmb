@@ -1,14 +1,32 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { FaGithub, FaMusic, FaSoundcloud, FaUser } from 'react-icons/fa';
+import { FaGithub, FaMusic, FaSoundcloud, FaUser, FaHome } from 'react-icons/fa';
 import { NavLink } from 'react-router-dom';
 import '../styles/header.css';
-import logo from '../images/bmb-logo5.png';
+import logo from '../images/Logo1.png';
 
 function Header() {
+    const [headerHeight, setHeaderHeight] = useState(300); // Initial header height
     const [isNavVisible, setIsNavVisible] = useState(false);
     const menuRef = useRef(); // Ref for the menu
 
-    const toggleNav = () => {
+    useEffect(() => {
+        const handleScroll = () => {
+          const position = window.pageYOffset;
+          const newHeight = Math.max(100, 300 - position); // Minimum height is 100px
+          setHeaderHeight(newHeight);
+        };
+    
+        window.addEventListener('scroll', handleScroll);
+    
+        return () => {
+          window.removeEventListener('scroll', handleScroll);
+        };
+      }, []);
+
+    const toggleNav = (event) => {
+        if (isNavVisible) {
+            event.stopPropagation();
+        }
         setIsNavVisible(!isNavVisible);
     };
 
@@ -26,8 +44,12 @@ function Header() {
     }, []);
 
     return (
-        <header className="App-header">
-            <h3>Brynjar Mar</h3>
+        <header className="App-header" style={{ height: `${headerHeight}px`, backgroundPosition: `center ${headerHeight - 300}px` }}>
+            <div className='bmb'>
+                <div className="b"></div>
+                <div className="m"></div>
+                <div className="b"></div>
+            </div>
             <NavLink to="/" end>
                 <img src={logo} alt="Logo" className='nav-logo' />
             </NavLink>
@@ -37,6 +59,7 @@ function Header() {
             {isNavVisible && (
                 <nav ref={menuRef} className="mobile-nav">
                     <ul>
+                        <li><NavLink to="/" onClick={() => setIsNavVisible(false)}><FaHome /> Home</NavLink></li>
                         <li><NavLink to="/music" onClick={() => setIsNavVisible(false)}><FaMusic /> Music</NavLink></li>
                         <li><NavLink to="/bio" onClick={() => setIsNavVisible(false)}><FaUser /> Bio</NavLink></li>
                         <li><a href="https://github.com/brynjarmbje" target="_blank" rel="noopener noreferrer" onClick={() => setIsNavVisible(false)}><FaGithub /> GitHub</a></li>

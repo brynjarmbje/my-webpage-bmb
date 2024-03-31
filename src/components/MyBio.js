@@ -1,6 +1,6 @@
 import React from 'react';
 import '../styles/MyBio.css'; // Optional: Create a CSS file for styling if needed
-import logo from '../images/bmb-self2.png'; 
+import logo from '../images/bmb-live2.webp'; 
 
 const MyBio = () => {
   return (
@@ -10,7 +10,7 @@ const MyBio = () => {
       </div>
     <div className="my-bio-container">
       <h1>Brynjar Már Björnsson</h1>
-      <p>is a multifaceted professional with a rich background in musical composition and an emerging career in computer science and web development. Graduating in 2021 from the prestigious Musicians Institute with a Bachelor of Arts degree in Musical Composition for Visual Media, Brynjar has demonstrated an exceptional ability to blend creativity with technical skill. His expertise lies not only in creating emotive and dynamic compositions but also in applying his keen sense of sound to a variety of projects, ranging from soccer teams and kindergartens to podcast and radio program music.</p>
+      <p>Brynjar is a multifaceted professional with a rich background in musical composition and an emerging career in computer science and web development. Graduating in 2021 from the prestigious Musicians Institute with a Bachelor of Arts degree in Musical Composition for Visual Media, Brynjar has demonstrated an exceptional ability to blend creativity with technical skill. His expertise lies not only in creating emotive and dynamic compositions but also in applying his keen sense of sound to a variety of projects, ranging from soccer teams and kindergartens to podcast and radio program music.</p>
       <h4>A Diverse Portfolio of Soundscapes</h4>
       <p>Brynjar's journey in music has been marked by dedicated practice in music production, movie scores, along with commercial and trailer score compositions showcasing his versatility and innovative approach to sound design.</p>
       <h4>Bridging Notes and Codes</h4>

@@ -1,11 +1,22 @@
 .App-header {
-    background-color: rgba(0, 0, 0, 0.1);
+    height: 300px; /* Initial height */
+    background-image: url('../images/bmb-live2.webp');
+    background-size: cover;
+    background-position: center top;
+    transition: height 0.5s ease-out; /* Smooth transition for height adjustment */
     color: rgb(255, 238, 232);
     display: flex;
     justify-content: space-between; /* Align items to each side */
     padding: 0.5rem 1rem; /* Adjusted padding */
     align-items: center;
     position: relative;
+  }
+
+  .bmb {
+    display: flex;
+    justify-content: space-between; /* Align items to each side */
+    align-items: center;
+    width: 250px;
   }
   
   .App-header a {
@@ -21,7 +32,6 @@
   }
   
   .App-header a.active {
-    background-color: #fff2e5;
     color: rgb(39, 0, 0);
   }
   
@@ -87,3 +97,68 @@
   .hamburger .icon.open::before { transform: rotate(45deg) translateX(-50%) translate(5px, 10px); }
   .hamburger .icon.open::after { transform: rotate(-45deg) translateX(-50%) translate(5px, -10px); }
   .hamburger .icon.open { background-color: transparent; }
+
+  .b {
+    border-left: 2px solid #ffffff; /* Assuming $font-color is black */
+    height: 125px;
+    position: relative; /* Ensures pseudo-elements position relative to this */
+    width: 60px;
+  }
+  
+  .b:before,
+  .b:after {
+    content: '';
+    position: absolute;
+    border-color: #ffffff; /* Assuming $font-color is black */
+    border-width: 2px 2px 2px 0;
+    border-style: solid;
+  }
+  
+  .b:before {
+    border-radius: 0 240% 180% 0 / 0 180% 180% 0;
+    height: 52px;
+    top: 0;
+    width: 52px;
+    left: 2px; /* Adjust 'left' to close the gap */
+  }
+  
+  .b:after {
+    border-radius: 0 180% 220% 0 / 0 180% 180% 0;
+    height: 67px;
+    bottom: 0;
+    width: 66px;
+    left: -2px; /* Adjust 'left' to close the gap */
+  }
+
+  .m {
+    margin-top: -40px;
+    border-left: 2px solid #ffffff;
+    border-right: 2px solid #ffffff;
+    height: 125px;
+    overflow: hidden;
+    top: 20px;
+    width: 80px;
+    position: relative; /* Ensure position is set for absolute positioning of children */
+  }
+  
+  .m:before {
+    background: #ffffff;
+    content: '';
+    height: 125px;
+    position: absolute;
+    top: 0;
+    right: 19px;
+    transform: skew(-18deg);
+    width: 2px;
+  }
+  
+  .m:after {
+    background: #ffffff;
+    content: '';
+    height: 125px;
+    position: absolute;
+    top: 0;
+    left: 19px;
+    transform: skew(18deg);
+    width: 2px;
+  }
