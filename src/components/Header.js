@@ -45,14 +45,14 @@ function Header() {
 
     return (
         <header className="App-header" style={{ height: `${headerHeight}px`, backgroundPosition: `center ${headerHeight - 300}px` }}>
+            <NavLink to="/" end>
             <div className='bmb'>
                 <div className="b"></div>
                 <div className="m"></div>
                 <div className="b"></div>
             </div>
-            <NavLink to="/" end>
-                <img src={logo} alt="Logo" className='nav-logo' />
             </NavLink>
+<h3> </h3>
             <div className="hamburger" onClick={toggleNav}>
                 <div className={`icon ${isNavVisible ? 'open' : ''}`}></div>
             </div>
