@@ -4,10 +4,9 @@
     background-size: cover;
     background-position: center top;
     transition: height 0.5s ease-out; /* Smooth transition for height adjustment */
-    color: rgb(255, 238, 232);
     display: flex;
     justify-content: space-between; /* Align items to each side */
-    padding: 0.5rem 1rem; /* Adjusted padding */
+    padding: 0.5rem 0.1rem; /* Adjusted padding */
     align-items: center;
     position: relative;
   }
@@ -19,35 +18,19 @@
     width: 250px;
   }
   
-  .App-header a {
-    color: #f2f2f2;
-    text-align: center;
-    text-decoration: none;
-    font-size: 17px;
-  }
-  
-  .App-header a:hover {
-    background-color: #fff6e9;
-    color: black;
-  }
-  
-  .App-header a.active {
-    color: rgb(39, 0, 0);
-  }
-  
-  .nav-logo {
-    height: 3rem; /* Adjust based on your preference */
-    width: auto; /* Maintains the aspect ratio */
-  }
-  
   .mobile-nav {
     position: absolute;
     top: 100%; /* Position right below the header */
     right: 0;
     background-color: #fff7ec; /* Example background color */
     width: 100%; /* Full width */
+    z-index: 100;
   }
   
+.noText {
+
+color:transparent;}
+
   .mobile-nav.active {
     display: block; /* Show when active */
   }
@@ -58,13 +41,14 @@
   
   .mobile-nav li {
     text-align: center;
-    padding: 10px 0;
   }
   
   .mobile-nav a {
     text-decoration: none;
-    color: rgba(0, 0, 0, 1); /* Example color */
+    color: rgb(39, 30, 22); /* Example color */
     display: block;
+    background-color: bisque;
+    padding: 10px 0;
   }
 
   .hamburger {
