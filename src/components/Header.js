@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { FaGithub, FaMusic, FaSoundcloud, FaUser, FaHome, FaLinkedin } from 'react-icons/fa';
+import { FaGithub, FaMusic, FaSoundcloud, FaUser, FaHome, FaLinkedin, FaGamepad } from 'react-icons/fa';
 import { NavLink } from 'react-router-dom';
 import '../styles/header.css';
 
@@ -64,6 +64,7 @@ function Header() {
                         <li><a href="https://github.com/brynjarmbje" target="_blank" rel="noopener noreferrer" onClick={() => setIsNavVisible(false)}><FaGithub /> GitHub</a></li>
                         <li><a href="https://soundcloud.com/brynjar-mar-bjornsson" target="_blank" rel="noopener noreferrer" onClick={() => setIsNavVisible(false)}><FaSoundcloud /> SoundCloud</a></li>
                         <li><a href="https://linkedin.com/in/brynjarmb" target="_blank" rel="noopener noreferrer" onClick={() => setIsNavVisible(false)}><FaLinkedin /> Linkedin</a></li>
+                        <li><NavLink to="/mylla" onClick={() => setIsNavVisible(false)}><FaGamepad />Mylla</NavLink></li>
 
                     </ul>
                 </nav>

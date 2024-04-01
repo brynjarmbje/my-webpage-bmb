@@ -25,13 +25,14 @@ const MusicPage = () => {
 
         const observer = new IntersectionObserver(
             (entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.play().catch(err => console.error("Error trying to play the song:", err));
-                    } else {
-                        entry.target.pause();
-                    }
-                });
+              entries.forEach(entry => {
+                const target = entry.target;
+                if (entry.isIntersecting && target instanceof HTMLAudioElement) {
+                    target.play().catch(err => console.error("Error trying to play the song:", err));
+                } else if (target instanceof HTMLAudioElement) {
+                    target.pause();
+                }
+            });
             },
             { threshold: 0.5 } // This threshold triggers the callback when 50% of the item is visible
         );
