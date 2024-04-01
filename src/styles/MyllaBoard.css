@@ -10,6 +10,25 @@
     color: white;
     font-family: 'Press Start 2P', cursive;
   }
+
+  .myllaPage button {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1rem;
+    padding: 10px 20px;
+    margin-top: 1.5rem;
+    background-color: #009600; /* Bright green button background */
+    color: black; /* Black text for better readability */
+    border: none;
+    border-radius: 5px; /* Rounded corners for a softer look */
+    cursor: pointer;
+    transition: background-color 0.5s; /* Smooth transitions for interactions */
+  }
+
+  .myllaPage button:hover {
+    background-color: #00FF00; /* Lighten button background on hover */
+    border: none;
+    
+  }
   
   .board {
     display: grid;

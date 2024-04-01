@@ -6,26 +6,32 @@ import '../styles/header.css';
 function Header() {
     const [headerHeight, setHeaderHeight] = useState(300); // Initial header height
     const [isNavVisible, setIsNavVisible] = useState(false);
-    const menuRef = useRef(); // Ref for the menu
+    const menuRef = useRef(null); // Ref for the menu
 
     useEffect(() => {
+        let lastScrollY = window.scrollY;
+        let ticking = false;
+      
         const handleScroll = () => {
-          const position = window.pageYOffset;
-          const newHeight = Math.max(100, 300 - position); // Minimum height is 100px
-          setHeaderHeight(newHeight);
+          lastScrollY = window.scrollY;
+          if (!ticking) {
+            window.requestAnimationFrame(() => {
+              const newHeight = Math.max(100, 300 - lastScrollY); // Adjusting minimum height as needed
+              setHeaderHeight(newHeight);
+              ticking = false;
+            });
+            ticking = true;
+          }
         };
-    
-        window.addEventListener('scroll', handleScroll);
-    
+      
+        window.addEventListener('scroll', handleScroll, { passive: true });
+      
         return () => {
           window.removeEventListener('scroll', handleScroll);
         };
       }, []);
 
-    const toggleNav = (event) => {
-        if (isNavVisible) {
-            event.stopPropagation();
-        }
+      const toggleNav = () => {
         setIsNavVisible(!isNavVisible);
     };
 
@@ -42,21 +48,51 @@ function Header() {
         };
     }, []);
 
+    useEffect(() => {
+        const handleScroll = () => {
+            const headerBottom = headerHeight - window.scrollY; // Calculate the current bottom position of the header
+            const burgerIconBottom = 0; // Example: 20px from top + 48px height
+            let navTopPosition;
+    
+            if (headerBottom <= burgerIconBottom) {
+                // When the header bottom is above or at the burger icon bottom,
+                // position the nav relative to the viewport to make it stick.
+                navTopPosition = `${burgerIconBottom}px`;
+            } else {
+                // Otherwise, align the top of the nav with the bottom of the header.
+                navTopPosition = `${headerHeight}px`;
+            }
+    
+            if (menuRef.current) {
+                menuRef.current.style.top = navTopPosition;
+            }
+        };
+    
+        // This effect depends on headerHeight.
+        window.addEventListener('scroll', handleScroll);
+        handleScroll(); // Call it to set initial position
+    
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, [headerHeight]);
+
     return (
-        <header className="App-header" style={{ height: `${headerHeight}px`, backgroundPosition: `center ${headerHeight - 300}px` }}>
-            <NavLink to="/" end>
-            <div className='bmb'>
-                <div className="b"></div>
-                <div className="m"></div>
-                <div className="b"></div>
-            </div>
-            </NavLink>
-<h3 className='noText'>bmb.</h3>
-            <div className="hamburger" onClick={toggleNav}>
-                <div className={`icon ${isNavVisible ? 'open' : ''}`}></div>
+        <header className="App-header">
+            <div className="header-content">
+                <NavLink to="/" end className="logo-link">
+                    <div className='bmb'>
+                        <div className="b"></div>
+                        <div className="m"></div>
+                        <div className="b"></div>
+                    </div>
+                </NavLink>
+                <div className="hamburger" onClick={toggleNav}>
+                    <div className={`icon ${isNavVisible ? 'open' : ''}`}></div>
+                </div>
             </div>
             {isNavVisible && (
-                <nav ref={menuRef} className="mobile-nav">
+                <nav ref={menuRef} className={`mobile-nav ${isNavVisible ? 'open' : ''}`}>
                     <ul>
                         <li><NavLink to="/" onClick={() => setIsNavVisible(false)}><FaHome /> Home</NavLink></li>
                         <li><NavLink to="/music" onClick={() => setIsNavVisible(false)}><FaMusic /> Music</NavLink></li>
@@ -65,11 +101,9 @@ function Header() {
                         <li><a href="https://soundcloud.com/brynjar-mar-bjornsson" target="_blank" rel="noopener noreferrer" onClick={() => setIsNavVisible(false)}><FaSoundcloud /> SoundCloud</a></li>
                         <li><a href="https://linkedin.com/in/brynjarmb" target="_blank" rel="noopener noreferrer" onClick={() => setIsNavVisible(false)}><FaLinkedin /> Linkedin</a></li>
                         <li><NavLink to="/mylla" onClick={() => setIsNavVisible(false)}><FaGamepad />Mylla</NavLink></li>
-
                     </ul>
                 </nav>
             )}
-            
         </header>
     );
 }

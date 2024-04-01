@@ -1,15 +1,22 @@
+
 .App-header {
     height: 300px; /* Initial height */
     background-image: url('../images/bmb-live2.webp');
     background-size: cover;
     background-position: center top;
-    transition: height 0.5s ease-out; /* Smooth transition for height adjustment */
     display: flex;
-    justify-content: space-between; /* Align items to each side */
+    justify-content: center; /* Align items to each side */
     padding: 0.5rem 0.1rem; /* Adjusted padding */
     align-items: center;
     position: relative;
   }
+
+  .header-content {
+    width: 100%; /* Ensures the header content takes the full width */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
   .bmb {
     display: flex;
@@ -19,16 +26,11 @@
   }
   
   .mobile-nav {
-    position: absolute;
-    top: 100%; /* Position right below the header */
-    right: 0;
-    background-color: #fff7ec; /* Example background color */
-    width: 100%; /* Full width */
-    z-index: 100;
+    position: fixed;
+    z-index: 99;
+    width: 100%;
+    background-color: black;
   }
-  
-.noText {
-color:transparent;}
 
   .mobile-nav.active {
     display: block; /* Show when active */
@@ -36,21 +38,22 @@ color:transparent;}
   
   .mobile-nav ul {
     list-style-type: none;
-  }
-  
-  .mobile-nav li {
-    text-align: center;
-  }
+    padding: 0;
+}
   
   .mobile-nav a {
     text-decoration: none;
-    color: rgb(39, 30, 22); /* Example color */
+    color: rgb(253, 245, 237); /* Example color */
     display: block;
-    background-color: bisque;
-    padding: 10px 0;
+    padding: 10px 0;}
+
+  .mobile-nav a:hover, .mobile-nav a.active{
+    background-color: rgb(125, 125, 125);
+    color: rgb(253, 245, 237); /* Example color */
   }
 
   .hamburger {
+    /* mix-blend-mode: difference;  or 'exclusion' */
     cursor: pointer;
     background: transparent;
     border: none;
@@ -59,8 +62,11 @@ color:transparent;}
     align-items: center;
     width: 48px; /* Adjust the width as needed */
     height: 48px; /* Adjust the height as needed */
-    position: relative; /* Positions the icon lines within */
-    order: -1; /* Ensures the hamburger is always on the left */
+    position: fixed; /* Positions the icon lines within */
+    top: 0; /* Top of the viewport */
+    right: 0; /* Left of the viewport */
+    z-index: 100; /* Ensure it's above other content */
+    padding: 1rem;
   }
   
   .hamburger .icon,
@@ -145,3 +151,4 @@ color:transparent;}
     transform: skew(18deg);
     width: 2px;
   }
+

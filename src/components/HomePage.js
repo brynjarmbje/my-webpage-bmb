@@ -5,7 +5,6 @@ import AboutTeaser from './AboutTeaser';
 import LatestNews from './LatestNews';
 import '../styles/HomePage.css'; // Assuming you'll create a CSS file for styling
 import MusicPage from './MusicPage';
-import Mylla from './Mylla';
 
 const HomePage = () => {
   return (
@@ -15,7 +14,6 @@ const HomePage = () => {
       <AboutTeaser />
       <LatestNews />
       <MusicPage />
-      <Mylla />
     </div>
   );
 };
