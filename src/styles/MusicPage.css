@@ -1,14 +1,14 @@
 .music-page {
     scroll-snap-type: y mandatory;
     overflow-y: scroll;
-    height: 57vh;
+    height: 60vh;
   }
   
   .music-player-container {
     scroll-snap-align: start;
     position: relative;
     width: 100vw;
-    height: 57vh;
+    height: 60vh;
     display: flex;
     flex-direction: column;
     justify-content: center;

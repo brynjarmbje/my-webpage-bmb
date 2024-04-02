@@ -59,7 +59,7 @@ const MusicPage = () => {
               <section
                 className="music-player-container"
                 key={index}
-                style={{ backgroundImage: `url(${song.backgroundImage})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+                style={{ backgroundImage: `url(${song.backgroundImage})`, backgroundPosition: 'center' }}>
                   <h2 className="song-title">{song.title}</h2>
                   <h4>{song.author}</h4>
                   <audio
