@@ -6,7 +6,7 @@ function Footer() {
     return (
         <footer>
             <p>Music Composer, Programmer</p>
-            <p><a href="tel:+3548475643" style={{ textDecoration: 'none', color: 'inherit' }}><MdPhone /> 8475643</a></p>
+            <p><a href="tel:+3548475643"><MdPhone /> 8475643</a></p>
             <p><a href="mailto:brynjarbmb@gmail.com"><MdEmail /> brynjarbmb@gmail.com</a></p>
         </footer>
     );

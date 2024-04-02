@@ -2,7 +2,6 @@ import React from 'react';
 import WelcomeSection from './WelcomeSection';
 import FeaturedProject from './FeaturedProject';
 import AboutTeaser from './AboutTeaser';
-import LatestNews from './LatestNews';
 import '../styles/HomePage.css'; // Assuming you'll create a CSS file for styling
 import MusicPage from './MusicPage';
 
@@ -12,7 +11,6 @@ const HomePage = () => {
       <WelcomeSection />
       <FeaturedProject />
       <AboutTeaser />
-      <LatestNews />
       <MusicPage />
     </div>
   );
