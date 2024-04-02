@@ -5,8 +5,8 @@ import '../styles/footer.css';
 function Footer() {
     return (
         <footer>
-            <p>Music Composer, Developer, Web Specialist, Pianist</p>
-            <p><MdPhone /> 8475643</p>
+            <p>Music Composer, Programmer</p>
+            <p><a href="tel:+3548475643" style={{ textDecoration: 'none', color: 'inherit' }}><MdPhone /> 8475643</a></p>
             <p><a href="mailto:brynjarbmb@gmail.com"><MdEmail /> brynjarbmb@gmail.com</a></p>
         </footer>
     );

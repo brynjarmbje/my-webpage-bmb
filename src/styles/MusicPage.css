@@ -1,20 +1,39 @@
 .music-page {
     scroll-snap-type: y mandatory;
     overflow-y: scroll;
-    height: 100vh;
+    height: 57vh;
   }
   
   .music-player-container {
     scroll-snap-align: start;
+    position: relative;
     width: 100vw;
-    height: 100vh;
+    height: 57vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: center;
-  }
+    text-align: center;}
   
   .audio-player {
+    width: 80%;
     max-width: 80%; /* Adjust as needed */
   }
+
+  .header-hidden {
+    transform: translateY(-100%); /* Adjust as necessary */
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .header-visible {
+    transform: translateY(0);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .canvas {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    min-width: 100vw;
+    min-height: 57vh;}

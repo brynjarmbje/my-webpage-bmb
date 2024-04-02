@@ -8,21 +8,34 @@ body {
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: linear-gradient(-45deg, #26253a, #000000, #2a002f, #00105e);
+  background: linear-gradient(-45deg, var(--dark-gray), var(--dark-purple), var(--white-gold), black);
   background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
+  animation: sandSmokeEffect 20s ease infinite;
   text-align: center;
   color: rgb(255, 248, 232);
+}
+
+:root {
+  --dark-purple: #301555;
+  --white-gold: #B5A642;
+  --dark-gray: #333333;
+  --sand-white: #F2E8CF;
 }
 
 iframe {
   border: none;
 }
 
-@keyframes gradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+@keyframes sandSmokeEffect {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 code {

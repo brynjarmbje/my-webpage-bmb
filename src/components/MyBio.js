@@ -1,12 +1,12 @@
 import React from 'react';
 import '../styles/MyBio.css'; // Optional: Create a CSS file for styling if needed
-import logo from '../images/bmb-live2.webp'; 
+import selfimg from '../images/bmb-self.png'; 
 
 const MyBio = () => {
   return (
     <div className="bio-and-photo-container">
     <div className="my-bio-photo">
-      <img src={logo} alt="Logo" />
+      <img src={selfimg} alt="BMB" />
       </div>
     <div className="my-bio-container">
       <h1>Brynjar Már Björnsson</h1>

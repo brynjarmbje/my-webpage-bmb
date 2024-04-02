@@ -2,28 +2,30 @@
   display: flex;
   gap: 20px; /* Adds space between the logo and the bio text */
   padding: 3% 20px;
-  background-color: rgb(214, 185, 213);
-  color: rgb(51, 46, 33)
+  background-color: var(--sand-white);
+  color: black;
 }
 
 .my-bio-photo {
   flex-basis: 28%;
+  height: 100px;
 }
 
 .my-bio-photo img {
-  width: 500px; /* Or any size you prefer */
+  width: 300px; /* Or any size you prefer */
   height: auto;
-  margin-top: 10%;
-  border-radius: 5%; /* Rounds the corners of the image */
+  border-radius: 0%; /* Rounds the corners of the image */
 }
 
 /* Styling for the bio text container */
 .my-bio-container {
   text-align: left;
-  background-color: rgba(0, 0, 0, 0);
   padding: 20px;
   max-width: 700px;
 }
+
+.my-bio-container h1 {
+display: flex;}
 
 .my-bio-container h4 {
   font-size: 1.25rem;
@@ -37,6 +39,9 @@
       flex-direction: column;
     }
 
+    .my-bio-photo {
+      order: 1;
+    }
     .my-bio-photo img {
       width: 200px; /* Or any size you prefer */
       height: auto; /* Keeps the aspect ratio of the image */
