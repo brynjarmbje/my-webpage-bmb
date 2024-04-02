@@ -24,6 +24,10 @@ body {
 
 iframe {
   border: none;
+  width: 90vw;
+  height: 55vw;
+  max-width: 700px;
+  max-height: 400px;
 }
 
 @keyframes sandSmokeEffect {
