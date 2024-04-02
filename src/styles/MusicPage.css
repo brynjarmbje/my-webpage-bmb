@@ -13,7 +13,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: center;}
+    text-align: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
   
   .audio-player {
     width: 80%;
@@ -30,10 +34,6 @@
     transition: transform 0.3s ease-in-out;
   }
 
-  .canvas {
-    position: absolute;
-    z-index: -1;
-    top: 0;
-    left: 0;
-    min-width: 100vw;
-    min-height: 57vh;}
+  .music-player-container h2, .music-player-container h4 {
+    text-shadow: 2px 2px 10px rgba(0,0,0,1); /* Adjust color and size as needed */
+    }
