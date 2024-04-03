@@ -1,17 +1,28 @@
 import React, { useState } from 'react';
 import { useAuth } from '../../AuthContext';
+import { getFirestore, doc, setDoc } from "firebase/firestore";
+
+// Assuming you've initialized Firestore somewhere as 'db'
+const db = getFirestore();
 
 const Signup = ({ onSignupSuccess }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { signup } = useAuth(); // Ensure this is destructuring the 'signup' function from useAuth
   const [message, setMessage] = useState('');
+  
 
   const handleSignup = async (e) => {
     e.preventDefault();
     try {
-      await signup(email, password); // Pass email and password to the signup function
-      setMessage('Signup successful!');
+        const userCredential = await signup(email, password); // signup now returns userCredential
+        setMessage('Signup successful!');
+        
+        // Now you can correctly access userCredential.user.uid
+        await setDoc(doc(db, "users", userCredential.user.uid), {
+          email: email,
+          points: 0, // Default to 0 points
+        });
       if (onSignupSuccess) {
         onSignupSuccess(); // If there is a callback, call it upon successful signup
       }
