@@ -7,7 +7,7 @@ Welcome to the repository for [Brynjar Már Björnsson's personal webpage](https
 - **Home Page**: A welcoming entry point that introduces visitors to my world, highlighting key aspects of my journey and recent accomplishments.
 - **Music Page**: Dive into my musical compositions, listen to selected works, and explore the projects I've contributed to.
 - **Bio Page**: Read about my educational background, my progression from music to computer science, and my visions for the future.
-- **Contact**: A call-to-action for potential collaborations, opportunities, or just to say hi.
+- **Mylla Game**: An online tic  tac toe  developed fully by me with help of chatGPT. With online capabilities through Google Firebase.
 
 ## Technologies Used
 
