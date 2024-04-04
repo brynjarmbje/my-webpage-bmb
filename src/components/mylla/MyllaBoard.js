@@ -53,11 +53,8 @@ const MyllaBoard = () => {
         <GameController sessionId={currentSessionId} onSessionCreated={handleSessionCreated} />
       )}
       <button onClick={handleLeaveGame}>Leave Game</button>
-      
-
       {/* Practice GameBoard (always shown) */}
       <MyllaPractice />
-
     </div>
   );
 };

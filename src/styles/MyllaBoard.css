@@ -82,6 +82,8 @@
       grid-template-rows: repeat(3, 70px); /* Smaller cells for mobile */
       gap: 5px;
     }
+
+
   
     .cell {
       font-size: 1.5rem; /* Smaller font size for mobile */

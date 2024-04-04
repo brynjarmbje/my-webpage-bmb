@@ -11,7 +11,8 @@ const GameController = ({ sessionId, onSessionCreated }) => {
     const [gameSessionData, setGameSessionData] = useState(null);
     const [isCurrentUserTurn, setIsCurrentUserTurn] = useState(false);
     const [gameOver, setGameOver] = useState(false);
-    const [gameStatus, setGameStatus] = useState(''); // Add this line
+    const [gameStatus, setGameStatus] = useState('');
+    const [winningLine, setWinningLine] = useState(null);
 
     useEffect(() => {
         if (!sessionId) return;
@@ -50,17 +51,21 @@ const GameController = ({ sessionId, onSessionCreated }) => {
         const playerSymbol = gameSessionData.player1Id === currentUser.uid ? 'X' : 'O';
         newMoves[index] = playerSymbol;
     
-        const winner = checkWinner(newMoves); // Assume this returns the winner ID or null
-        const draw = !winner && newMoves.every(move => move != null);
+        const result = checkWinner(newMoves); // Adjusted to expect an object or null
+        const draw = !result && newMoves.every(move => move != null);
     
         try {
             await updateDoc(doc(db, "gameSessions", sessionId), {
                 moves: newMoves,
-                ...(winner && { winner: winner, status: "completed" }), // Spread syntax to conditionally add winner
-                ...(draw && { draw: true, status: "completed" }) // Spread syntax to conditionally add draw
+                ...(result && { winner: result.winner, status: "completed" }), // Adjusted to use result.winner
+                ...(draw && { draw: true, status: "completed" })
             });
-            // No need to manually set state for game status or game over here,
-            // as it should be handled by the onSnapshot listener reacting to the updated Firestore document.
+            // After updating Firestore, update local state for the winning line if there is a winner
+            if (result && result.winningLine) {
+                setWinningLine(result.winningLine); // You need to define setWinningLine and winningLine state somewhere in this component
+            } else {
+                setWinningLine(null); // Reset winning line if no winner
+            }
         } catch (error) {
             console.error("Error updating moves:", error);
         }
@@ -76,7 +81,10 @@ const GameController = ({ sessionId, onSessionCreated }) => {
         for (let line of lines) {
             const [a, b, c] = line;
             if (moves[a] && moves[a] === moves[b] && moves[a] === moves[c]) {
-                return moves[a] === 'X' ? gameSessionData.player1Id : gameSessionData.player2Id;
+                return {
+                    winner: moves[a] === 'X' ? gameSessionData.player1Id : gameSessionData.player2Id,
+                    winningLine: line, // winning combination
+                };
             }
         }
         if (!moves.includes(null)) return 'draw';
@@ -109,8 +117,8 @@ const GameController = ({ sessionId, onSessionCreated }) => {
     return (
         <>
             <GameStatus status={gameStatus} gameOver={gameOver} sessionId={sessionId} />
-            <GameBoard cells={gameSessionData.moves} onCellClick={handlePlayerMove} isCurrentUserTurn={isCurrentUserTurn} />
-            {gameOver && <GameFinder onSessionCreated={onSessionCreated} />}
+            <GameBoard cells={gameSessionData.moves} onCellClick={handlePlayerMove} isCurrentUserTurn={isCurrentUserTurn} winningLine={winningLine} />
+            {gameOver}
         </>
     );
 };
