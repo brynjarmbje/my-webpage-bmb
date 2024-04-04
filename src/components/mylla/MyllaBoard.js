@@ -51,6 +51,7 @@ const MyllaBoard = () => {
     );
   }
 
+
   return (
     <div className='myllaPage'>
       <UserProfile user={currentUser} />
@@ -59,7 +60,7 @@ const MyllaBoard = () => {
         <GameFinder onSessionCreated={handleSessionCreated} />
       ) : (
         // If there's a current session ID, show the GameController to manage the game
-        <GameController sessionId={currentSessionId} />
+        <GameController sessionId={currentSessionId} onSessionCreated={handleSessionCreated} />
       )}
       <button onClick={handleLeaveGame}>Leave Game</button>
       

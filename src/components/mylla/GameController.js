@@ -2,16 +2,15 @@ import React, { useEffect, useState } from 'react';
 import GameBoard from './GameBoard';
 import GameStatus from './GameStatus';
 import { useAuth } from '../../AuthContext';
-import { doc, getDoc, onSnapshot, updateDoc, writeBatch } from '@firebase/firestore';
+import { doc, getDoc, onSnapshot, updateDoc } from '@firebase/firestore';
 import { db } from '../../firebase-config';
 import GameFinder from './GameFinder';
 
-const GameController = ({ sessionId }) => {
+const GameController = ({ sessionId, onSessionCreated }) => {
     const { currentUser } = useAuth();
     const [gameSessionData, setGameSessionData] = useState(null);
     const [isCurrentUserTurn, setIsCurrentUserTurn] = useState(false);
     const [gameOver, setGameOver] = useState(false);
-    const isDraw = (moves) => moves.every(move => move !== null);
     const [gameStatus, setGameStatus] = useState(''); // Add this line
 
     useEffect(() => {
@@ -109,9 +108,9 @@ const GameController = ({ sessionId }) => {
 
     return (
         <>
-            <GameStatus status={gameStatus} gameOver={undefined} />
+            <GameStatus status={gameStatus} gameOver={gameOver} sessionId={sessionId} />
             <GameBoard cells={gameSessionData.moves} onCellClick={handlePlayerMove} isCurrentUserTurn={isCurrentUserTurn} />
-            {gameOver && <GameFinder onSessionCreated={undefined} />}
+            {gameOver && <GameFinder onSessionCreated={onSessionCreated} />}
         </>
     );
 };
