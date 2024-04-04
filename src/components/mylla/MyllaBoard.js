@@ -6,21 +6,12 @@ import UserProfile from './UserProfile';
 import Login from './Login'; // Assuming you have a separate Login component
 import Signup from './Signup'; // Assuming you have a separate Signup component
 import '../../styles/MyllaBoard.css';
-import GameBoard from './GameBoard';
+import MyllaPractice from './MyllaPractice';
 
 const MyllaBoard = () => {
   const { currentUser } = useAuth(); // Use your AuthContext to check if the user is logged in
   const [currentSessionId, setCurrentSessionId] = useState(null); // Track the current game session ID
   const [showLogin, setShowLogin] = useState(false); // State to toggle between login and the game view
-
-  const [practiceCells, setPracticeCells] = useState(Array(9).fill(null));
-
-    // Handle click for the practice board
-    const handlePracticeClick = (index) => {
-      const newCells = [...practiceCells];
-      newCells[index] = newCells[index] ? null : 'X'; // Toggle X on click for simplicity
-      setPracticeCells(newCells);
-    };
 
   // Function to be called when a session is created or joined
   const handleSessionCreated = (sessionId) => {
@@ -51,7 +42,6 @@ const MyllaBoard = () => {
     );
   }
 
-
   return (
     <div className='myllaPage'>
       <UserProfile user={currentUser} />
@@ -66,10 +56,8 @@ const MyllaBoard = () => {
       
 
       {/* Practice GameBoard (always shown) */}
-      <div style={{marginTop: '20px'}}>
-        <h2>Practice Area</h2>
-        <GameBoard cells={practiceCells} onCellClick={handlePracticeClick} isCurrentUserTurn={undefined} />
-      </div>
+      <MyllaPractice />
+
     </div>
   );
 };
