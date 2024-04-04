@@ -11,36 +11,54 @@ const GameFinder = ({ onSessionCreated }) => {
             console.log("No current user found.");
             return;
         }
-        
+
         try {
-            // Check for an existing game session that's waiting for a player
-            const q = query(collection(db, "gameSessions"), where("status", "==", "waiting"));
-            const querySnapshot = await getDocs(q);
-            let sessionId;
-            
-            if (!querySnapshot.empty) {
-                // Join the first waiting session
-                const gameSessionDoc = querySnapshot.docs[0];
-                await updateDoc(doc(db, "gameSessions", gameSessionDoc.id), {
+            // First, try to find an existing session where currentUser is player1 and it's waiting
+            const ownSessionQuery = query(
+              collection(db, "gameSessions"),
+              where("player1Id", "==", currentUser.uid),
+              where("status", "==", "waiting")
+            );
+            let querySnapshot = await getDocs(ownSessionQuery);
+
+            let sessionDoc = querySnapshot.docs.find(doc => doc.exists());
+
+            if (sessionDoc) {
+                // Rejoin own waiting session
+                onSessionCreated(sessionDoc.id);
+                return;
+            }
+
+            // If no own waiting session, look for any waiting session
+            const anySessionQuery = query(
+              collection(db, "gameSessions"),
+              where("status", "==", "waiting"),
+              where("player1Id", "not-in", [currentUser.uid]) // Exclude own sessions
+            );
+
+            querySnapshot = await getDocs(anySessionQuery);
+            sessionDoc = querySnapshot.docs.find(doc => doc.exists() && doc.data().player1Id !== currentUser.uid);
+
+            if (sessionDoc) {
+                // Join the first suitable waiting session as player2
+                await updateDoc(doc(db, "gameSessions", sessionDoc.id), {
                     player2Id: currentUser.uid,
                     status: "ongoing"
                 });
-                sessionId = gameSessionDoc.id;
-            } else {
-                // Create a new game session
-                const docRef = await addDoc(collection(db, "gameSessions"), {
-                    player1Id: currentUser.uid,
-                    moves: Array(9).fill(null),
-                    status: "waiting", // Waiting for a second player
-                });
-                sessionId = docRef.id;
+                onSessionCreated(sessionDoc.id);
+                return;
             }
 
-            // Invoke onSessionCreated when a session is successfully created or joined
-            onSessionCreated(sessionId);
+            // No suitable session to join, create a new one
+            const docRef = await addDoc(collection(db, "gameSessions"), {
+                player1Id: currentUser.uid,
+                moves: Array(9).fill(null),
+                status: "waiting"
+            });
+            onSessionCreated(docRef.id);
+
         } catch (error) {
             console.error("Failed to create or join a game session:", error);
-            // Optionally, handle errors (e.g., by setting an error state or displaying a message to the user)
         }
     };
 
