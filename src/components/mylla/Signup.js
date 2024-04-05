@@ -48,7 +48,7 @@ const Signup = ({ onSignupSuccess }) => {
           placeholder="Password"
           required
         />
-        <button type="submit">Sign Up</button>
+        <button type="submit">Create Account</button>
       </form>
       {message && <p>{message}</p>}
     </div>

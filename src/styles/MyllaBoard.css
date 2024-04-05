@@ -1,14 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap');
 .myllaPage {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 100vh;
+    min-height: 60vh;
     background-color: #0A0A0A; /* Dark background for that arcade feel */
     color: white;
     font-family: 'Press Start 2P', cursive;
+    padding-bottom: 7rem;
   }
 
   .myllaPage button {
@@ -24,10 +25,33 @@
     transition: background-color 0.5s; /* Smooth transitions for interactions */
   }
 
+  .myllaPage .welcome h2, .myllaPage .emails {    
+    font-family: "Play", sans-serif;
+  }
+
   .myllaPage button:hover {
     background-color: #00FF00; /* Lighten button background on hover */
     border: none;
     
+  }
+
+  .myllaPage input {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    margin-top: 1.5rem;
+    background-color: #ffffff; /* Bright green button background */
+    color: black; /* Black text for better readability */
+    border: none;
+    border-radius: 5px; /* Rounded corners for a softer look */
+    transition: background-color 0.5s; /* Smooth transitions for interactions */
+  }
+
+  .myllaPage form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
   
   .board {
@@ -40,6 +64,7 @@
     padding: 10px;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 255, 0, 0.8); /* Neon-like glow */
+    margin-bottom: 1rem;
   }
   
   .cell {

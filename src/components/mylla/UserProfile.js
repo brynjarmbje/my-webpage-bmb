@@ -45,7 +45,7 @@ const UserProfile = () => {
     };
 
     return (
-        <div>
+        <div className='welcome'>
             <h2>Welcome, {currentUser.email}</h2>
             <p>Current Points: {userPoints !== null ? userPoints : "Loading..."}</p>
             <button onClick={handleLogout}>Logout</button>

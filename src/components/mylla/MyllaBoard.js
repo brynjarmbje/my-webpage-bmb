@@ -27,6 +27,7 @@ const MyllaBoard = () => {
     // If the user is not logged in, show login or signup options
     return (
       <div className='myllaPage'>
+        <h1>Mylla Online</h1>
         {showLogin ? (
           <>
             <Login onLoginSuccess={undefined} />
@@ -44,6 +45,7 @@ const MyllaBoard = () => {
 
   return (
     <div className='myllaPage'>
+      <h1>Mylla Online</h1>
       <UserProfile user={currentUser} />
       {!currentSessionId ? (
         // If there's no current session ID, show the GameFinder to create or join a game session

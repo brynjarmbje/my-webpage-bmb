@@ -34,7 +34,7 @@ const GameStatus = ({ status, gameOver, sessionId }) => {
 
     return (
         <div className="status">
-            <p>{players.player1Email} vs {players.player2Email}</p>
+            <p className='emails'>{players.player1Email} vs {players.player2Email}</p>
             <p>{status}</p>
             {gameOver && " - Game Over"}
         </div>
