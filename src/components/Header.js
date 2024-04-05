@@ -3,7 +3,7 @@ import { FaGithub, FaMusic, FaSoundcloud, FaUser, FaHome, FaLinkedin, FaGamepad 
 import { NavLink } from 'react-router-dom';
 import '../styles/header.css';
 
-function Header() {
+function Header({ isMyllaPage }) {
     const [headerHeight, setHeaderHeight] = useState(300); // Initial header height
     const [isNavVisible, setIsNavVisible] = useState(false);
     const menuRef = useRef(null); // Ref for the menu
@@ -78,7 +78,7 @@ function Header() {
     }, [headerHeight]);
 
     return (
-        <header className="App-header">
+        <header className={`App-header ${isMyllaPage ? 'mylla-header' : ''}`}>
             <div className="header-content">
                 <NavLink to="/" end className="logo-link">
                     <div className='bmb'>

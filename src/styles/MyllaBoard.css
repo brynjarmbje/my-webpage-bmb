@@ -5,12 +5,23 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 60vh;
+    min-height: 80vh;
     background-color: #0A0A0A; /* Dark background for that arcade feel */
     color: white;
     font-family: 'Press Start 2P', cursive;
     padding-bottom: 7rem;
   }
+
+  /* Styles to apply specifically on the MyllaPage */
+.mylla-header {
+  background-image: none;
+  background-color: #0A0A0A;
+  height: 5rem;
+}
+
+.mylla-header .bmb {
+  display: none;
+}
 
   .myllaPage button {
     font-family: 'Press Start 2P', cursive;
