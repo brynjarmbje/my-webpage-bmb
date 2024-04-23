@@ -7,7 +7,6 @@ import Login from './Login'; // Assuming you have a separate Login component
 import Signup from './Signup'; // Assuming you have a separate Signup component
 import '../../styles/MyllaBoard.css';
 import MyllaPractice from './MyllaPractice';
-import Header from '../Header';
 
 const MyllaBoard = () => {
   const { currentUser } = useAuth(); // Use your AuthContext to check if the user is logged in

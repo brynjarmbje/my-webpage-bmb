@@ -8,7 +8,7 @@ body {
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: linear-gradient(-45deg, var(--dark-gray), var(--dark-purple), var(--white-gold), black);
+  background: linear-gradient(-45deg, var(--dark-gray), var(--dark-purple), black, var(--white-gold));
   background-size: 400% 400%;
   animation: sandSmokeEffect 20s ease infinite;
   text-align: center;
@@ -47,7 +47,7 @@ code {
 }
 
 button {
-  background-color: #563f31; /* Green */
+  background-color: #000000;
   border: none;
   color: white;
   padding: 15px 32px;
@@ -63,7 +63,6 @@ button {
 button:hover {
   background-color: white;
   color: black;
-  border: 2px solid #f6fff6;
 }
 
 html, body, #root {

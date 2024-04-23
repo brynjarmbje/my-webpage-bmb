@@ -1,14 +1,11 @@
 
+@import url('https://fonts.googleapis.com/css2?family=REM:ital,wght@0,100;1,100&display=swap');
+
 .App-header {
-    height: 300px; /* Initial height */
-    background-image: url('../images/bmb-live2.webp');
-    background-size: cover;
-    background-position: center top;
+    height: 200px; /* Initial height */
     display: flex;
-    justify-content: center; /* Align items to each side */
     padding: 0.5rem 0.1rem; /* Adjusted padding */
     align-items: center;
-    position: relative;
   }
 
   .header-content {
@@ -26,11 +23,31 @@
   }
   
   .mobile-nav {
+    top: 0;
     position: fixed;
     z-index: 99;
     width: 100%;
-    background-color: black;
+    height: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: linear-gradient(-45deg, var(--dark-gray), var(--dark-purple), black, var(--white-gold));
+    background-size: 200% 200%; /* Set background size to allow movement */
+    animation: sandSmokeEffect 20s ease infinite;
+    transition: all 0.3s ease;
+
+}
+
+@keyframes sandSmokeEffect {
+  0% {
+    background-position: 0% 50%;
   }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
 
   .mobile-nav.active {
     display: block; /* Show when active */
@@ -38,17 +55,40 @@
   
   .mobile-nav ul {
     list-style-type: none;
-    padding: 0;
+    margin: 0;
+    padding:3rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 80%; /* Takes full height of its parent */
+    width: 100%; /* Full width for better touch targets */
+    justify-content: space-around; /* Evenly distributes children vertically */
+}
+.mobile-nav .line { 
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    width: 70%;
+}
+
+.mobile-nav ul li {
+  width: 100%;
+  text-align: center;
+}
+
+.mobile-nav a:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255,255,255,0.5);
 }
   
   .mobile-nav a {
     text-decoration: none;
     color: rgb(253, 245, 237); /* Example color */
     display: block;
-    padding: 10px 0;}
+    font-family: 'REM', sans-serif; /* Applies the REM font */
+    font-size: 2rem;
+    padding: 1.5rem 0;}
 
   .mobile-nav a:hover, .mobile-nav a.active{
-    background-color: rgb(125, 125, 125);
+    background-color: rgba(255, 255, 255, 0.1);
     color: rgb(253, 245, 237); /* Example color */
   }
 
