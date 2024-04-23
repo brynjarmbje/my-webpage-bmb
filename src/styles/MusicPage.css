@@ -31,7 +31,7 @@
   background-size: cover;
   background-position: center;
   position: relative; /* To position controls absolutely within it */
-  max-width: 600px;
+  max-width: 700px;
   max-height: 600px;
 }
 
@@ -84,7 +84,7 @@
 
 @media (max-width: 768px) {
   .music-page {
-    flex-direction: column; /* Stack song list and player on top of each other */
+    flex-direction: column-reverse; /* Stack song list and player on top of each other */
     height: auto; /* Adjust height for mobile */
   }
 
@@ -92,15 +92,13 @@
     width: 100%; /* Full width on mobile */
     height: 50vh; /* Set a height for the scrollable list */
     overflow-y: auto; /* Enable scrolling for the song list */
-    padding: 10px; /* Adjust padding for smaller screens */
+    padding: 0px; /* Adjust padding for smaller screens */
   }
 
   .music-player-container {
-    
     width: 100%; /* Full width on mobile */
     height: 50vh; /* Allocate remaining space for player */
     justify-content: center;
-    align-items: flex-start; /* Align player to the top */
     background-size: cover;
     background-position: center;
     position: relative;
@@ -108,9 +106,13 @@
 
   .controls {
     width: 100%; /* Full width controls */
-    padding: 10px; /* Adjust padding for smaller screens */
     flex-direction: column; /* Stack controls vertically */
     align-items: center; /* Center controls */
+  }
+
+  .controls h2, h4 {
+    color: white;
+    margin: 0.4rem 0;
   }
 
   .progress-container {
