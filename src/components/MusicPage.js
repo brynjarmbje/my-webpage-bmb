@@ -132,13 +132,13 @@ const MusicPage = () => {
                     <h2>{currentSong.title}</h2>
                     <h4>{currentSong.author}</h4>
                 </div>
+                <div className="progress-container" onClick={handleProgressBarClick}>
+                <div className="progress-bar" style={{ width: `${progress}%` }}></div>
+              </div>
                 <div className='play-pause'>
               <button onClick={() => changeSong(false)}>&#9198;</button> {/* Previous */}
               <button onClick={togglePlayPause}>{isPlaying ? '\u23F8' : '\u25B6'}</button> {/* Play/Pause */}
               <button onClick={() => changeSong()}>&#9197;</button> {/* Next */}
-              </div>
-              <div className="progress-container" onClick={handleProgressBarClick}>
-                <div className="progress-bar" style={{ width: `${progress}%` }}></div>
               </div>
           </div>
         </div>
