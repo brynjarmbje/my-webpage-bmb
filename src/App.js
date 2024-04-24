@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -13,6 +13,16 @@ function Content() {
   // This component will now correctly have access to `useLocation`
   const location = useLocation();
   const isMyllaPage = location.pathname === '/mylla';
+
+  useEffect(() => {
+    // Check if the current path is '/music' and adjust body class accordingly
+    if (location.pathname === '/music') {
+      document.body.classList.add('no-animation');
+    } else {
+      document.body.classList.remove('no-animation');
+    }
+  }, [location.pathname]); // Depend on location.pathname to re-run when it changes
+
 
   return (
     <>
