@@ -2,8 +2,11 @@ import React from 'react';
 import '../styles/MyBio.css'; // Optional: Create a CSS file for styling if needed
 import selfimg from '../images/bmb-self3.png'; 
 
+
 const MyBio = () => {
+
   return (
+    <div className="contain">
     <div className="bio-and-photo-container">
     <div className="my-bio-photo">
       <img src={selfimg} alt="BMB" />
@@ -17,6 +20,7 @@ const MyBio = () => {
       <p>Expanding his horizons, Brynjar is currently pursuing a degree in Computer Science, further solidifying his foundation in technical knowledge and skills. His role as a web specialist at FlyPlay has been instrumental in marrying his creative passions with technology, where he has contributed to developing engaging, user-centric web experiences. This role has not only honed his technical abilities but has also underscored his adaptability and proficiency in navigating the digital landscape.</p>
       <h4>The Future Crescendo</h4>
       <p>As Brynjar looks forward to securing a programming job in the summer, his ambition is to leverage this opportunity to advance his expertise in software development. With most of his core Computer Science courses already completed, he is poised to graduate with a Bachelor of Science degree next spring. Brynjar Mar Bjornsson stands at the intersection of art and technology, embodying the essence of innovation. His journey reflects a relentless pursuit of excellence and a commitment to making a lasting mark in both the realms of music creation and programming.</p>
+    </div>
     </div>
     </div>
   );

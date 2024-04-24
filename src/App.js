@@ -28,6 +28,7 @@ function Content() {
     <>
       <Header isMyllaPage={isMyllaPage} />
       <Routes>
+
         <Route path="/" element={<HomePage />} />
         <Route path="/music" element={<MusicPage />} />
         <Route path="/bio" element={<MyBio />} />
