@@ -192,3 +192,10 @@
     width: 2px;
   }
 
+@media (max-width: 768px) {
+  .hamburger {
+    padding: 0.3rem;
+    width: 36px;
+    height: 36px;
+  }
+}

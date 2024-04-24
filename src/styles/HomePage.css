@@ -12,14 +12,24 @@
     flex-direction: column;
     align-items:flex-start;
     width: 70%;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+
   }
 
   .homepage-container .divider {
     display: flex;
-    padding: 20px;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+    width: 85%;
   }
 
-  .welcome-section h2, p {
+  .divider .about-teaser{
+    align-items: end;
+    text-align: start;
+    padding: 0 5rem;
+  }
+
+  .welcome-section h2, .welcome-section p {
     padding-right: 2rem;
     font-weight: bold;
     text-align: left;
@@ -33,19 +43,17 @@
 
   .homepage-container .music-page {
     display: flex;
-    width: 100%;
-    padding: 0px;
-    margin: 0;
+    width: 85%;
+    padding:  3rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
   }
   
   .welcome-section, .featured-project, .about-teaser, .latest-news, .contact-cta {
     margin-bottom: 40px;
-    text-align: center;
   }
 
 .song-title {
     text-align: center;
-    margin: 20px;
 }
 
 a {
@@ -59,12 +67,18 @@ a {
       padding: 20px;
     }
   
-    .welcome-section h2, p {
+    .welcome-section h2, .welcome-section p {
       padding-right: 0;
       text-align: center;
     }
   
     .welcome-section p {
       font-size: 1.5rem;
+    }
+
+    .divider .about-teaser{
+      align-items: center;
+      text-align: center;
+      padding: 0;
     }
   }

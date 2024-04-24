@@ -27,8 +27,8 @@ const ContactComponent = () => {
 
   return (
     <div className="contact-section">
-      <h2>Contact</h2>
-      <h4>Have any questions or requests? Get in touch!</h4>
+      <h2 className='formText'>Contact</h2>
+      <h4 className='formText'>Have any questions or requests? Get in touch!</h4>
 
       <form onSubmit={handleSubmit} className="contact-form">        <input
           type="email"
