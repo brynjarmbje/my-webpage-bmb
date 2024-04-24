@@ -42,7 +42,7 @@ body.no-animation {
   background-position: center;
   position: relative; /* To position controls absolutely within it */
   max-width: 700px;
-  max-height: 600px;
+  max-height: 70vh;
 }
 
 .controls {
@@ -88,12 +88,14 @@ body.no-animation {
 }
 
 .progress-container {
-  width: 30%;
+  width: 40%;
   height: 3px;
   cursor: pointer;
   border-radius: 5px;
   margin: 0 1rem;
   background-color: rgb(255, 255, 255, 0.2);
+  position: relative;  /* Ensure that the pseudo-element is positioned relative to this container */
+
 }
 
 .progress-bar {
@@ -101,6 +103,22 @@ body.no-animation {
   border-radius: 5px;
   height: 100%;
   width: 0;
+  position: relative; /* Necessary to position the pseudo-element correctly */
+  overflow: visible;  /* Ensure the circle can appear outside the bar dimensions */
+}
+
+.progress-bar::after {
+  content: '';  /* Necessary for the pseudo-element to display */
+  position: absolute;
+  right: -5px;  /* Half the diameter of the circle to align properly */
+  top: 50%;  /* Center it vertically */
+  transform: translateY(-50%); /* Offset by half its height to center it */
+  width: 10px;  /* Diameter of the circle */
+  height: 10px;  /* Diameter of the circle */
+  background-color: rgb(255, 255, 255);  /* White circle */
+  border-radius: 50%;  /* Make it round */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);  /* Optional: adds a shadow for better visibility */
+
 }
 
 @media (max-width: 768px) {
@@ -145,6 +163,7 @@ body.no-animation {
 
   .controls button {
     padding: 0 1.5rem; /* Adjust padding for smaller screens */ 
+    padding-bottom: 0.2rem;
   }
 }
 
