@@ -56,48 +56,50 @@ const MusicPage = () => {
     }, 1000), []);
   
     useEffect(() => {
-      const audio = audioRef.current;
-  
-    const setAudioData = () => {
-        const foundSong = songs.find(song => song.url === audio.src);
-        if (foundSong) {
-            setCurrentSong(foundSong);
-        }
-    };
-
-    const setProgressData = () => {
-        throttledSetProgress((audio.currentTime / audio.duration) * 100 || 0);
-    };
-
-    audio.addEventListener('loadeddata', setAudioData);
-    audio.addEventListener('timeupdate', setProgressData);
-  
-      return () => {
-        audio.removeEventListener('loadeddata', setAudioData);
-        audio.removeEventListener('timeupdate', setProgressData);
-        throttledSetProgress.cancel();
-      };
-    }, [currentSong.url, throttledSetProgress]);
+        const audio = audioRef.current;
+      
+        const setProgressData = () => {
+          if (!audio.duration) return; // Ensure duration is loaded
+          throttledSetProgress((audio.currentTime / audio.duration) * 100 || 0);
+        };
+      
+        audio.addEventListener('loadeddata', setProgressData); // Might not need this if you handle data loading elsewhere
+        audio.addEventListener('timeupdate', setProgressData);
+      
+        return () => {
+          audio.removeEventListener('loadeddata', setProgressData);
+          audio.removeEventListener('timeupdate', setProgressData);
+          throttledSetProgress.cancel();
+        };
+      }, [throttledSetProgress]);
   
     const handleSongClick = (song) => {
-      if (audioRef.current) {
-        audioRef.current.pause();
-        audioRef.current = new Audio(song.url);
-        audioRef.current.play();
-        setCurrentSong(song);
-        setIsPlaying(true);
-      }
-    };
-  
-    const togglePlayPause = () => {
-      if (audioRef.current) {
-        if (isPlaying) {
+        if (audioRef.current) {
           audioRef.current.pause();
-        } else {
-          audioRef.current.play();
+          audioRef.current.src = song.url; // Set new source
+          audioRef.current.load(); // Important to reload the audio element when changing source
+          setCurrentSong(song);
+          setIsPlaying(false); // Update isPlaying only after user starts the song
         }
-        setIsPlaying(!isPlaying);
-      }
+      };
+  
+      const togglePlayPause = () => {
+        if (audioRef.current) {
+            if (isPlaying) {
+                audioRef.current.pause();
+                setIsPlaying(false);
+            } else {
+                // Use setTimeout to delay the play action just below the iOS limit
+                setTimeout(() => {
+                    audioRef.current.play().catch(err => {
+                        console.error("Playback was prevented:", err);
+                        // Optionally, inform the user they need to manually interact to play
+                        alert("Please interact directly with the play button to start playback.");
+                    });
+                }, 950);  // Set to just under 1 second to stay within potential iOS thresholds
+                setIsPlaying(true);
+            }
+        }
     };
   
     // These handle next and previous songs

@@ -27,7 +27,7 @@
     width: 85%;
   }
 
-  .divider .about-teaser{
+  .divider .about-teaser {
     align-items: end;
     text-align: start;
     padding: 0 5rem;
@@ -69,7 +69,6 @@ a {
     .homepage-container .divider {
       display: flex;
       flex-direction: column;
-      padding: 20px;
       width: 100%;
     }
   
