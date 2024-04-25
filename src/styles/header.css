@@ -192,6 +192,50 @@
     width: 2px;
   }
 
+
+
+/* Apply neon glow to the lines specifically */
+
+
+.neon-effect .b, 
+.neon-effect .b:before, 
+.neon-effect .b:after,
+.neon-effect .m,
+.neon-effect .m:before, 
+.neon-effect .m:after {
+  filter: url(#neon-glow);
+}
+
+/* General transitions */
+.b, .m {
+    transition: transform 1s ease-in-out;
+}
+
+/* Animation for B's switching positions */
+.switch-positions .b:first-child {
+    transform: translateX(300%); /* Adjust this value based on the actual width of your elements */
+}
+
+.switch-positions .b:last-child {
+    transform: translateX(-300%);
+}
+
+/* Flip animation specific to M */
+.flip-effect {
+    animation: flip 1s ease-in-out forwards;
+}
+
+@keyframes flip {
+    0%, 100% {
+        transform: rotateY(0deg);
+    }
+    50% {
+        transform: rotateY(180deg);
+    }
+}
+
+
+
 @media (max-width: 768px) {
   .hamburger {
     padding: 0.3rem;

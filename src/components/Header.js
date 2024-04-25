@@ -6,8 +6,20 @@ import '../styles/header.css';
 function Header({ isMyllaPage }) {
     const [isNavVisible, setIsNavVisible] = useState(false);
     const menuRef = useRef(null); // Ref for the menu
+    const [isNeon, setIsNeon] = useState(false);
+    const [isSwitched, setIsSwitched] = useState(false);
+    const [isFlipped, setIsFlipped] = useState(false);  // New state for flipping
 
-      const toggleNav = () => {
+    const toggleEffects = () => {
+        setIsNeon(!isNeon);
+        setIsSwitched(!isSwitched);
+        setIsFlipped(!isFlipped);  // Toggle flipping
+        setTimeout(() => {
+            setIsFlipped(false); // Reset flip to original after animation
+        }, 1000);  // Assuming the duration of the flip is 1 second
+    };
+
+    const toggleNav = () => {
         setIsNavVisible(!isNavVisible);
     };
 
@@ -26,14 +38,28 @@ function Header({ isMyllaPage }) {
 
     return (
         <header className={`App-header ${isMyllaPage ? 'mylla-header' : ''}`}>
+                                                <svg xmlns="http://www.w3.org/2000/svg" style={{ position: 'absolute', width: 0, height: 0, overflow: 'hidden' }}>
+                <defs>
+                    <filter id="neon-glow" x="-50%" y="-50%" width="250%" height="250%">
+                        <feFlood result="flood" flood-color="green" flood-opacity="1"></feFlood>
+                        <feComposite in="flood" result="mask" in2="SourceGraphic" operator="in"></feComposite>
+                        <feMorphology in="mask" result="dilated" operator="dilate" radius="2"></feMorphology>
+                        <feGaussianBlur in="dilated" result="blurred" stdDeviation="5"></feGaussianBlur>
+                        <feMerge>
+                            <feMergeNode in="blurred"></feMergeNode>
+                            <feMergeNode in="SourceGraphic"></feMergeNode>
+                        </feMerge>
+                    </filter>
+                </defs>
+            </svg>
             <div className="header-content">
-                <NavLink to="/" end className="logo-link">
-                    <div className='bmb'>
-                        <div className="b"></div>
-                        <div className="m"></div>
-                        <div className="b"></div>
-                    </div>
-                </NavLink>
+            <NavLink to="/" end className="logo-link" onClick={toggleEffects}>
+            <div className={`bmb ${isNeon ? 'neon-effect' : ''} ${isSwitched ? 'switch-positions' : ''}`}>
+                <div className="b"></div>
+                <div className={`m ${isFlipped ? 'flip-effect' : ''}`}></div>
+                <div className="b"></div>
+            </div>
+        </NavLink>
                 <div className="hamburger" onClick={toggleNav}>
                     <div className={`icon ${isNavVisible ? 'open' : ''}`}></div>
                 </div>
