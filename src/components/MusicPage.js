@@ -15,6 +15,13 @@ const songs = [
         type: "audio/wav",
     },
     {
+      title: "Lil Sun Q",
+      author: "Brynjar Már Björnsson",
+      url: "https://storage.googleapis.com/music-files-mycreations-bmb/SongsforSubmit/LilSunQ_Betterv.wav",
+      backgroundImage: bmbLive1,
+      type: "audio/wav",
+  },
+    {
         title: "A Fair Spring",
         author: "Brynjar Már Björnsson",
         url: "https://storage.googleapis.com/music-files-mycreations-bmb/SongsforSubmit/Scoring9-Idea1-ending.wav",
