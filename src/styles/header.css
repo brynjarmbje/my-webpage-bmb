@@ -1,6 +1,4 @@
 
-@import url('https://fonts.googleapis.com/css2?family=REM:ital,wght@0,100;1,100&display=swap');
-
 .App-header {
     height: 200px; /* Initial height */
     display: flex;
@@ -81,15 +79,14 @@
   
   .mobile-nav a {
     text-decoration: none;
-    color: rgb(253, 245, 237); /* Example color */
+    color: var(--sand-white); /* Example color */
     display: block;
-    font-family: 'REM', sans-serif; /* Applies the REM font */
     font-size: 2rem;
     padding: 1.5rem 0;}
 
   .mobile-nav a:hover, .mobile-nav a.active{
     background-color: rgba(255, 255, 255, 0.1);
-    color: rgb(253, 245, 237); /* Example color */
+    color: var(--sand-white); /* Example color */
   }
 
   .hamburger {
@@ -113,7 +110,7 @@
   .hamburger .icon::before,
   .hamburger .icon::after {
     content: '';
-    background-color: #ffebeb; /* or any color that stands out against your header */
+    background-color: var(--sand-white); /* or any color that stands out against your header */
     height: 2px;
     width: 30px; /* Adjust based on your design preference */
     position: absolute;
@@ -128,7 +125,7 @@
   .hamburger .icon.open { background-color: transparent; }
 
   .b {
-    border-left: 2px solid #ffffff; /* Assuming $font-color is black */
+    border-left: 2px solid var(--sand-white); /* Assuming $font-color is black */
     height: 125px;
     position: relative; /* Ensures pseudo-elements position relative to this */
     width: 60px;
@@ -138,7 +135,7 @@
   .b:after {
     content: '';
     position: absolute;
-    border-color: #ffffff; /* Assuming $font-color is black */
+    border-color: var(--sand-white); /* Assuming $font-color is black */
     border-width: 2px 2px 2px 0;
     border-style: solid;
   }
@@ -161,8 +158,8 @@
 
   .m {
     margin-top: -40px;
-    border-left: 2px solid #ffffff;
-    border-right: 2px solid #ffffff;
+    border-left: 2px solid var(--sand-white);
+    border-right: 2px solid var(--sand-white);
     height: 125px;
     overflow: hidden;
     top: 20px;
@@ -171,7 +168,7 @@
   }
   
   .m:before {
-    background: #ffffff;
+    background: var(--sand-white);
     content: '';
     height: 125px;
     position: absolute;
@@ -182,7 +179,7 @@
   }
   
   .m:after {
-    background: #ffffff;
+    background: var(--sand-white);
     content: '';
     height: 125px;
     position: absolute;
@@ -204,6 +201,7 @@
 .neon-effect .m:before, 
 .neon-effect .m:after {
   filter: url(#neon-glow);
+  animation: neon-glow 5s infinite alternate;
 }
 
 /* General transitions */
@@ -235,6 +233,11 @@
 }
 
 
+@keyframes neon-glow {
+  0% {
+    box-shadow: 0px -300px 100px var(--dark-purple);
+  }
+}
 
 @media (max-width: 768px) {
   .hamburger {

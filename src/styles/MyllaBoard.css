@@ -8,7 +8,7 @@
     min-height: 80vh;
     background-color: #0A0A0A; /* Dark background for that arcade feel */
     color: white;
-    font-family: 'Press Start 2P', cursive;
+    font-family: 'Press Start 2P', cursive, sans-serif;
     padding-bottom: 7rem;
   }
 
@@ -24,7 +24,7 @@
 }
 
   .myllaPage button {
-    font-family: 'Press Start 2P', cursive;
+    font-family: 'Press Start 2P', cursive, sans-serif;
     font-size: 1rem;
     padding: 10px 20px;
     margin-top: 1.5rem;
@@ -37,7 +37,7 @@
   }
 
   .myllaPage .welcome h2, .myllaPage .emails {    
-    font-family: "Play", sans-serif;
+    font-family: "Play", sans-serif, cursive;
   }
 
   .myllaPage button:hover {
@@ -47,7 +47,7 @@
   }
 
   .myllaPage input {
-    font-family: 'Press Start 2P', cursive;
+    font-family: 'Press Start 2P', cursive, sans-serif;
     font-size: 1rem;
     padding: 0.5rem 1rem;
     margin-top: 1.5rem;

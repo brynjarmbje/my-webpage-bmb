@@ -3,10 +3,9 @@
     padding: 20px 0;
     margin: 50px  7.5%;
     border-radius: 0;
-    background-color: rgba(255, 255, 255);
+    background-color: var(--sand-white);
     display: flex;
     flex-direction: column;
-    font-family: REM, Georgia, 'Times New Roman', Times, serif;
     text-align: left;
     width: 400px;
     align-self: start;
@@ -17,16 +16,11 @@
     flex-direction: column;
     padding: 0 1rem;
   }
-  
-  .contact-form label {
-    margin-bottom: 5px;
-    font-weight: bold;
-  }
 
   .contact-section h2, .contact-section h4 {
     padding: 0 1rem;
     margin: 0px;
-    font-weight: bold;
+    font-weight: 600;
   }
 
   .contact-section h4 {
@@ -39,6 +33,8 @@
     margin-bottom: 20px;
     border: none;
     border-bottom: 1px solid rgba(0,0,0,0.5);
+    background-color: var(--sand-white);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   }
 
   .contact-form textarea {
@@ -47,7 +43,7 @@
   
   .contact-form button {
     color: rgb(0, 0, 0);
-    background-color: #ffffff;
+    background-color: var(--sand-white);
     padding: 10px 20px;
     border: 2px solid #000000;
     border-radius: 0;
@@ -57,7 +53,8 @@
   }
   
   .contact-form button:hover {
-    background-color: #0033aa;
+    background-color: var(--dark-gray);
+    color: var(--sand-white);
   }
 
   @media (max-width: 768px) {

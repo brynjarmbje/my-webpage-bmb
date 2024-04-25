@@ -2,17 +2,15 @@
 
 body {
   margin: 0;
-  font-family: 'Montserrat', BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-  sans-serif;
-  font-weight: 400;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-weight: 200;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: linear-gradient(-45deg, var(--dark-gray), var(--dark-purple), black, var(--white-gold));
   background-size: 400% 400%;
   animation: sandSmokeEffect 20s ease infinite;
   text-align: center;
-  color: rgb(255, 248, 232);
+  color: var(--sand-white);
 }
 
 body.no-animation {
@@ -20,10 +18,10 @@ body.no-animation {
 }
 
 :root {
-  --dark-purple: #301555;
-  --white-gold: #B5A642;
+  --dark-purple: rgb(89, 89, 199);
+  --white-gold: #ac9d3d;
   --dark-gray: #333333;
-  --sand-white: #F2E8CF;
+  --sand-white: #f4ecda;
 }
 
 iframe {
@@ -44,10 +42,6 @@ iframe {
   100% {
     background-position: 0% 50%;
   }
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
 button {

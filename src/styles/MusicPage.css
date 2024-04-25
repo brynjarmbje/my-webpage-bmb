@@ -3,7 +3,6 @@
 .music-page {
   display: flex;
   height: 70vh;
-  font-family: 'REM', sans-serif; /* Applies the REM font */
 }
 
 body.no-animation {
@@ -23,6 +22,11 @@ body.no-animation {
 
 .song-list h2 {
   margin: 0;
+  font-weight: 200;
+}
+
+.song-list h4 {
+  font-weight: 200;
 }
 
 .song-item {
@@ -80,11 +84,13 @@ body.no-animation {
 
 .controls h2 {
   font-size: 0.9rem;
-  font-weight: bold;
+  font-weight: 200;
 }
 
 .controls h4 {
   font-size: 0.6rem;
+  font-weight: 200;
+
 }
 
 .progress-container {
