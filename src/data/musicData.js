@@ -70,7 +70,7 @@ export const musicData = {
       {
         title: "Trailer #1",
         author: "Brynjar Már Björnsson",
-        url: "https://example.com/Trailers/trailer1.mp4",
+        url: "https://storage.googleapis.com/music-files-mycreations-bmb/Brynjar-Mar-Bjornsson_CV_Composer/Trailers/Brynjar_Oppenheimer_Trailer.mov",
         backgroundImage: "pathToBackground.png",
         type: "video/mp4",
       },
