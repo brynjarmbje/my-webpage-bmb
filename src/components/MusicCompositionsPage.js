@@ -5,94 +5,101 @@ import { musicData } from '../data/musicData';
 import '../styles/MusicCompositionsPage.css';
 
 const MusicCompositionsPage = () => {
-  const [currentMedia, setCurrentMedia] = useState(null);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [progress, setProgress] = useState(0);
-  const mediaRef = useRef(null);
-  const [showVideoModal, setShowVideoModal] = useState(false);
+  // Audio (Music) player state
+  const [currentAudio, setCurrentAudio] = useState(null);
+  const [isPlayingAudio, setIsPlayingAudio] = useState(false);
+  const [audioProgress, setAudioProgress] = useState(0);
+  const audioRef = useRef(null);
 
-  // Throttle progress updates
-  const throttledSetProgress = useCallback(
+  // Video player state
+  const [currentVideo, setCurrentVideo] = useState(null);
+  const [showVideoModal, setShowVideoModal] = useState(false);
+  const videoRef = useRef(null);
+
+  // Throttle audio progress updates
+  const throttledSetAudioProgress = useCallback(
     throttle((value) => {
-      setProgress(value);
+      setAudioProgress(value);
     }, 1000),
     []
   );
 
-  // Update progress on media element
   useEffect(() => {
-    const media = mediaRef.current;
-    if (!media) return;
+    const audio = audioRef.current;
+    if (!audio) return;
 
-    const setProgressData = () => {
-      if (!media.duration) return;
-      throttledSetProgress((media.currentTime / media.duration) * 100 || 0);
+    const updateAudioProgress = () => {
+      if (!audio.duration) return;
+      throttledSetAudioProgress((audio.currentTime / audio.duration) * 100 || 0);
     };
 
-    media.addEventListener('loadeddata', setProgressData);
-    media.addEventListener('timeupdate', setProgressData);
+    audio.addEventListener('loadeddata', updateAudioProgress);
+    audio.addEventListener('timeupdate', updateAudioProgress);
 
     return () => {
-      media.removeEventListener('loadeddata', setProgressData);
-      media.removeEventListener('timeupdate', setProgressData);
-      throttledSetProgress.cancel();
+      audio.removeEventListener('loadeddata', updateAudioProgress);
+      audio.removeEventListener('timeupdate', updateAudioProgress);
+      throttledSetAudioProgress.cancel();
     };
-  }, [throttledSetProgress, currentMedia]);
+  }, [throttledSetAudioProgress, currentAudio]);
 
-  // Handle clicking a media item
-  const handleMediaClick = (mediaItem) => {
-    // For videos, open in modal
-    if (mediaItem.type.startsWith('video')) {
-      setCurrentMedia(mediaItem);
-      setShowVideoModal(true);
-    } else {
-      // For audio, load into the fixed audio player
-      if (mediaRef.current) {
-        mediaRef.current.pause();
-        mediaRef.current.src = mediaItem.url;
-        mediaRef.current.load();
-        setCurrentMedia(mediaItem);
-        setIsPlaying(false);
-      }
+  // Event handlers for audio player
+  const handleAudioClick = (item) => {
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current.src = item.url;
+      audioRef.current.load();
+      setCurrentAudio(item);
+      setIsPlayingAudio(false);
     }
   };
 
-  // Toggle play/pause for audio
-  const togglePlayPause = () => {
-    if (!currentMedia) return;
-    const media = mediaRef.current;
-    if (isPlaying) {
-      media.pause();
-      setIsPlaying(false);
+  const toggleAudioPlayPause = () => {
+    if (!currentAudio) return;
+    if (isPlayingAudio) {
+      audioRef.current.pause();
+      setIsPlayingAudio(false);
     } else {
-      // Slight delay for iOS
       setTimeout(() => {
-        media.play().catch((err) => {
+        audioRef.current.play().catch((err) => {
           console.error('Playback prevented:', err);
           alert('Please tap the play button directly to start playback.');
         });
       }, 950);
-      setIsPlaying(true);
+      setIsPlayingAudio(true);
     }
   };
 
-  // Handle clicks on the progress bar for seeking
-  const handleProgressBarClick = (e) => {
+  const handleAudioProgressBarClick = (e) => {
     const width = e.currentTarget.clientWidth;
     const offsetX = e.nativeEvent.offsetX;
-    const duration = mediaRef.current.duration;
+    const duration = audioRef.current.duration;
     const newTime = (offsetX / width) * duration;
-    mediaRef.current.currentTime = newTime;
+    audioRef.current.currentTime = newTime;
   };
 
-  // Render each category section
-  const renderCategorySection = (title, items) => {
+  // Event handler for video player
+  const handleVideoClick = (item) => {
+    setCurrentVideo(item);
+    setShowVideoModal(true);
+  };
+
+  // Define which categories belong to each player
+  const audioCategories = ['musicCues', 'podcastCues', 'radioCues', 'songs'];
+  const videoCategories = ['trailers', 'shortFilms', 'scenes'];
+
+  // Render function for a category section
+  const renderCategorySection = (title, items, type) => {
     return (
       <div className="music-category-section" key={title}>
         <h2>{title}</h2>
         <div className="music-category-items">
           {items.map((item, index) => (
-            <div key={index} className="song-item" onClick={() => handleMediaClick(item)}>
+            <div
+              key={index}
+              className="song-item"
+              onClick={() => type === 'audio' ? handleAudioClick(item) : handleVideoClick(item)}
+            >
               <h4>{item.title}</h4>
               <p>{item.author}</p>
             </div>
@@ -102,46 +109,68 @@ const MusicCompositionsPage = () => {
     );
   };
 
+  // Render audio sections
+  const renderAudioSections = () => {
+    return audioCategories.map((categoryKey) => {
+      if (musicData[categoryKey]) {
+        // Capitalize category name if needed
+        const title = categoryKey.charAt(0).toUpperCase() + categoryKey.slice(1);
+        return renderCategorySection(title, musicData[categoryKey], 'audio');
+      }
+      return null;
+    });
+  };
+
+  // Render video sections
+  const renderVideoSections = () => {
+    return videoCategories.map((categoryKey) => {
+      if (musicData[categoryKey]) {
+        const title = categoryKey.charAt(0).toUpperCase() + categoryKey.slice(1);
+        return renderCategorySection(title, musicData[categoryKey], 'video');
+      }
+      return null;
+    });
+  };
+
   return (
     <div className="music-compositions-page">
       <h1>Music Compositions</h1>
 
-      {/* Scrollable list of media items */}
+      {/* Scrollable list with both audio and video sections */}
       <div className="song-list">
-        {Object.entries(musicData).map(([categoryName, items]) =>
-          renderCategorySection(categoryName, items)
-        )}
+        {renderAudioSections()}
+        {renderVideoSections()}
       </div>
 
-      {/* Fixed Audio Player at Bottom */}
-      {currentMedia && !currentMedia.type.startsWith('video') && (
-        <div className="media-player-container fixed-player" style={{ backgroundImage: `url(${currentMedia.backgroundImage})` }}>
+      {/* Fixed Audio Player for music (non-video) items */}
+      {currentAudio && (
+        <div className="media-player-container fixed-player" style={{ backgroundImage: `url(${currentAudio.backgroundImage})` }}>
           <div className="media-info">
-            <h2>{currentMedia.title}</h2>
-            <h4>{currentMedia.author}</h4>
+            <h2>{currentAudio.title}</h2>
+            <h4>{currentAudio.author}</h4>
           </div>
           <div className="media-wrapper">
-            <audio ref={mediaRef} controls style={{ width: '100%' }} />
+            <audio ref={audioRef} controls style={{ width: '100%' }} />
           </div>
-          <div className="progress-container" onClick={handleProgressBarClick}>
-            <div className="progress-bar" style={{ width: `${progress}%` }}></div>
+          <div className="progress-container" onClick={handleAudioProgressBarClick}>
+            <div className="progress-bar" style={{ width: `${audioProgress}%` }}></div>
           </div>
           <div className="play-pause">
-            <button onClick={togglePlayPause}>
-              {isPlaying ? 'Pause' : 'Play'}
+            <button onClick={toggleAudioPlayPause}>
+              {isPlayingAudio ? 'Pause' : 'Play'}
             </button>
           </div>
         </div>
       )}
 
-      {/* Video Modal */}
-      {showVideoModal && currentMedia && currentMedia.type.startsWith('video') && (
+      {/* Video Modal for video items */}
+      {showVideoModal && currentVideo && (
         <div className="video-modal">
           <div className="video-modal-content">
             <button className="close-button" onClick={() => setShowVideoModal(false)}>
               Close
             </button>
-            <video ref={mediaRef} src={currentMedia.url} controls autoPlay style={{ width: '100%' }} />
+            <video ref={videoRef} src={currentVideo.url} controls autoPlay style={{ width: '100%' }} />
           </div>
         </div>
       )}
@@ -150,3 +179,4 @@ const MusicCompositionsPage = () => {
 };
 
 export default MusicCompositionsPage;
+
