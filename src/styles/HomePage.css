@@ -13,11 +13,6 @@
     border-bottom: 1px solid rgba(255,255,255,0.3);
   }
 
-  .welcome-section h2, .welcome-section p {
-    padding-left: 5rem;
-    font-weight: bold;
-  }
-
   .homepage-container .divider {
     display: flex;
     padding: 20px 0;
@@ -28,7 +23,11 @@
   .divider .about-teaser {
     align-items: end;
     text-align: start;
-    padding: 0 5rem;
+    padding: 0;
+  }
+
+  .about-teaser a {
+    padding-left: 5rem;
   }
 
   .welcome-section h2, .welcome-section p {
@@ -36,6 +35,7 @@
     font-weight: 200;
     text-align: left;
     font-size: 1rem;
+    padding-left: 5rem;
   }
 
   .welcome-section p {
@@ -45,12 +45,12 @@
   .homepage-container .music-page {
     display: flex;
     width: 85%;
-    padding:  3rem 0;
+    padding:  4rem 0;
     border-bottom: 1px solid rgba(255,255,255,0.3);
   }
   
-  .welcome-section, .featured-project, .about-teaser, .latest-news, .contact-cta {
-    margin-bottom: 40px;
+  .welcome-section, .featured-project, .about-teaser{
+    margin-bottom: 3rem;
   }
 
 .song-title {
@@ -62,11 +62,23 @@ a {
     font-weight: 200;
 }
 
+.homepage-container .music-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0;
+  }
+
 @media (max-width: 768px) {
     .homepage-container .divider {
       display: flex;
       flex-direction: column;
       width: 100%;
+      padding-bottom: 0;
+    }
+
+    .about-teaser a {
+      padding-left: 0;
     }
   
     .welcome-section h2, .welcome-section p {
@@ -82,6 +94,10 @@ a {
       font-size: 1.5rem;
     }
 
+    .homepage-container .music-link {
+      margin: 0;
+    }
+
     .divider .about-teaser{
       align-items: center;
       text-align: center;
@@ -90,5 +106,8 @@ a {
 
     .homepage-container .music-page {
       width: 100%;
+      padding: 0;
+      margin: 0;
+      border-bottom: 1px solid #555;  
     }
   }

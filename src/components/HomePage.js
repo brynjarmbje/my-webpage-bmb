@@ -5,6 +5,7 @@ import AboutTeaser from './AboutTeaser';
 import '../styles/HomePage.css'; // Assuming you'll create a CSS file for styling
 import MusicPage from './MusicPage';
 import ContactCTA from './ContactCTA';
+import { Link } from 'react-router-dom';
 
 const HomePage = () => {
   return (
@@ -14,6 +15,8 @@ const HomePage = () => {
       <AboutTeaser />
       <FeaturedProject />
       </div>
+      <h3><Link to="/music" className='music-link'>Player and music creations</Link></h3>
+
       <MusicPage />
       <ContactCTA />
     </div>

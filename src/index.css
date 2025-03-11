@@ -7,7 +7,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: linear-gradient(-45deg, var(--dark-gray), var(--dark-purple), black, var(--white-gold));
-  background-size: 400% 400%;
+  background-size: 200% 200%;
+  background-attachment: fixed;
   animation: sandSmokeEffect 20s ease infinite;
   text-align: center;
   color: var(--sand-white);

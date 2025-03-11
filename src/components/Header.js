@@ -73,6 +73,7 @@ function Header({ isMyllaPage }) {
                     <ul>
                         <li><NavLink to="/" onClick={() => setIsNavVisible(false)}>Home</NavLink></li>
                         <li><NavLink to="/music" onClick={() => setIsNavVisible(false)}>Music</NavLink></li>
+                        <li><NavLink to="/music-compositions" onClick={() => setIsNavVisible(false)}>Music CV</NavLink></li>
                         <li><NavLink to="/bio" onClick={() => setIsNavVisible(false)}>Bio</NavLink></li>
                         <li className='myllaLink'><NavLink to="/mylla" onClick={() => setIsNavVisible(false)}><FaGamepad /> Mylla</NavLink></li>
                         <li className='line'></li>
