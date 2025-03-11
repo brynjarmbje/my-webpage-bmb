@@ -1,187 +1,118 @@
-@import url('https://fonts.googleapis.com/css2?family=REM:wght@100&display=swap');
-
-.music-page {
-  display: flex;
-  height: 70vh;
-}
-
-body.no-animation {
-  animation: none !important; /* Using !important to ensure it overrides other styles */
-  background: linear-gradient(-45deg, var(--dark-gray), var(--dark-purple), rgb(121, 121, 255), black); /* Change background color */
-  background-size: 200% 200%;
-}
-
-.song-list {
-  width: 30%;
-  background-color: rgba(0, 0, 0, 0.2);
-  color: white;
-  overflow-y: auto;
-  padding: 0;
-  margin: 0;
-}
-
-.song-list h2 {
-  margin: 0;
-  font-weight: 200;
-}
-
-.song-list h4 {
-  font-weight: 200;
-}
-
-.song-item {
-  cursor: pointer;
-  border-bottom: 1px solid #555;
-  margin: 0;
-  padding: 20px 0;
-  transition: background-color 0.4s;
-}
-
-.music-player-container {
-  width: 70%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-size: cover;
-  background-position: center;
-  position: relative; /* To position controls absolutely within it */
-  max-width: 700px;
-  max-height: 70vh;
-}
-
-.controls {
-  position: absolute;
-  bottom: 0px; /* Adjust as needed */
-  display: flex;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.6);
-  width: 100%;
-  padding: 0px;
-  margin: 0;
-}
-
-.song-item:hover {
-  background-color: rgba(0, 0, 0, 0.4);
-}
-
-.song-item.active {
-  background-color: rgba(0, 0, 0, 0.6);
-}
-
-.controls button {
-  padding: 0.5rem;
-  margin: 0 0.5rem;
-  font-size: 1.5rem;
-  transition-duration: 0.4s;
-  cursor: pointer;
-  background-color: transparent;
-}
-
-.controls .song-info {
-  color: white;
-  margin: 0 20px;
-}
-
-.controls h2 {
-  font-size: 0.9rem;
-  font-weight: 200;
-}
-
-.controls h4 {
-  font-size: 0.6rem;
-  font-weight: 200;
-
-}
-
-.progress-container {
-  width: 40%;
-  height: 3px;
-  cursor: pointer;
-  border-radius: 5px;
-  margin: 0 1rem;
-  background-color: rgb(255, 255, 255, 0.2);
-  position: relative;  /* Ensure that the pseudo-element is positioned relative to this container */
-
-}
-
-.progress-bar {
-  background-color: rgb(255, 255, 255);
-  border-radius: 5px;
-  height: 100%;
-  width: 0;
-  position: relative; /* Necessary to position the pseudo-element correctly */
-  overflow: visible;  /* Ensure the circle can appear outside the bar dimensions */
-}
-
-.progress-bar::after {
-  content: '';  /* Necessary for the pseudo-element to display */
-  position: absolute;
-  right: -5px;  /* Half the diameter of the circle to align properly */
-  top: 50%;  /* Center it vertically */
-  transform: translateY(-50%); /* Offset by half its height to center it */
-  width: 10px;  /* Diameter of the circle */
-  height: 10px;  /* Diameter of the circle */
-  background-color: rgb(255, 255, 255);  /* White circle */
-  border-radius: 50%;  /* Make it round */
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);  /* Optional: adds a shadow for better visibility */
-
-}
-
-@media (max-width: 768px) {
-  .music-page {
-    flex-direction: column-reverse; /* Stack song list and player on top of each other */
-    height: auto; /* Adjust height for mobile */
+/* Overall page layout */
+.music-compositions-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
   }
-
+  
+  /* Title styling */
+  .music-compositions-page h1 {
+    text-align: center;
+    margin: 20px 0;
+  }
+  
+  /* Scrollable song list */
   .song-list {
-    width: 100%; /* Full width on mobile */
-    height: 50vh; /* Set a height for the scrollable list */
-    overflow-y: auto; /* Enable scrolling for the song list */
-    padding: 0px; /* Adjust padding for smaller screens */
+    flex: 1;
+    overflow-y: auto;
+    padding: 0 20px 120px; /* Extra bottom padding to prevent overlap with fixed player */
   }
-
-  .music-player-container {
-    width: 100%; /* Full width on mobile */
-    height: 50vh; /* Allocate remaining space for player */
-    justify-content: center;
-    background-size: cover;
-    background-position: center;
-    position: relative;
-    border: none;
-    border-radius: 0;
+  
+  /* Category sections */
+  .music-category-section {
+    margin-bottom: 40px;
   }
-
-  .controls {
-    width: 100%; /* Full width controls */
-    flex-direction: column; /* Stack controls vertically */
-    align-items: center; /* Center controls */
+  
+  .music-category-section h2 {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
   }
-
-  .controls h2, .controls h4 {
-    color: white;
-    margin: 0.4rem 0;
+  
+  .music-category-items {
+    display: flex;
+    flex-direction: column;
   }
-
-  .progress-container {
-    width: 80%; /* Make progress bar wider on mobile */
-    margin: 10px 0; /* Add some margin above and below */
-  }
-
-  .controls button {
-    padding: 0 1.5rem; /* Adjust padding for smaller screens */ 
-    padding-bottom: 0.2rem;
-  }
-}
-
-/* Consider adding styles for buttons to be more touch-friendly */
-@media (max-width: 480px) {
-  .controls button {
-    font-size: 2rem; /* Increase font size for better touch targets */
-    padding: 1rem; /* Increase padding */
-    margin: 0 1rem; /* Add more space between buttons */
-  }
-
+  
   .song-item {
-    font-size: 0.9rem; /* Adjust text size for small screens */
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
   }
-}
+  
+  .song-item:hover {
+    background-color: #f2f2f2;
+  }
+  
+  /* Fixed audio player styling */
+  .fixed-player {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #222;
+    color: #fff;
+    padding: 10px 20px;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.5);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .media-info {
+    flex: 1;
+  }
+  
+  .media-wrapper {
+    flex: 2;
+    padding: 0 20px;
+  }
+  
+  /* Progress bar */
+  .progress-container {
+    position: relative;
+    height: 5px;
+    background: #444;
+    cursor: pointer;
+    flex: 1;
+    margin: 0 20px;
+  }
+  
+  .progress-bar {
+    height: 100%;
+    background: #0f0;
+    width: 0;
+  }
+  
+  /* Video modal styles */
+  .video-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+  }
+  
+  .video-modal-content {
+    position: relative;
+    background: #fff;
+    padding: 20px;
+    max-width: 800px;
+    width: 90%;
+  }
+  
+  .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #ccc;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  

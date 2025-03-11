@@ -5,15 +5,13 @@ import { musicData } from '../data/musicData';
 import '../styles/MusicCompositionsPage.css';
 
 const MusicCompositionsPage = () => {
-  // Flatten all items if you want a single “player” controlling everything.
-  // Alternatively, each section can have its own player.
-  const [currentSong, setCurrentSong] = useState(null);
+  const [currentMedia, setCurrentMedia] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
+  const mediaRef = useRef(null);
+  const [showVideoModal, setShowVideoModal] = useState(false);
 
-  const audioRef = useRef(new Audio());
-
-  // Throttle progress updates so they don't fire too often
+  // Throttle progress updates
   const throttledSetProgress = useCallback(
     throttle((value) => {
       setProgress(value);
@@ -21,41 +19,55 @@ const MusicCompositionsPage = () => {
     []
   );
 
+  // Update progress on media element
   useEffect(() => {
-    const audio = audioRef.current;
+    const media = mediaRef.current;
+    if (!media) return;
 
     const setProgressData = () => {
-      if (!audio.duration) return;
-      throttledSetProgress((audio.currentTime / audio.duration) * 100 || 0);
+      if (!media.duration) return;
+      throttledSetProgress((media.currentTime / media.duration) * 100 || 0);
     };
 
-    audio.addEventListener('loadeddata', setProgressData);
-    audio.addEventListener('timeupdate', setProgressData);
+    media.addEventListener('loadeddata', setProgressData);
+    media.addEventListener('timeupdate', setProgressData);
 
     return () => {
-      audio.removeEventListener('loadeddata', setProgressData);
-      audio.removeEventListener('timeupdate', setProgressData);
+      media.removeEventListener('loadeddata', setProgressData);
+      media.removeEventListener('timeupdate', setProgressData);
       throttledSetProgress.cancel();
     };
-  }, [throttledSetProgress]);
+  }, [throttledSetProgress, currentMedia]);
 
-  const handleSongClick = (song) => {
-    audioRef.current.pause();
-    audioRef.current.src = song.url;
-    audioRef.current.load();
-    setCurrentSong(song);
-    setIsPlaying(false);
+  // Handle clicking a media item
+  const handleMediaClick = (mediaItem) => {
+    // For videos, open in modal
+    if (mediaItem.type.startsWith('video')) {
+      setCurrentMedia(mediaItem);
+      setShowVideoModal(true);
+    } else {
+      // For audio, load into the fixed audio player
+      if (mediaRef.current) {
+        mediaRef.current.pause();
+        mediaRef.current.src = mediaItem.url;
+        mediaRef.current.load();
+        setCurrentMedia(mediaItem);
+        setIsPlaying(false);
+      }
+    }
   };
 
+  // Toggle play/pause for audio
   const togglePlayPause = () => {
-    if (!currentSong) return; // Don’t play if no song is selected
+    if (!currentMedia) return;
+    const media = mediaRef.current;
     if (isPlaying) {
-      audioRef.current.pause();
+      media.pause();
       setIsPlaying(false);
     } else {
-      // Delay to avoid potential iOS issues
+      // Slight delay for iOS
       setTimeout(() => {
-        audioRef.current.play().catch((err) => {
+        media.play().catch((err) => {
           console.error('Playback prevented:', err);
           alert('Please tap the play button directly to start playback.');
         });
@@ -64,33 +76,25 @@ const MusicCompositionsPage = () => {
     }
   };
 
+  // Handle clicks on the progress bar for seeking
   const handleProgressBarClick = (e) => {
     const width = e.currentTarget.clientWidth;
     const offsetX = e.nativeEvent.offsetX;
-    const duration = audioRef.current.duration;
+    const duration = mediaRef.current.duration;
     const newTime = (offsetX / width) * duration;
-    audioRef.current.currentTime = newTime;
+    mediaRef.current.currentTime = newTime;
   };
 
-  // If you want “next” or “previous” for a single category, you'd need to store
-  // which category's array you're in. Or flatten all data into one array
-  // so that next/previous can cycle through everything. Below is a simplified
-  // approach that only toggles play/pause.
-
-  // Helper to render each category
+  // Render each category section
   const renderCategorySection = (title, items) => {
     return (
       <div className="music-category-section" key={title}>
         <h2>{title}</h2>
         <div className="music-category-items">
-          {items.map((song, index) => (
-            <div
-              key={index}
-              className="song-item"
-              onClick={() => handleSongClick(song)}
-            >
-              <h4>{song.title}</h4>
-              <p>{song.author}</p>
+          {items.map((item, index) => (
+            <div key={index} className="song-item" onClick={() => handleMediaClick(item)}>
+              <h4>{item.title}</h4>
+              <p>{item.author}</p>
             </div>
           ))}
         </div>
@@ -102,24 +106,25 @@ const MusicCompositionsPage = () => {
     <div className="music-compositions-page">
       <h1>Music Compositions</h1>
 
-          {/* Music player at bottom (or anywhere you like) */}
-          {currentSong && (
-        <div
-          className="music-player-container"
-          style={{ backgroundImage: `url(${currentSong.backgroundImage})` }}
-        >
-          <div className="song-info">
-            <h2>{currentSong.title}</h2>
-            <h4>{currentSong.author}</h4>
+      {/* Scrollable list of media items */}
+      <div className="song-list">
+        {Object.entries(musicData).map(([categoryName, items]) =>
+          renderCategorySection(categoryName, items)
+        )}
+      </div>
+
+      {/* Fixed Audio Player at Bottom */}
+      {currentMedia && !currentMedia.type.startsWith('video') && (
+        <div className="media-player-container fixed-player" style={{ backgroundImage: `url(${currentMedia.backgroundImage})` }}>
+          <div className="media-info">
+            <h2>{currentMedia.title}</h2>
+            <h4>{currentMedia.author}</h4>
           </div>
-          <div
-            className="progress-container"
-            onClick={handleProgressBarClick}
-          >
-            <div
-              className="progress-bar"
-              style={{ width: `${progress}%` }}
-            ></div>
+          <div className="media-wrapper">
+            <audio ref={mediaRef} controls style={{ width: '100%' }} />
+          </div>
+          <div className="progress-container" onClick={handleProgressBarClick}>
+            <div className="progress-bar" style={{ width: `${progress}%` }}></div>
           </div>
           <div className="play-pause">
             <button onClick={togglePlayPause}>
@@ -129,9 +134,16 @@ const MusicCompositionsPage = () => {
         </div>
       )}
 
-      {/* Render each category in its own section */}
-      {Object.entries(musicData).map(([categoryName, items]) =>
-        renderCategorySection(categoryName, items)
+      {/* Video Modal */}
+      {showVideoModal && currentMedia && currentMedia.type.startsWith('video') && (
+        <div className="video-modal">
+          <div className="video-modal-content">
+            <button className="close-button" onClick={() => setShowVideoModal(false)}>
+              Close
+            </button>
+            <video ref={mediaRef} src={currentMedia.url} controls autoPlay style={{ width: '100%' }} />
+          </div>
+        </div>
       )}
     </div>
   );
