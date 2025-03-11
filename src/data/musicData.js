@@ -1,5 +1,5 @@
 export const musicData = {
-    musicCues: [
+    MusicCues: [
       {
         title: "Music Cue #1",
         author: "Brynjar Már Björnsson",
@@ -9,7 +9,7 @@ export const musicData = {
       },
       // more cues ...
     ],
-    podcastCues: [
+    PodcastCues: [
       {
         title: "Podcast Cue #1",
         author: "Brynjar Már Björnsson",
@@ -19,7 +19,7 @@ export const musicData = {
       },
       // more cues ...
     ],
-    radioCues: [
+    RadioCues: [
       {
         title: "Radio Cue #1",
         author: "Brynjar Már Björnsson",
@@ -29,7 +29,7 @@ export const musicData = {
       },
       // ...
     ],
-    scenes: [
+    Scenes: [
       {
         title: "Scene #1",
         author: "Brynjar Már Björnsson",
@@ -39,7 +39,7 @@ export const musicData = {
       },
       // ...
     ],
-    shortFilms: [
+    ShortFilms: [
       {
         title: "Short Film #1",
         author: "Brynjar Már Björnsson",
@@ -49,7 +49,7 @@ export const musicData = {
       },
       // ...
     ],
-    songs: [
+    Songs: [
       {
         title: "Fuglar í móa",
         author: "Brynjar Már Björnsson",
@@ -66,7 +66,7 @@ export const musicData = {
       },
       // ... more songs ...
     ],
-    trailers: [
+    Trailers: [
       {
         title: "Trailer #1",
         author: "Brynjar Már Björnsson",

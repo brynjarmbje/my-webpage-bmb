@@ -102,13 +102,8 @@ const MusicCompositionsPage = () => {
     <div className="music-compositions-page">
       <h1>Music Compositions</h1>
 
-      {/* Render each category in its own section */}
-      {Object.entries(musicData).map(([categoryName, items]) =>
-        renderCategorySection(categoryName, items)
-      )}
-
-      {/* Music player at bottom (or anywhere you like) */}
-      {currentSong && (
+          {/* Music player at bottom (or anywhere you like) */}
+          {currentSong && (
         <div
           className="music-player-container"
           style={{ backgroundImage: `url(${currentSong.backgroundImage})` }}
@@ -132,6 +127,11 @@ const MusicCompositionsPage = () => {
             </button>
           </div>
         </div>
+      )}
+
+      {/* Render each category in its own section */}
+      {Object.entries(musicData).map(([categoryName, items]) =>
+        renderCategorySection(categoryName, items)
       )}
     </div>
   );
