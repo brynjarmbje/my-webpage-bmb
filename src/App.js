@@ -8,6 +8,7 @@ import HomePage from './components/HomePage';
 import MyllaBoard from './components/mylla/MyllaBoard'; // Ensure correct path
 import { AuthProvider } from './AuthContext';
 import MusicCompositionsPage from './components/MusicCompositionsPage';
+import NewHomePage from './components/NewHomePage';
 
 // Create a new component to handle the content and routing
 function Content() {
@@ -35,6 +36,7 @@ function Content() {
         <Route path="/bio" element={<MyBio />} />
         <Route path="/mylla" element={<MyllaBoard />} />
         <Route path="/music-compositions" element={<MusicCompositionsPage />} />
+        <Route path="/new-home" element={<NewHomePage />} />
       </Routes>
       <Footer />
     </>

@@ -1,0 +1,450 @@
+@media (max-width: 1000px) {
+  .new-homepage-container {
+    max-width: 100vw !important;
+    padding: 0 !important;
+    overflow-x: hidden !important;
+    box-sizing: border-box !important;
+  }
+  .new-hero, .new-about, .new-featured, .new-music, .new-contact {
+    max-width: 98vw !important;
+    padding: 1.2rem 0.7rem !important;
+    border-radius: 1rem !important;
+    margin-top: 1.5rem !important;
+    margin-bottom: 1rem !important;
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
+  }
+  .new-hero-title {
+    font-size: 2.1rem !important;
+    margin-bottom: 0.4rem !important;
+  }
+  .new-hero-subtitle {
+    font-size: 1.15rem !important;
+    margin-bottom: 1rem !important;
+  }
+  .new-hero-cta {
+    gap: 0.8rem;
+    margin-top: 1rem !important;
+  }
+  .new-btn {
+    padding: 0.8rem 1.3rem !important;
+    font-size: 1rem !important;
+    border-radius: 0.7rem !important;
+  }
+  .animated-section-title {
+    font-size: 1.3rem !important;
+    margin-bottom: 0.8rem !important;
+  }
+  .animated-section-text {
+    font-size: 1.05rem !important;
+    padding: 0 0.2rem !important;
+  }
+  .new-featured-card {
+    gap: 1rem !important;
+  }
+  .new-featured-image {
+    width: 70px !important;
+    height: 70px !important;
+  }
+  .animated-music-player {
+    max-width: 98vw !important;
+    padding: 1rem 0.2rem 1rem 0.2rem !important;
+    border-radius: 1rem !important;
+  }
+  .new-music {
+    padding: 0.8rem !important;
+    border-radius: 0.8rem !important;
+  }
+  .new-music-list {
+    gap: 0.6rem !important;
+    margin-top: 0.7rem !important;
+  }
+  .new-music-item {
+    padding: 0.8rem 1rem !important;
+    font-size: 1.05rem !important;
+    border-radius: 0.7rem !important;
+  }
+  .new-contact {
+    padding-bottom: 1.5rem !important;
+  }
+}
+@media (max-width: 480px) {
+  html, body {
+    width: 100vw !important;
+    min-width: 0 !important;
+    overflow-x: hidden !important;
+    box-sizing: border-box !important;
+  }
+  .new-homepage-container {
+    padding: 0 !important;
+    min-height: 100dvh;
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
+  }
+  .new-hero, .new-about, .new-featured, .new-music, .new-contact {
+    padding: 0.5rem 0.1rem !important;
+    border-radius: 0.5rem !important;
+    margin-top: 1.2rem !important;
+    margin-bottom: 0.7rem !important;
+    max-width: 100vw !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
+    word-break: break-word !important;
+  }
+  .new-hero-title {
+    font-size: 1.2rem !important;
+    margin-bottom: 0.3rem !important;
+    word-break: break-word !important;
+  }
+  .new-hero-subtitle {
+    font-size: 0.98rem !important;
+    margin-bottom: 0.7rem !important;
+    word-break: break-word !important;
+  }
+  .new-hero-cta {
+    flex-direction: column;
+    gap: 0.7rem;
+    margin-top: 0.7rem !important;
+  }
+  .new-btn {
+    padding: 0.6rem 0.7rem !important;
+    font-size: 0.95rem !important;
+    border-radius: 0.5rem !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+  .animated-section-title {
+    font-size: 1rem !important;
+    margin-bottom: 0.5rem !important;
+    word-break: break-word !important;
+  }
+  .animated-section-text {
+    font-size: 0.95rem !important;
+    padding: 0 0.05rem !important;
+    word-break: break-word !important;
+  }
+  .new-featured-card {
+    flex-direction: column !important;
+    gap: 0.5rem !important;
+    align-items: flex-start !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+  .new-featured-image {
+    width: 48px !important;
+    height: 48px !important;
+    border-radius: 0.5rem !important;
+  }
+  .animated-music-player {
+    max-width: 100vw !important;
+    padding: 0.5rem 0.01rem 0.5rem 0.01rem !important;
+    border-radius: 0.7rem !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+  .new-music {
+    padding: 0.2rem !important;
+    border-radius: 0.5rem !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+  .new-music-list {
+    gap: 0.2rem !important;
+    margin-top: 0.3rem !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+  .new-music-item {
+    padding: 0.5rem 0.5rem !important;
+    font-size: 0.95rem !important;
+    border-radius: 0.5rem !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+  .new-contact {
+    padding-bottom: 0.7rem !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+}
+/* Responsive improvements for music section and player */
+.animated-music-player {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto 1.5rem auto;
+  box-sizing: border-box;
+}
+.animated-section-title {
+  font-size: 2rem;
+  margin-bottom: 1.2rem;
+}
+
+@media (max-width: 600px) {
+  .animated-music-player {
+    max-width: 98vw;
+    padding: 1.2rem 0.2rem 1.2rem 0.2rem !important;
+    border-radius: 1.1rem !important;
+  }
+  .animated-section-title {
+    font-size: 1.3rem;
+    margin-bottom: 0.7rem;
+  }
+  .new-music {
+    padding: 0.7rem !important;
+    border-radius: 0.7rem !important;
+  }
+}
+/* --- Advanced Animations for Animated Components --- */
+.animated-hero {
+  animation: heroSlideIn 1.2s cubic-bezier(.39,.575,.565,1) both;
+}
+.animated-title {
+  animation: textPopIn 1.1s 0.2s both;
+}
+.animated-subtitle {
+  animation: fadeInUp 1.2s 0.5s both;
+}
+.animated-cta {
+  animation: bounceIn 1.2s 0.8s both;
+}
+
+.animated-about {
+  animation: aboutSlideIn 1.2s 0.4s both;
+}
+.animated-section-title {
+  animation: textPopIn 1.1s 0.5s both;
+}
+.animated-section-text {
+  animation: fadeInUp 1.2s 0.7s both;
+}
+
+.animated-featured {
+  animation: featuredSlideIn 1.2s 0.6s both;
+}
+.animated-featured-card {
+  animation: cardPopIn 1.1s 0.8s both;
+}
+.animated-featured-image {
+  animation: imageSpinIn 1.2s 1s both;
+}
+.animated-featured-description {
+  animation: fadeInUp 1.2s 1.2s both;
+}
+
+.animated-music {
+  animation: musicSlideIn 1.2s 0.8s both;
+}
+.animated-music-list {
+  animation: fadeIn 1.2s 1s both;
+}
+.animated-music-item {
+  animation: bounceIn 1.2s both;
+}
+.animated-music-item:nth-child(2) {
+  animation-delay: 1.2s;
+}
+.animated-music-item:nth-child(3) {
+  animation-delay: 1.4s;
+}
+
+.animated-contact {
+  animation: contactSlideIn 1.2s 1s both;
+}
+.animated-contact-btn {
+  animation: bounceIn 1.2s 1.2s both;
+}
+
+@keyframes heroSlideIn {
+  0% { opacity: 0; transform: translateY(-80px) scale(0.95); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes aboutSlideIn {
+  0% { opacity: 0; transform: translateX(-80px) scale(0.95); }
+  100% { opacity: 1; transform: translateX(0) scale(1); }
+}
+@keyframes featuredSlideIn {
+  0% { opacity: 0; transform: translateX(80px) scale(0.95); }
+  100% { opacity: 1; transform: translateX(0) scale(1); }
+}
+@keyframes cardPopIn {
+  0% { opacity: 0; transform: scale(0.8) rotate(-8deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0); }
+}
+@keyframes imageSpinIn {
+  0% { opacity: 0; transform: rotateY(180deg) scale(0.7); }
+  100% { opacity: 1; transform: rotateY(0) scale(1); }
+}
+@keyframes musicSlideIn {
+  0% { opacity: 0; transform: translateY(80px) scale(0.95); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes contactSlideIn {
+  0% { opacity: 0; transform: translateX(80px) scale(0.95); }
+  100% { opacity: 1; transform: translateX(0) scale(1); }
+}
+@keyframes textPopIn {
+  0% { opacity: 0; transform: scale(0.7) translateY(-30px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+@keyframes bounceIn {
+  0% { opacity: 0; transform: scale(0.7) translateY(40px); }
+  60% { opacity: 1; transform: scale(1.1) translateY(-10px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+/* Forcefully override index.css for new homepage only */
+body.no-indexcss {
+  background: linear-gradient(120deg, #181c2b 0%, #232526 100%) !important;
+  color: #f5f5f5 !important;
+  text-align: unset !important;
+  animation: none !important;
+}
+/* New HomePage - Super Sleek Modern Look (Initial Draft)
+   Custom CSS, ready for advanced effects and polish */
+
+.new-homepage-container {
+  min-height: 100vh;
+  max-width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(120deg, #181c2b 0%, #232526 100%);
+  color: #f5f5f5;
+  font-family: 'Inter', 'Montserrat', Arial, sans-serif;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+.new-hero {
+  width: 100%;
+  max-width: 900px;
+  margin-top: 4rem;
+  padding: 3rem 2rem 2rem 2rem;
+  text-align: center;
+  background: rgba(255,255,255,0.04);
+  border-radius: 2rem;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.25);
+  backdrop-filter: blur(10px);
+  animation: fadeIn 1.2s cubic-bezier(.39,.575,.565,1) both;
+}
+.new-hero-title {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #ffe082;
+  letter-spacing: 1.5px;
+  text-shadow: 0 2px 12px #0008;
+  margin-bottom: 0.5rem;
+}
+.new-hero-subtitle {
+  font-size: 1.5rem;
+  color: #bdbdbd;
+  margin-bottom: 1.5rem;
+}
+.new-hero-cta {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1.2rem;
+  justify-content: center;
+}
+
+.new-btn {
+  padding: 0.9rem 2.2rem;
+  border-radius: 0.7rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10);
+}
+.new-btn.primary {
+  background: #ffe082;
+  color: #232526;
+}
+.new-btn.primary:hover {
+  background: #ffd54f;
+}
+.new-btn.secondary {
+  background: #232526;
+  color: #ffe082;
+  border: 2px solid #ffe082;
+}
+.new-btn.secondary:hover {
+  background: #ffe082;
+  color: #232526;
+}
+
+.new-about, .new-featured, .new-music, .new-contact {
+  width: 100%;
+  max-width: 900px;
+  margin: 2.5rem auto 0 auto;
+  padding: 2.5rem 2rem;
+  background: rgba(40,40,40,0.7);
+  border-radius: 1.2rem;
+  box-shadow: 0 2px 24px 0 rgba(0,0,0,0.16);
+  animation: fadeInUp 1.2s both;
+}
+
+.new-featured-card {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 1.2rem;
+}
+.new-featured-image {
+  width: 120px;
+  height: 120px;
+  background: linear-gradient(135deg, #ffe082 30%, #232526 100%);
+  border-radius: 1rem;
+  box-shadow: 0 2px 16px 0 rgba(0,0,0,0.12);
+}
+.new-featured-description {
+  color: #e0e0e0;
+}
+
+.new-music-list {
+  display: flex;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 1.2rem;
+}
+.new-music-item {
+  background: #232526;
+  border-radius: 0.7rem;
+  padding: 1.2rem 1.7rem;
+  color: #ffe082;
+  font-weight: 500;
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10);
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+  cursor: pointer;
+}
+.new-music-item:hover {
+  background: #ffe082;
+  color: #232526;
+  transform: translateY(-4px) scale(1.04);
+}
+
+@media (max-width: 768px) {
+  .new-homepage-container, .new-hero, .new-about, .new-featured, .new-music, .new-contact {
+    padding: 1rem;
+    max-width: 100vw;
+  }
+  .new-featured-card, .new-music-list {
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+  .new-featured-image {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(40px); }
+  100% { opacity: 1; transform: translateY(0); }
+}

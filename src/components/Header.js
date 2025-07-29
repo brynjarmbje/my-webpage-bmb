@@ -1,7 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useLanguage } from '../LanguageContext';
 import { FaGithub, FaSoundcloud, FaLinkedin, FaGamepad } from 'react-icons/fa';
 import { NavLink } from 'react-router-dom';
 import '../styles/header.css';
+import { ReactComponent as IcelandFlag } from '../images/iceland-flag.svg';
+import { ReactComponent as USFlag } from '../images/us-flag.svg';
 
 function Header({ isMyllaPage }) {
     const [isNavVisible, setIsNavVisible] = useState(false);
@@ -40,23 +43,25 @@ function Header({ isMyllaPage }) {
         };
     }, []);
 
+    const { lang, setLang } = useLanguage();
+
     return (
         <header className={`App-header ${isMyllaPage ? 'mylla-header' : ''}`}>
             <svg xmlns="http://www.w3.org/2000/svg" style={{ position: 'absolute', width: 0, height: 0, overflow: 'hidden' }}>
                 <defs>
                     <filter id="neon-glow" x="-50%" y="-50%" width="250%" height="250%">
-                    <feFlood id="glow-color" flood-color="greenyellow" flood-opacity="1"></feFlood>
-                        <feComposite in="flood" result="mask" in2="SourceGraphic" operator="in"></feComposite>
-                        <feMorphology in="mask" result="dilated" operator="dilate" radius="2"></feMorphology>
-                        <feGaussianBlur in="dilated" result="blurred" stdDeviation="5"></feGaussianBlur>
+                        <feFlood id="glow-color" floodColor="greenyellow" floodOpacity="1" />
+                        <feComposite in="flood" result="mask" in2="SourceGraphic" operator="in" />
+                        <feMorphology in="mask" result="dilated" operator="dilate" radius="2" />
+                        <feGaussianBlur in="dilated" result="blurred" stdDeviation="5" />
                         <feMerge>
-                            <feMergeNode in="blurred"></feMergeNode>
-                            <feMergeNode in="SourceGraphic"></feMergeNode>
+                            <feMergeNode in="blurred" />
+                            <feMergeNode in="SourceGraphic" />
                         </feMerge>
                     </filter>
                 </defs>
             </svg>
-            <div className="header-content">
+            <div className="header-content" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
             <NavLink to="/" end className="logo-link" onClick={toggleEffects}>
             <div className={`bmb ${isNeon ? 'neon-effect' : ''} ${isSwitched ? 'switch-positions' : ''}`}>
                 <div className="b"></div>
@@ -64,7 +69,24 @@ function Header({ isMyllaPage }) {
                 <div className="b"></div>
             </div>
         </NavLink>
-                <div className="hamburger" onClick={toggleNav}>
+        {/* Language Toggle - modern flag icon buttons */}
+        <div className="lang-toggle-header">
+          <button
+            onClick={() => setLang('is')}
+            aria-label="Icelandic"
+            className={`lang-btn${lang === 'is' ? ' active' : ''}`}
+          >
+            <IcelandFlag style={{ width: 24, height: 24, borderRadius: '50%', filter: lang === 'is' ? 'drop-shadow(0 0 4px #ffe082)' : 'none' }} />
+          </button>
+          <button
+            onClick={() => setLang('en')}
+            aria-label="English"
+            className={`lang-btn${lang === 'en' ? ' active' : ''}`}
+          >
+            <USFlag style={{ width: 24, height: 24, borderRadius: '50%', filter: lang === 'en' ? 'drop-shadow(0 0 4px #ffe082)' : 'none' }} />
+          </button>
+        </div>
+            <div className="hamburger" onClick={toggleNav}>
                     <div className={`icon ${isNavVisible ? 'open' : ''}`}></div>
                 </div>
             </div>
@@ -72,6 +94,7 @@ function Header({ isMyllaPage }) {
                 <nav ref={menuRef} className={`mobile-nav ${isNavVisible ? 'open' : ''}`}>
                     <ul>
                         <li><NavLink to="/" onClick={() => setIsNavVisible(false)}>Home</NavLink></li>
+                        <li><NavLink to="/new-home" onClick={() => setIsNavVisible(false)}>New Home (Preview)</NavLink></li>
                         <li><NavLink to="/music" onClick={() => setIsNavVisible(false)}>Music</NavLink></li>
                         <li><NavLink to="/music-compositions" onClick={() => setIsNavVisible(false)}>Music CV</NavLink></li>
                         <li><NavLink to="/bio" onClick={() => setIsNavVisible(false)}>Bio</NavLink></li>
