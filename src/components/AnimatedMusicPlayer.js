@@ -41,13 +41,13 @@ const AnimatedMusicPlayer = () => {
       animate="visible"
       variants={playerVariants}
       style={{
-        background: 'linear-gradient(135deg, #232526 0%, #414345 100%)',
+        background: 'linear-gradient(135deg, #f7f8fa 0%, #e3e7f1 100%)',
         borderRadius: '2rem',
         padding: '2rem 1.5rem',
-        boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
+        boxShadow: '0 8px 32px 0 #6c7a9222',
         maxWidth: 400,
         margin: '2rem auto',
-        border: '1px solid rgba(255,255,255,0.08)',
+        border: '1px solid #e3e7f1',
         position: 'relative',
       }}
     >
@@ -60,15 +60,15 @@ const AnimatedMusicPlayer = () => {
               marginBottom: '1.2rem',
               borderRadius: '1.5rem',
               background: `url(${musicTracks[trackIndex].backgroundImage}) center/cover no-repeat`,
-              boxShadow: '0 4px 24px 0 rgba(0,0,0,0.18)',
-              border: '3px solid #ffe082',
+              boxShadow: '0 4px 24px 0 #6c7a9222',
+              border: '3px solid #6c7a92',
             }}
           />
         )}
-        <h3 style={{ color: '#ffe082', marginBottom: '0.3rem', fontWeight: 700, fontSize: '1.25rem', textAlign: 'center', textShadow: '0 2px 8px #0008' }}>
+        <h3 style={{ color: '#1a223a', marginBottom: '0.3rem', fontWeight: 700, fontSize: '1.25rem', textAlign: 'center', textShadow: '0 2px 8px #e3e7f1' }}>
           {musicTracks[trackIndex].title}
         </h3>
-        <h4 style={{ color: '#bdbdbd', marginBottom: '0.7rem', fontWeight: 400, fontSize: '1rem', textAlign: 'center' }}>
+        <h4 style={{ color: '#6c7a92', marginBottom: '0.7rem', fontWeight: 400, fontSize: '1rem', textAlign: 'center' }}>
           {musicTracks[trackIndex].author}
         </h4>
         <AudioPlayer
@@ -88,20 +88,20 @@ const AnimatedMusicPlayer = () => {
           header={null}
           footer={null}
         />
-        <div style={{ marginTop: '0.7rem', color: '#ffe082', fontSize: '0.98rem', letterSpacing: '0.03em', textAlign: 'center' }}>
+        <div style={{ marginTop: '0.7rem', color: '#23305a', fontSize: '0.98rem', letterSpacing: '0.03em', textAlign: 'center' }}>
           Track {trackIndex + 1} of {musicTracks.length}
         </div>
         {/* Song List */}
         <div style={{
           marginTop: '1.5rem',
           width: '100%',
-          background: 'rgba(255,255,255,0.03)',
+          background: '#f7f8fa',
           borderRadius: '1rem',
           padding: '0.5rem 0.5rem 0.5rem 0.5rem',
           maxHeight: 220,
           overflowY: 'auto',
         }}>
-          <div style={{ color: '#ffe082', fontWeight: 600, fontSize: '1.05rem', marginBottom: '0.5rem', textAlign: 'center' }}>
+          <div style={{ color: '#1a223a', fontWeight: 600, fontSize: '1.05rem', marginBottom: '0.5rem', textAlign: 'center' }}>
             Song List
           </div>
           <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
@@ -114,8 +114,8 @@ const AnimatedMusicPlayer = () => {
                   padding: '0.45rem 0.7rem',
                   borderRadius: '0.7rem',
                   marginBottom: '0.2rem',
-                  background: idx === trackIndex ? 'rgba(255,224,130,0.18)' : 'transparent',
-                  color: idx === trackIndex ? '#ffe082' : '#e0e0e0',
+                  background: idx === trackIndex ? '#e3e7f1' : 'transparent',
+                  color: idx === trackIndex ? '#1a223a' : '#6c7a92',
                   fontWeight: idx === trackIndex ? 700 : 400,
                   transition: 'background 0.2s, color 0.2s',
                   display: 'flex',

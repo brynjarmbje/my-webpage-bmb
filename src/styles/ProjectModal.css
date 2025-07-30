@@ -1,0 +1,111 @@
+/* --- Image Zoom Overlay --- */
+.project-modal-zoom-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(26, 34, 58, 0.97);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.2s;
+  cursor: zoom-out;
+  backdrop-filter: blur(2.5px) saturate(1.1);
+}
+.project-modal-zoom-img {
+  max-width: 96vw;
+  max-height: 96vh;
+  border-radius: 1.1rem;
+  box-shadow: 0 8px 32px 0 #6c7a9277, 0 2px 24px 0 #1a223a88;
+  background: #f7f8fa;
+  object-fit: contain;
+  animation: popIn 0.3s cubic-bezier(.39,.575,.565,1);
+  border: 2.5px solid #e3e7f1;
+}
+.project-modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(26, 34, 58, 0.82);
+  z-index: 9999;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 3vh;
+  overflow-y: auto;
+  animation: fadeIn 0.3s;
+  backdrop-filter: blur(2.5px) saturate(1.1);
+}
+.project-modal {
+  background: linear-gradient(120deg, #f7f8fa 70%, #e3e7f1 100%);
+  border-radius: 1.3rem;
+  box-shadow: 0 8px 32px 0 #6c7a9244, 0 2px 24px 0 #1a223a33;
+  border: 2.5px solid #6c7a92;
+  padding: 2.2rem 2.2rem 1.5rem 2.2rem;
+  max-width: 95vw;
+  max-height: 92vh;
+  overflow-y: auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 0;
+  animation: popIn 0.4s cubic-bezier(.39,.575,.565,1);
+  backdrop-filter: blur(2.5px) saturate(1.1);
+}
+.project-modal-close {
+  position: absolute;
+  top: 1.1rem;
+  right: 1.3rem;
+  background: none;
+  border: none;
+  font-size: 2.2rem;
+  color: #6c7a92;
+  cursor: pointer;
+  z-index: 10;
+  transition: color 0.2s, text-shadow 0.2s;
+  text-shadow: 0 2px 8px #e3e7f1;
+}
+.project-modal-close:hover {
+  color: #23305a;
+  text-shadow: 0 2px 12px #6c7a92;
+}
+.project-modal-images {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+  margin-bottom: 1.2rem;
+}
+.project-modal-img {
+  max-width: 420px;
+  width: 90vw;
+  border-radius: 0.8rem;
+  box-shadow: 0 2px 16px 0 #6c7a9244, 0 1px 8px 0 #1a223a22;
+  border: 2px solid #e3e7f1;
+  margin-bottom: 0.3rem;
+  background: #f7f8fa;
+}
+.project-modal-caption {
+  color: #23305a;
+  font-size: 1.04rem;
+  margin-bottom: 0.7rem;
+  text-align: center;
+  font-weight: 600;
+  text-shadow: 0 1px 6px #e3e7f1;
+}
+.project-modal-desc {
+  color: #1a223a;
+  font-size: 1.09rem;
+  margin-top: 0.7rem;
+  text-align: center;
+  max-width: 600px;
+  font-weight: 500;
+  text-shadow: 0 1px 6px #e3e7f1;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes popIn {
+  0% { opacity: 0; transform: scale(0.85); }
+  100% { opacity: 1; transform: scale(1); }
+}

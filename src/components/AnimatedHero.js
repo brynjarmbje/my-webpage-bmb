@@ -53,7 +53,13 @@ const AnimatedHero = () => {
   };
 
   return (
-    <motion.section className="new-hero animated-hero" initial="hidden" animate="visible" variants={heroVariants}>
+    <motion.section
+      key={lang}
+      className="new-hero animated-hero"
+      initial="hidden"
+      animate="visible"
+      variants={heroVariants}
+    >
       <motion.p className="new-hero-subtitle animated-subtitle" variants={subtitleVariants} style={{ fontSize: '1.3rem', margin: '0 0 1.5rem 0', fontWeight: 500 }}>
         {t.message}
       </motion.p>

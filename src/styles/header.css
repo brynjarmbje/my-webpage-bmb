@@ -1,3 +1,11 @@
+.hamburger .icon,
+.hamburger .icon::before,
+.hamburger .icon::after {
+  background-color: #23305a !important;
+}
+.hamburger .icon.open {
+  background-color: transparent !important;
+}
 .App-header {
   text-align: left !important;
 }
