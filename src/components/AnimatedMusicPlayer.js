@@ -1,7 +1,8 @@
+import React, { useRef } from 'react';
+import { useTheme } from '../ThemeContext';
 
-
-import React from 'react';
-import { motion } from 'framer-motion';
+// ...existing code...
+import { motion, useInView } from 'framer-motion';
 import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
 import { musicData } from '../data/musicData';
@@ -39,9 +40,13 @@ const songItemVariants = {
   visible: (i) => ({ opacity: 1, x: 0, transition: { duration: 0.5, delay: 1.7 + i * 0.07 } }),
 };
 
+
 const AnimatedMusicPlayer = () => {
   const { lang } = useLanguage();
+  const { theme } = useTheme();
   const [trackIndex, setTrackIndex] = React.useState(0);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: '-40px' });
 
   // Section and UI strings
   const content = {
@@ -82,10 +87,11 @@ const AnimatedMusicPlayer = () => {
 
   return (
     <motion.div
+      ref={ref}
       key={lang}
       className="animated-music-player"
       initial="hidden"
-      animate="visible"
+      animate={isInView ? "visible" : "hidden"}
       variants={playerVariants}
       style={{
         background: 'linear-gradient(135deg, #f7f8fa 0%, #e3e7f1 100%)',
@@ -152,63 +158,37 @@ const AnimatedMusicPlayer = () => {
           header={null}
           footer={null}
         />
+        {/* Song List (no title, just the list) */}
         <motion.div
-          style={{ marginTop: '0.7rem', color: '#23305a', fontSize: '0.98rem', letterSpacing: '0.03em', textAlign: 'center' }}
-          initial="hidden"
-          animate="visible"
-          variants={trackInfoVariants}
-          key={trackIndex + lang + 'trackinfo'}
-        >
-          {t.trackOf(trackIndex + 1, musicTracks.length)}
-        </motion.div>
-        {/* Song List */}
-        <motion.div
-          style={{
-            marginTop: '1.5rem',
-            width: '100%',
-            background: '#f7f8fa',
-            borderRadius: '1rem',
-            padding: '0.5rem 0.5rem 0.5rem 0.5rem',
-            maxHeight: 220,
-            overflowY: 'auto',
-          }}
-          initial="hidden"
-          animate="visible"
+          className="animated-music-songlist"
           variants={songListVariants}
-          key={lang + 'songlist'}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          transition={{ duration: 0.7, delay: 0.2 }}
         >
-          <div style={{ color: '#1a223a', fontWeight: 600, fontSize: '1.05rem', marginBottom: '0.5rem', textAlign: 'center' }}>
-            {t.songList}
-          </div>
-          <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+          <ul className="new-music-list">
             {musicTracks.map((track, idx) => (
-              <motion.li
+            <li
                 key={track.title[lang] + idx}
+                className={`new-music-item${trackIndex === idx ? ' active' : ''}`}
                 onClick={() => handleSelectTrack(idx)}
                 style={{
-                  cursor: 'pointer',
-                  padding: '0.45rem 0.7rem',
-                  borderRadius: '0.7rem',
-                  marginBottom: '0.2rem',
-                  background: idx === trackIndex ? '#e3e7f1' : 'transparent',
-                  color: idx === trackIndex ? '#1a223a' : '#6c7a92',
-                  fontWeight: idx === trackIndex ? 700 : 400,
-                  transition: 'background 0.2s, color 0.2s',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.7rem',
+                background: trackIndex === idx
+                  ? (theme === "dark" ? "#ffe082" : "#232526")
+                  : undefined,
+                color: trackIndex === idx
+                  ? (theme === "dark" ? "#232526" : "#ffe082")
+                  : undefined,
+                fontWeight: trackIndex === idx ? 700 : 500,
+                cursor: trackIndex === idx ? "default" : "pointer",
+                pointerEvents: trackIndex === idx ? "none" : "auto",
+                boxShadow: trackIndex === idx ? "0 2px 8px 0 rgba(0,0,0,0.10)" : undefined,
+                border: trackIndex === idx ? (theme === "dark" ? "2px solid #ffe082" : "2px solid #232526") : undefined,
+                transition: "background 0.2s, color 0.2s, border 0.2s",
                 }}
-                initial="hidden"
-                animate="visible"
-                variants={songItemVariants}
-                custom={idx}
-                whileHover={{ scale: 1.04, background: '#e3e7f1', color: '#1a223a' }}
-                whileTap={{ scale: 0.97 }}
               >
-                <span style={{ fontSize: '1.1em' }}>{track.title[lang]}</span>
-                <span style={{ fontSize: '0.95em', opacity: 0.7 }}>({track.author[lang]})</span>
-                {idx === trackIndex && <span style={{ marginLeft: 'auto', fontSize: '1.2em' }}>▶</span>}
-              </motion.li>
+                {track.title[lang]}
+              </li>
             ))}
           </ul>
         </motion.div>

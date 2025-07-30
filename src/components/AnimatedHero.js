@@ -68,6 +68,9 @@ const AnimatedHero = () => {
         <button className="new-btn secondary" onClick={() => scrollToSection('music-section')}>{t.btn2}</button>
         <button className="new-btn secondary" onClick={openResume}>{t.btn3}</button>
       </motion.div>
+      <div className="hero-scroll-indicator">
+        <div className="hero-scroll-dot" />
+      </div>
     </motion.section>
   );
 };
