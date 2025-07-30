@@ -18,11 +18,11 @@
 .header-fixed-controls {
   position: fixed;
   top: 12px;
-  right: 0px;
+  right: 12px;
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   z-index: 200;
   background: none;
   box-shadow: none;
@@ -40,7 +40,7 @@
   overflow: hidden;
   transition: background 0.18s;
   margin-right: 0;
-  margin-left: 36px;
+  margin-left: 0 !important;
 }
 .lang-toggle-split .lang-half {
   width: 50%;
@@ -75,7 +75,7 @@
 @media (max-width: 600px) {
   .lang-toggle-header {
     top: 8px;
-    right: 54px;
+    right: 8px;
   }
   .lang-btn {
     width: 30px;
@@ -97,8 +97,10 @@
   .header-content {
     width: 100%; /* Ensures the header content takes the full width */
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
+    justify-content: space-between;
+    position: relative;
 }
 
   .bmb {
@@ -338,10 +340,101 @@
   }
 }
 
+/* Theme toggle button styles */
+.theme-toggle-btn {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  border-radius: 50%;
+  margin: 0 0 0 0 !important;
+  font-size: 1.3rem;
+  color: #23305a;
+  transition: background 0.18s, color 0.18s, box-shadow 0.18s;
+  box-shadow: none;
+}
+.theme-toggle-btn:hover {
+  background: #e3e7f1;
+  color: #1a223a;
+  box-shadow: 0 2px 8px 0 #6c7a9211;
+}
+[data-theme='dark'] .theme-toggle-btn {
+  color: #ffe082;
+  background: none;
+}
+[data-theme='dark'] .theme-toggle-btn:hover {
+  background: #23305a;
+  color: #ffe082;
+}
+
+.theme-toggle-switch.react-toggle {
+  margin-left: 18px;
+  margin-right: 0;
+  vertical-align: middle;
+  --toggle-width: 44px;
+  --toggle-height: 24px;
+}
+.theme-toggle-switch.react-toggle .react-toggle-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  height: 24px;
+  width: 44px;
+  border: 2px solid #ffe082;
+  transition: background 0.2s, border 0.2s;
+}
+.theme-toggle-switch.react-toggle--checked .react-toggle-track {
+  background: #23305a;
+  border: 2px solid #ffe082;
+}
+.theme-toggle-switch.react-toggle .react-toggle-thumb {
+  background: #fffbe6;
+  border: 2px solid #ffe082;
+  box-shadow: 0 2px 8px 0 #6c7a9211;
+  width: 20px;
+  height: 20px;
+  top: 3.8px;
+  left: 3px;
+  transition: left 0.2s, background 0.2s;
+}
+.theme-toggle-switch.react-toggle--checked .react-toggle-thumb {
+  background: #ffe082;
+  border: 2px solid #ffe082;
+  left: 23px;
+  top: 3.8px;
+}
+.theme-toggle-switch.react-toggle .react-toggle-track-check,
+.theme-toggle-switch.react-toggle .react-toggle-track-x {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 22px;
+}
+.theme-toggle-switch.react-toggle .react-toggle-track-x {
+  left: 22px;
+}
+.theme-toggle-switch.react-toggle .react-toggle-track-check {
+  left: 0;
+}
+.theme-toggle-switch.react-toggle:focus .react-toggle-thumb {
+  box-shadow: 0 0 2px 3px #ffe08255;
+}
+
 @media (max-width: 768px) {
   .hamburger {
     padding: 0.3rem;
     width: 36px;
     height: 36px;
+  }
+}
+
+@media (max-width: 600px) {
+  .header-fixed-controls {
+    top: 8px;
+    right: 8px;
+    gap: 6px;
   }
 }

@@ -29,6 +29,104 @@ body.no-animation {
   --white-gold: #ac9d3d;
   --dark-gray: #333333;
   --sand-white: #f4ecda;
+
+  /* Theme mode variables */
+  --color-bg-light: #f7f8fa;
+  --color-bg-dark: #1a223a;
+  --color-card-light: #e3e7f1;
+  --color-card-dark: #23305a;
+  --color-text-light: #23305a;
+  --color-text-dark: #f7f8fa;
+  --color-accent: #ffe082;
+}
+
+body[data-theme='light'] {
+  background: var(--color-bg-light);
+  color: var(--color-text-light);
+}
+body[data-theme='dark'] {
+  background: #181c27 !important;
+  color: #f7f8fa !important;
+}
+
+[data-theme='dark'] .new-homepage-container {
+  background: #181c27 !important;
+}
+[data-theme='dark'] .featured-card,
+[data-theme='dark'] .animated-music-player,
+[data-theme='dark'] .new-hero,
+[data-theme='dark'] .new-about,
+[data-theme='dark'] .new-contact {
+  background: #232b3e !important;
+  color: #f7f8fa !important;
+  box-shadow: 0 4px 24px 0 #000a, 0 1.5px 16px 0 #0005;
+}
+[data-theme='dark'] .featured-card h3,
+[data-theme='dark'] .featured-card p,
+[data-theme='dark'] .featured-linktype,
+[data-theme='dark'] .animated-music-player h3,
+[data-theme='dark'] .animated-music-player h4 {
+  color: var(--color-text-dark) !important;
+}
+[data-theme='dark'] .animated-music-player {
+  border: 1.5px solid #2e3955;
+  background: #232b3e !important;
+}
+[data-theme='dark'] .animated-music-player ul li {
+  background: #232b3e !important;
+  color: #ffe082 !important;
+}
+[data-theme='dark'] .animated-music-player ul li:hover {
+  background: #2e3955 !important;
+  color: #ffe082 !important;
+}
+[data-theme='dark'] .animated-music-player .rhap_container {
+  background: #232b3e !important;
+}
+[data-theme='dark'] .animated-music-player .rhap_progress-bar-show-download {
+  background: #2e3955 !important;
+}
+[data-theme='dark'] .animated-music-player .rhap_progress-filled {
+  background: #ffe082 !important;
+}
+[data-theme='dark'] .animated-music-player .rhap_time {
+  color: #ffe082 !important;
+}
+[data-theme='dark'] .animated-music-player .rhap_main-controls-button {
+  color: #ffe082 !important;
+}
+[data-theme='dark'] .animated-music-player .rhap_main-controls-button:hover {
+  color: #fffbe6 !important;
+}
+[data-theme='dark'] .animated-music-player .rhap_volume-bar {
+  background: #2e3955 !important;
+}
+[data-theme='dark'] .animated-music-player .rhap_volume-indicator {
+  background: #ffe082 !important;
+}
+[data-theme='dark'] .animated-music-player .rhap_repeat-button {
+  color: #ffe082 !important;
+}
+[data-theme='dark'] .animated-music-player .rhap_repeat-button.rhap_repeat--active {
+  color: #fffbe6 !important;
+}
+.theme-toggle-btn {
+  background: #ffe082 !important;
+  color: #23305a !important;
+  border: 2px solid #ffe082 !important;
+}
+[data-theme='dark'] .theme-toggle-btn {
+  background: #23305a !important;
+  color: #ffe082 !important;
+  border: 2px solid #ffe082 !important;
+}
+.theme-toggle-btn:hover {
+  background: #fffbe6 !important;
+  color: #1a223a !important;
+}
+[data-theme='dark'] .theme-toggle-btn:hover {
+  background: #ffe082 !important;
+  color: #23305a !important;
 }
 
 iframe {

@@ -54,10 +54,10 @@ const AnimatedFeatured = () => {
       onClick: () => setModalOpen(true),
     },
     {
-      title: lang === 'is' ? 'Hugbotvo – Málörvun' : 'Hugbotvo – Language Games',
+      title: lang === 'is' ? 'Læralærlær – Íslensku leikur' : 'Læralærlær – Language Game',
       desc: lang === 'is'
-        ? 'Kotlin Android + Jetpack. App til að kenna börnum málörvun með fjölbreyttum mini-leikjum.'
-        : 'Kotlin Android + Jetpack + Navigation. App for teaching children language skills through various mini-games.',
+        ? 'Kotlin, Android, Jetpack'
+        : 'Kotlin, Android, Jetpack',
       image: require('../images/laeralaerlaer.jpg'),
       link: 'https://github.com/brynjarmbje/hugbotvo-frontend-kotlin',
       linkType: lang === 'is' ? 'GitHub' : 'GitHub',
@@ -79,11 +79,12 @@ const AnimatedFeatured = () => {
       <div className="featured-grid">
         {projects.map((proj, idx) => {
           // Special layout for Hugbotvo card (last card)
-          const isHugbotvo = proj.title.includes('Hugbotvo');
+          const isHugbotvo = proj.title.includes('Læralærlær');
+          const isMiddleware = proj.title.includes('Middleware');
           return (
             <motion.a
               key={proj.title}
-              className={`featured-card${isHugbotvo ? ' hugbotvo-card' : ''}`}
+              className={`featured-card${isHugbotvo ? ' hugbotvo-card' : ''}${isMiddleware ? ' middleware-card' : ''}`}
               href={proj.onClick ? undefined : proj.link}
               target={proj.link && proj.link.startsWith('/') ? '_self' : '_blank'}
               rel="noopener noreferrer"
@@ -93,14 +94,11 @@ const AnimatedFeatured = () => {
               onClick={proj.onClick ? (e) => { e.preventDefault(); proj.onClick(); } : undefined}
             >
               <motion.div
-                className={`featured-image${isHugbotvo ? ' hugbotvo-image' : ''}`}
-                style={isHugbotvo
-                  ? { backgroundImage: `url(${proj.image})`, width: '110px', height: '220px', margin: '0 auto', borderRadius: '1.1rem', boxShadow: '0 2px 16px 0 #6c7a9244, 0 1px 8px 0 #1a223a22', backgroundSize: 'cover', backgroundPosition: 'center' }
-                  : { backgroundImage: `url(${proj.image})` }
-                }
+                className={`featured-image${isHugbotvo ? ' hugbotvo-image' : ''}${isMiddleware ? ' middleware-image' : ''}`}
+                style={{ backgroundImage: `url(${proj.image})` }}
                 variants={imageVariants}
               />
-              <motion.div className="featured-description" variants={descVariants} style={isHugbotvo ? { marginTop: '1.1rem', textAlign: 'center' } : {}}>
+              <motion.div className="featured-description" variants={descVariants} style={isHugbotvo || isMiddleware ? { marginTop: '1.1rem', textAlign: 'center' } : {}}>
                 <h3 style={{ color: '#23305a', marginBottom: '0.3rem', fontWeight: 700, fontSize: '1.1rem', textAlign: 'center' }}>{proj.title}</h3>
                 <p style={{ color: '#23305a', marginBottom: '0.5rem', fontSize: '0.98rem', textAlign: 'center' }}>{proj.desc}</p>
                 <span className="featured-linktype" style={{ color: '#1a223a', fontSize: '0.95rem', fontWeight: 500 }}>{proj.linkType}</span>
