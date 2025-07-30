@@ -179,4 +179,3 @@ const MusicCompositionsPage = () => {
 };
 
 export default MusicCompositionsPage;
-

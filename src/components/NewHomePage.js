@@ -1,10 +1,8 @@
 import React, { useEffect } from 'react';
 
 import AnimatedHero from './AnimatedHero';
-import AnimatedAbout from './AnimatedAbout';
 import AnimatedFeatured from './AnimatedFeatured';
 import AnimatedMusic from './AnimatedMusic';
-import AnimatedContact from './AnimatedContact';
 import '../styles/NewHomePage.css';
 
 
@@ -18,11 +16,11 @@ const NewHomePage = () => {
 
   return (
     <div className="new-homepage-container">
+      {/* If any of these components render the B M B title, remove it from those components. */}
+      {/* Informal, cool hero message only (no About section) */}
       <AnimatedHero />
-      <AnimatedAbout />
       <AnimatedFeatured />
       <AnimatedMusic />
-      <AnimatedContact />
     </div>
   );
 };

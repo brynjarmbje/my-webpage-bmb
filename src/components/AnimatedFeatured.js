@@ -5,7 +5,7 @@ import { useLanguage } from '../LanguageContext';
 
 const featuredVariants = {
   hidden: { opacity: 0, x: 80, scale: 0.95 },
-  visible: { opacity: 1, x: 0, scale: 1, transition: { duration: 1.1, delay: 0.5, ease: [0.39,0.575,0.565,1] } }
+  visible: { opacity: 1, x: 0, scale: 1, transition: { duration: 1.1, delay: 0.5 } }
 };
 const cardVariants = {
   hidden: { opacity: 0, scale: 0.8, rotate: -8 },
@@ -22,29 +22,63 @@ const descVariants = {
 
 const AnimatedFeatured = () => {
   const { lang } = useLanguage();
-  const content = {
-    is: {
-      section: 'Valin Verkefni',
-      project: 'Mylla – Nútímalegur borðspilaleikur',
+  // 4 projects: Mylla (site), Portfolio (site), Placeholder1 (GitHub), Placeholder2 (Live)
+  const projects = [
+    {
+      title: lang === 'is' ? 'Mylla – Nútímalegur borðspilaleikur' : 'Mylla – Modern Board Game',
       desc: 'React, Firebase, Web Audio API',
+      image: require('../images/mylla.png'),
+      link: '/mylla',
+      linkType: lang === 'is' ? 'Á vefnum' : 'On this site',
     },
-    en: {
-      section: 'Featured Project',
-      project: 'Mylla – Modern Board Game',
-      desc: 'React, Firebase, Web Audio API',
-    }
-  };
-  const t = content[lang];
+    {
+      title: lang === 'is' ? 'Portfolio – Vefsíða' : 'Portfolio – Website',
+      desc: 'React, Framer Motion',
+      image: require('../images/bmb-logo2.png'),
+      link: 'https://brynjar.dev',
+      linkType: lang === 'is' ? 'Á vefnum' : 'Live site',
+    },
+    {
+      title: lang === 'is' ? 'Placeholder Verkefni 1' : 'Placeholder Project 1',
+      desc: 'Node.js, Express',
+      image: require('../images/bmb-logo3.png'),
+      link: 'https://github.com/brynjarmbje/placeholder1',
+      linkType: 'GitHub',
+    },
+    {
+      title: lang === 'is' ? 'Placeholder Verkefni 2' : 'Placeholder Project 2',
+      desc: 'Python, Flask',
+      image: require('../images/bmb-logo4.png'),
+      link: 'https://placeholder2.live',
+      linkType: lang === 'is' ? 'Á annarri síðu' : 'Other site',
+    },
+  ];
   return (
-    <motion.section className="new-featured animated-featured" initial="hidden" animate="visible" variants={featuredVariants}>
-      <motion.h2 className="animated-section-title" variants={cardVariants}>{t.section}</motion.h2>
-      <motion.div className="new-featured-card animated-featured-card" variants={cardVariants}>
-        <motion.div className="new-featured-image animated-featured-image" variants={imageVariants} />
-        <motion.div className="new-featured-description animated-featured-description" variants={descVariants}>
-          <h3>{t.project}</h3>
-          <p>{t.desc}</p>
-        </motion.div>
-      </motion.div>
+    <motion.section id="featured-section" className="new-featured animated-featured" initial="hidden" animate="visible" variants={featuredVariants}>
+      <motion.h2 className="animated-section-title" variants={cardVariants}>
+        {lang === 'is' ? 'Valin Verkefni' : 'Featured Projects'}
+      </motion.h2>
+      <div className="featured-grid">
+        {projects.map((proj, idx) => (
+          <motion.a
+            key={proj.title}
+            className="featured-card"
+            href={proj.link}
+            target={proj.link.startsWith('/') ? '_self' : '_blank'}
+            rel="noopener noreferrer"
+            variants={cardVariants}
+            whileHover={{ scale: 1.04, boxShadow: '0 4px 24px #ffe08255' }}
+            style={{ textDecoration: 'none' }}
+          >
+            <motion.div className="featured-image" style={{ backgroundImage: `url(${proj.image})` }} variants={imageVariants} />
+            <motion.div className="featured-description" variants={descVariants}>
+              <h3 style={{ color: '#ffe082', marginBottom: '0.3rem', fontWeight: 700, fontSize: '1.1rem', textAlign: 'center' }}>{proj.title}</h3>
+              <p style={{ color: '#bdbdbd', marginBottom: '0.5rem', fontSize: '0.98rem', textAlign: 'center' }}>{proj.desc}</p>
+              <span className="featured-linktype" style={{ color: '#ffe082', fontSize: '0.95rem', fontWeight: 500 }}>{proj.linkType}</span>
+            </motion.div>
+          </motion.a>
+        ))}
+      </div>
     </motion.section>
   );
 };

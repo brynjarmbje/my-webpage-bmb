@@ -15,6 +15,7 @@ function Content() {
   // This component will now correctly have access to `useLocation`
   const location = useLocation();
   const isMyllaPage = location.pathname === '/mylla';
+  const hideLogo = location.pathname === '/new-home';
 
   useEffect(() => {
     // Check if the current path is '/music' and adjust body class accordingly
@@ -28,7 +29,7 @@ function Content() {
 
   return (
     <>
-      <Header isMyllaPage={isMyllaPage} />
+      <Header isMyllaPage={isMyllaPage} hideLogo={hideLogo} />
       <Routes>
 
         <Route path="/" element={<HomePage />} />

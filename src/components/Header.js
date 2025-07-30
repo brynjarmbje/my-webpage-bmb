@@ -6,7 +6,7 @@ import '../styles/header.css';
 import { ReactComponent as IcelandFlag } from '../images/iceland-flag.svg';
 import { ReactComponent as USFlag } from '../images/us-flag.svg';
 
-function Header({ isMyllaPage }) {
+function Header({ isMyllaPage, hideLogo }) {
     const [isNavVisible, setIsNavVisible] = useState(false);
     const menuRef = useRef(null); // Ref for the menu
     const [isNeon, setIsNeon] = useState(false);
@@ -61,34 +61,34 @@ function Header({ isMyllaPage }) {
                     </filter>
                 </defs>
             </svg>
-            <div className="header-content" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-            <NavLink to="/" end className="logo-link" onClick={toggleEffects}>
-            <div className={`bmb ${isNeon ? 'neon-effect' : ''} ${isSwitched ? 'switch-positions' : ''}`}>
-                <div className="b"></div>
-                <div className={`m ${isFlipped ? 'flip-effect' : ''}`}></div>
-                <div className="b"></div>
+            <div className="header-content" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', position: 'relative' }}>
+            {!hideLogo && (
+                <NavLink to="/" end className="logo-link" onClick={toggleEffects}>
+                    <div className={`bmb ${isNeon ? 'neon-effect' : ''} ${isSwitched ? 'switch-positions' : ''}`}>
+                        <div className="b"></div>
+                        <div className={`m ${isFlipped ? 'flip-effect' : ''}`}></div>
+                        <div className="b"></div>
+                    </div>
+                </NavLink>
+            )}
+            <div className="header-fixed-controls">
+              <button
+                className="lang-toggle-split"
+                aria-label="Toggle language"
+                onClick={() => setLang(lang === 'is' ? 'en' : 'is')}
+              >
+                <span className={`lang-half left${lang === 'is' ? ' active' : ''}`}>
+                  <IcelandFlag style={{ width: 22, height: 22, borderRadius: '50%' }} />
+                </span>
+                <span className={`lang-half right${lang === 'en' ? ' active' : ''}`}>
+                  <USFlag style={{ width: 22, height: 22, borderRadius: '50%' }} />
+                </span>
+                <span className="lang-indicator" style={{ left: lang === 'is' ? 0 : '50%' }} />
+              </button>
+              <div className="hamburger" onClick={toggleNav}>
+                  <div className={`icon ${isNavVisible ? 'open' : ''}`}></div>
+              </div>
             </div>
-        </NavLink>
-        {/* Language Toggle - modern flag icon buttons */}
-        <div className="lang-toggle-header">
-          <button
-            onClick={() => setLang('is')}
-            aria-label="Icelandic"
-            className={`lang-btn${lang === 'is' ? ' active' : ''}`}
-          >
-            <IcelandFlag style={{ width: 24, height: 24, borderRadius: '50%', filter: lang === 'is' ? 'drop-shadow(0 0 4px #ffe082)' : 'none' }} />
-          </button>
-          <button
-            onClick={() => setLang('en')}
-            aria-label="English"
-            className={`lang-btn${lang === 'en' ? ' active' : ''}`}
-          >
-            <USFlag style={{ width: 24, height: 24, borderRadius: '50%', filter: lang === 'en' ? 'drop-shadow(0 0 4px #ffe082)' : 'none' }} />
-          </button>
-        </div>
-            <div className="hamburger" onClick={toggleNav}>
-                    <div className={`icon ${isNavVisible ? 'open' : ''}`}></div>
-                </div>
             </div>
             {isNavVisible && (
                 <nav ref={menuRef} className={`mobile-nav ${isNavVisible ? 'open' : ''}`}>

@@ -1,31 +1,68 @@
-/* Language toggle in header - always top right, never in the way */
-.lang-toggle-header {
-  position: fixed;
-  top: 18px;
-  right: 70px;
-  display: flex;
-  gap: 0.3rem;
-  z-index: 200;
+.App-header {
+  text-align: left !important;
 }
-.lang-btn {
-  background: rgba(255,255,255,0.10);
-  border: 2px solid transparent;
-  border-radius: 50%;
+
+.App-header .hamburger {
+  text-align: left !important;
+}
+/* Language toggle in header - always top right, never in the way */
+/* Split language toggle button styles */
+.header-fixed-controls {
+  position: fixed;
+  top: 12px;
+  right: 0px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  z-index: 200;
+  background: none;
+  box-shadow: none;
+}
+.lang-toggle-split {
+  width: 64px;
+  height: 28px;
+  background: rgba(255,255,255,0);
+  border-radius: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding: 0;
-  width: 36px;
-  height: 36px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: background 0.18s;
+  margin-right: 0;
+  margin-left: 36px;
+}
+.lang-toggle-split .lang-half {
+  width: 50%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: none;
-  cursor: pointer;
-  outline: none;
-  transition: all 0.18s;
+  transition: background 0.18s;
+  position: relative;
+  z-index: 2;
 }
-.lang-btn.active {
-  background: #ffe082;
-  border: 2px solid #ffe082;
-  box-shadow: 0 2px 8px #ffe08244;
+.lang-toggle-split .lang-half.left.active {
+  background: rgba(44, 136, 56, 0.6);
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+.lang-toggle-split .lang-half.right.active {
+  background: rgba(153, 145, 53, 0.6);
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.lang-toggle-split .lang-indicator {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255,255,255,0);
+  border-radius: 0px;
+  z-index: 1;
+  transition: left 0.18s;
 }
 @media (max-width: 600px) {
   .lang-toggle-header {
@@ -132,7 +169,7 @@
     color: var(--sand-white); /* Example color */
   }
 
-  .hamburger {
+.hamburger {
     /* mix-blend-mode: difference;  or 'exclusion' */
     cursor: pointer;
     background: transparent;
@@ -140,32 +177,43 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 48px; /* Adjust the width as needed */
-    height: 48px; /* Adjust the height as needed */
-    position: fixed; /* Positions the icon lines within */
-    top: 0; /* Top of the viewport */
-    right: 0; /* Left of the viewport */
-    z-index: 100; /* Ensure it's above other content */
-    padding: 1rem;
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    text-align: left !important;
+    position: relative;
+    z-index: 100;
+    margin-right: 12px;
   }
   
   .hamburger .icon,
   .hamburger .icon::before,
   .hamburger .icon::after {
     content: '';
-    background-color: var(--sand-white); /* or any color that stands out against your header */
+    background-color: var(--sand-white);
     height: 2px;
-    width: 30px; /* Adjust based on your design preference */
+    width: 30px;
     position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
     transition: transform 0.3s ease;
   }
   
-  .hamburger .icon::before { transform: translateY(-10px) translateX(-50%); }
-  .hamburger .icon::after { transform: translateY(10px) translateX(-50%); }
-  
-  .hamburger .icon.open::before { transform: rotate(45deg) translateX(-50%) translate(5px, 10px); }
-  .hamburger .icon.open::after { transform: rotate(-45deg) translateX(-50%) translate(5px, -10px); }
-  .hamburger .icon.open { background-color: transparent; }
+.hamburger .icon::before {
+    transform: translateY(-10px) translateX(-50%);
+}
+.hamburger .icon::after {
+    transform: translateY(10px) translateX(-50%);
+}
+.hamburger .icon.open::before {
+    transform: translateX(-50%) rotate(45deg);
+}
+.hamburger .icon.open::after {
+    transform: translateX(-50%) rotate(-45deg);
+}
+.hamburger .icon.open {
+    background-color: transparent;
+}
 
   .b {
     border-left: 2px solid var(--sand-white); /* Assuming $font-color is black */
