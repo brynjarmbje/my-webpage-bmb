@@ -99,6 +99,7 @@ html, body, #root {
   background-position: center;
 }
 
+
 /* Special Hugbotvo card for mobile screenshot */
 .hugbotvo-card {
   display: flex !important;
@@ -390,32 +391,12 @@ html[data-theme='dark'] .animated-music-player .new-music-item:active:not(.activ
   border: 2px solid #6c7a92;
 }
 /* Fix hamburger menu alignment for NewHomePage only */
-.new-homepage-container ~ .App-header .hamburger,
-.new-homepage-container .App-header .hamburger,
+.new-homepage-container ~ .hamburger,
+.new-homepage-container .hamburger,
 .new-homepage-container .hamburger {
   top: 12px !important;
   right: 8px !important;
   /* Adjust as needed for perfect alignment */
-}
-
-/* Make header smaller only on NewHomePage */
-.new-homepage-container ~ .App-header,
-.App-header:has(+ .new-homepage-container),
-.new-homepage-container .App-header {
-  height: 64px !important;
-  min-height: 0 !important;
-  padding: 0rem 0rem !important;
-  background: #e3e7f1; /* Make transparent */
-}
-
-/* Dark mode: header matches background for transparency */
-html[data-theme='dark'] .new-homepage-container ~ .App-header,
-html[data-theme='dark'] .App-header:has(+ .new-homepage-container),
-html[data-theme='dark'] .new-homepage-container .App-header,
-body[data-theme='dark'] .new-homepage-container ~ .App-header,
-body[data-theme='dark'] .App-header:has(+ .new-homepage-container),
-body[data-theme='dark'] .new-homepage-container .App-header {
-  background: #181c27 !important;
 }
 
 @media (max-width: 1000px) {
