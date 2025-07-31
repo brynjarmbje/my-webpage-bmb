@@ -46,8 +46,8 @@ const AnimatedFeatured = () => {
       title: lang === 'is' ? 'Fruma – Heilsudagbók' : 'Fruma – Health Diary',
       desc:
         lang === 'is'
-          ? 'React Native, Expo, TypeScript, Android'
-          : 'React Native, Expo, TypeScript, Android',
+          ? 'React Native, Expo, TypeScript'
+          : 'React Native, Expo, TypeScript',
       image: frumaMain,
       link: '#',
       linkType: lang === 'is' ? 'Skoða' : 'View',
