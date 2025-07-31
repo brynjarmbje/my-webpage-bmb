@@ -539,6 +539,10 @@ html[data-theme='dark'] .animated-music-player .new-music-item:active:not(.activ
     width: 50px !important;
   }
 
+  .fruma-image {
+    width: 50px !important;
+  }
+
   /* Hide music player track counter and song list title on mobile (robust selectors) */
   .animated-music-player > div[style*="margin-top: 0.7rem"][style*="text-align: center"][style*="opacity: 1"] {
     display: none !important;
