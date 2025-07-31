@@ -25,6 +25,8 @@ function Footer() {
     return (
         <footer ref={ref} className={`footer-prominent${visible ? ' footer-animate-in' : ''}`}>
             <div className="footer-title">{title}</div>
+            {lang === 'en' && <div className="footer-get-in-touch">Get in touch</div>}
+            {lang === 'is' && <div className="footer-get-in-touch">Hafðu samband</div>}
             <div className="footer-contact-btns">
                 <a
                     href="tel:+3548475643"

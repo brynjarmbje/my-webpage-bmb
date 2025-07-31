@@ -1,10 +1,71 @@
+/* Theme icon button for dark/light mode (replaces slider) */
+/* Theme icon button for dark/light mode (replaces slider) */
+/* Subtle, elegant theme toggle button */
+.theme-toggle-icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-right: 18px;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  box-sizing: border-box;
+  transition: background 0.18s, box-shadow 0.18s, transform 0.1s;
+  position: relative;
+}
+.theme-toggle-icon-btn:hover,
+.theme-toggle-icon-btn:focus {
+  background: none;
+  box-shadow: none;
+  outline: none;
+}
+.theme-toggle-icon-btn:active {
+  background: rgba(35, 48, 90, 0.13);
+  transform: scale(0.97);
+}
+/* Make the sun icon outlined only (not filled) */
+.theme-toggle-icon {
+  font-size: 1.15rem;
+  color: #23305a;
+  transition: color 0.2s;
+  line-height: 1;
+  display: block;
+  margin: 0 auto;
+}
+.theme-sun-icon {
+  stroke: #23305a;
+  color: transparent;
+  fill: none;
+  transition: stroke 0.2s, color 0.2s, fill 0.2s;
+}
+.theme-toggle-icon-btn.light:hover .theme-sun-icon {
+  color: #23305a;
+}
+.theme-toggle-icon-btn.light:hover .theme-sun-icon .theme-sun-moon {
+  fill: #23305a;
+  stroke: #23305a;
+}
+.theme-moon-icon {
+  stroke: #23305a;
+  fill: none;
+  transition: stroke 0.2s, fill 0.2s;
+}
+.theme-toggle-icon-btn.dark:hover .theme-moon-icon {
+  fill: #ffe082;
+  stroke: #ffe082;
+}
+
 .hamburger .icon,
 .hamburger .icon::before,
 .hamburger .icon::after {
   background-color: #23305a !important;
 }
 .hamburger .icon.open {
-  background-color: transparent !important;
+  font-size: 1.15rem;
 }
 .App-header {
   text-align: left !important;

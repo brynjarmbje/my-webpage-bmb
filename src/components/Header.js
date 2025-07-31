@@ -6,29 +6,12 @@ import '../styles/header.css';
 import { ReactComponent as IcelandFlag } from '../images/iceland-flag.svg';
 import { ReactComponent as USFlag } from '../images/us-flag.svg';
 import { useTheme } from '../ThemeContext';
-import { FaSun, FaMoon } from 'react-icons/fa';
-import Toggle from 'react-toggle';
 import 'react-toggle/style.css';
 
 function Header({ isMyllaPage, hideLogo }) {
     const [isNavVisible, setIsNavVisible] = useState(false);
     const menuRef = useRef(null); // Ref for the menu
-    const [isNeon, setIsNeon] = useState(false);
-    const [colorIndex, setColorIndex] = useState(0);
-    const colors = ['greenyellow', 'cyan', 'magenta', 'blue', 'red'];
-    const [isSwitched, setIsSwitched] = useState(false);
-    const [isFlipped, setIsFlipped] = useState(false);  // New state for flipping
-
-    const toggleEffects = () => {
-        setIsNeon(!isNeon);
-        setColorIndex((colorIndex + 1) % colors.length); // Cycle through colors
-        updateFilterColor(colors[colorIndex]); // Update the SVG filter color
-        setIsSwitched(!isSwitched);
-        setIsFlipped(!isFlipped);  // Toggle flipping
-        setTimeout(() => {
-            setIsFlipped(false); // Reset flip to original after animation
-        }, 1000);  // Assuming the duration of the flip is 1 second
-    };
+    // Removed BMB animated logo logic
 
     const toggleNav = () => {
         setIsNavVisible(!isNavVisible);
@@ -69,25 +52,66 @@ function Header({ isMyllaPage, hideLogo }) {
             <div className="header-content" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', position: 'relative', width: '100%' }}>
               {/* Left side: theme toggle */}
               <div className="header-left-controls" style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                <Toggle
-                  checked={theme === 'dark'}
-                  onChange={toggleTheme}
-                  icons={{
-                    checked: <FaMoon style={{ color: '#ffe082', fontSize: 18, marginLeft: 2, marginTop: 1 }} />, 
-                    unchecked: <FaSun style={{ color: '#f7c948', fontSize: 18, marginLeft: 2, marginTop: 1 }} />
-                  }}
+                <button
+                  onClick={toggleTheme}
                   aria-label="Toggle dark/light mode"
-                  className="theme-toggle-switch"
-                />
-                { !hideLogo && (
-                  <NavLink to="/" end className="logo-link" onClick={toggleEffects}>
-                    <div className={`bmb ${isNeon ? 'neon-effect' : ''} ${isSwitched ? 'switch-positions' : ''}`}>
-                      <div className="b"></div>
-                      <div className={`m ${isFlipped ? 'flip-effect' : ''}`}></div>
-                      <div className="b"></div>
-                    </div>
-                  </NavLink>
-                )}
+                  className={`theme-toggle-switch theme-toggle-icon-btn${theme === 'dark' ? ' dark' : ' light'}`}
+                >
+                  <span className="theme-toggle-svg-wrapper">
+                    <svg
+                      className={`theme-toggle-icon${theme === 'dark' ? ' theme-moon-icon' : ' theme-sun-icon'}`}
+                      viewBox="0 0 24 24"
+                      width="22"
+                      height="22"
+                      fill="none"
+                      stroke={theme === 'dark' ? '#ffe082' : '#23305a'}
+                      strokeWidth="2.2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <g>
+                        <circle
+                          className="theme-sun-moon"
+                          cx="12"
+                          cy="12"
+                          r={theme === 'dark' ? '9' : '5'}
+                          fill="currentColor"
+                          style={{
+                            transition: 'r 0.35s cubic-bezier(.4,2,.6,1), fill 0.2s',
+                          }}
+                        />
+                        {/* Sun rays, fade out in dark mode */}
+                        <g
+                          className="theme-sun-rays"
+                          style={{
+                            opacity: theme === 'dark' ? 0 : 1,
+                            transition: 'opacity 0.35s cubic-bezier(.4,2,.6,1)',
+                          }}
+                        >
+                          <line x1="12" y1="1" x2="12" y2="3" />
+                          <line x1="12" y1="21" x2="12" y2="23" />
+                          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                          <line x1="1" y1="12" x2="3" y2="12" />
+                          <line x1="21" y1="12" x2="23" y2="12" />
+                          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                        </g>
+                        {/* Moon crescent, fade in in dark mode */}
+                        <path
+                          className="theme-moon-crescent"
+                          d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"
+                          style={{
+                            opacity: theme === 'dark' ? 1 : 0,
+                            transition: 'opacity 0.35s cubic-bezier(.4,2,.6,1)',
+                            stroke: theme === 'dark' ? '#ffe082' : '#23305a',
+                          }}
+                        />
+                      </g>
+                    </svg>
+                  </span>
+                </button>
+                {/* BMB animated logo removed for new look */}
               </div>
               {/* Right side: language and hamburger */}
               <div className="header-fixed-controls">
@@ -102,7 +126,7 @@ function Header({ isMyllaPage, hideLogo }) {
                   <span className={`lang-half right${lang === 'en' ? ' active' : ''}`}>
                     <USFlag style={{ width: 22, height: 22, borderRadius: '50%' }} />
                   </span>
-                  <span className="lang-indicator" style={{ left: lang === 'is' ? 0 : '50%' }} />
+                  <span className="lang-indicator" style={{ left: lang === 'is' ? 0 : '50%', pointerEvents: 'none' }} />
                 </button>
                 <div className="hamburger" onClick={toggleNav}>
                   <div className={`icon ${isNavVisible ? 'open' : ''}`}></div>
@@ -127,12 +151,6 @@ function Header({ isMyllaPage, hideLogo }) {
             )}
         </header>
     );
-};
-const updateFilterColor = (color) => {
-    const flood = document.getElementById('glow-color');
-    if (flood) {
-        flood.setAttribute('flood-color', color);
-    }
 };
 
 export default Header;

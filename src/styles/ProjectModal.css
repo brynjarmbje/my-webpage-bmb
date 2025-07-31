@@ -1,3 +1,35 @@
+.project-modal,
+[data-theme='dark'] .project-modal {
+  transition: background 0.3s, color 0.3s;
+}
+[data-theme='dark'] .project-modal {
+  background: linear-gradient(120deg, #23263a 70%, #1a223a 100%) !important;
+  border-color: #23305a;
+  box-shadow: 0 8px 32px 0 #000a 0 2px 24px 0 #23305a55;
+}
+[data-theme='dark'] .project-modal-close {
+  color: #ffe082;
+  text-shadow: 0 2px 8px #23305a;
+}
+[data-theme='dark'] .project-modal-close:hover {
+  color: #fffbe6;
+  text-shadow: 0 2px 12px #ffe082;
+}
+[data-theme='dark'] .project-modal-caption {
+  color: #ffe082;
+  text-shadow: 0 1px 6px #23305a;
+}
+[data-theme='dark'] .project-modal-desc {
+  color: #fffbe6;
+  text-shadow: 0 1px 6px #23305a;
+}
+[data-theme='dark'] .project-modal-img {
+  background: #23263a;
+  border-color: #23305a;
+}
+[data-theme='dark'] .project-modal-zoom-overlay {
+  background: rgba(26, 34, 58, 0.97);
+}
 /* --- Image Zoom Overlay --- */
 .project-modal-zoom-overlay {
   position: fixed;
