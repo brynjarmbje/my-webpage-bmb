@@ -137,10 +137,7 @@ function Header({ isMyllaPage, hideLogo }) {
                 <nav ref={menuRef} className={`mobile-nav ${isNavVisible ? 'open' : ''}`}>
                     <ul>
                         <li><NavLink to="/" onClick={() => setIsNavVisible(false)}>Home</NavLink></li>
-                        <li><NavLink to="/new-home" onClick={() => setIsNavVisible(false)}>New Home (Preview)</NavLink></li>
-                        <li><NavLink to="/music" onClick={() => setIsNavVisible(false)}>Music</NavLink></li>
-                        <li><NavLink to="/music-compositions" onClick={() => setIsNavVisible(false)}>Music CV</NavLink></li>
-                        <li><NavLink to="/bio" onClick={() => setIsNavVisible(false)}>Bio</NavLink></li>
+                        {/* Removed: New Home (Preview), Music, Music CV, Bio */}
                         <li className='myllaLink'><NavLink to="/mylla" onClick={() => setIsNavVisible(false)}><FaGamepad /> Mylla</NavLink></li>
                         <li className='line'></li>
                         <li><a href="https://github.com/brynjarmbje" target="_blank" rel="noopener noreferrer" onClick={() => setIsNavVisible(false)}><FaGithub /> GitHub</a></li>

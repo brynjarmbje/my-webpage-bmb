@@ -1,3 +1,4 @@
+import heroImg from '../images/bmb-eldgos.jpg';
 import React from 'react';
 import { useLanguage } from '../LanguageContext';
 import { motion } from 'framer-motion';
@@ -17,6 +18,20 @@ const ctaVariants = {
 };
 
 const AnimatedHero = () => {
+  // Hero image style
+  const heroImgStyle = {
+    width: 'min(220px, 70vw)',
+    height: 'min(220px, 70vw)',
+    objectFit: /** @type {'cover'} */ ('cover'),
+    borderRadius: '1.5rem',
+    boxShadow: '0 6px 32px 0 #6c7a9244, 0 2px 16px 0 #23305a22',
+    border: '2.5px solid #e3e7f1',
+    margin: '0 auto 1.1rem auto', // reduce bottom margin to bring content up
+    display: 'block',
+    background: '#f7f8fa',
+    filter: 'grayscale(1) saturate(1.08) contrast(1.04)',
+    transition: 'box-shadow 0.22s',
+  };
   const { lang } = useLanguage();
   // PDF links
   const pdfLinks = {
@@ -60,6 +75,7 @@ const AnimatedHero = () => {
       animate="visible"
       variants={heroVariants}
     >
+      <img src={heroImg} alt="Brynjar Már Björnsson smiling in front of a volcano" style={heroImgStyle} />
       <motion.p className="new-hero-subtitle animated-subtitle" variants={subtitleVariants} style={{ fontSize: '1.3rem', margin: '0 0 1.5rem 0', fontWeight: 500 }}>
         {t.message}
       </motion.p>

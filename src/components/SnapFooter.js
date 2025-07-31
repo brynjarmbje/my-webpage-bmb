@@ -9,17 +9,17 @@ const links = [
     icon: <FaGithub size={32} />, label: 'GitHub',
   },
   {
-    href: 'https://www.linkedin.com/in/brynjar-m%C3%A1r-bj%C3%B6rnsson-1b1b1b1b/',
+    href: 'https://linkedin.com/in/brynjarmb',
     icon: <FaLinkedin size={32} />, label: 'LinkedIn',
   },
   {
-    href: 'https://soundcloud.com/brynjar-m-bjornsson',
+    href: 'https://soundcloud.com/brynjar-mar-bjornsson',
     icon: <FaSoundcloud size={32} />, label: 'SoundCloud',
   },
 ];
 
-const phone = '+354 777 1234'; // Replace with your real phone
-const email = 'brynjar@example.com'; // Replace with your real email
+const phone = '+354 847 5643';
+const email = 'brynjarbmb@gmail.com';
 
 const SnapFooter = () => {
   const { lang } = useLanguage();

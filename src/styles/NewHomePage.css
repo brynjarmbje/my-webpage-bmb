@@ -1,3 +1,9 @@
+/* Move hero content up only on mobile */
+@media (max-width: 600px) {
+  .new-hero.animated-hero {
+    padding-top: 0rem !important;
+  }
+}
 /* Fruma card image: like hugbotvo-image but slightly shorter */
 .fruma-image {
   width: 75px !important;
@@ -65,8 +71,8 @@
   justify-content: center;
 }
 .footer-contact-btn {
-  background: #23305a;
-  color: #ffe082;
+  background: #f7f8fa;
+  color: #23305a;
   border-radius: 0.7rem;
   padding: 0.8rem 1.3rem;
   font-size: 1.1rem;
@@ -80,6 +86,14 @@
   transition: background 0.2s, color 0.2s;
 }
 .footer-contact-btn:hover {
+  background: #23305a;
+  color: #ffe082;
+}
+[data-theme='dark'] .footer-contact-btn {
+  background: #23305a;
+  color: #ffe082;
+}
+[data-theme='dark'] .footer-contact-btn:hover {
   background: #ffe082;
   color: #23305a;
 }
