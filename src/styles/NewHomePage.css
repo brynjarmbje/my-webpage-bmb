@@ -1,3 +1,15 @@
+/* Fruma card image: like hugbotvo-image but slightly shorter */
+.fruma-image {
+  width: 75px !important;
+  aspect-ratio: 0.5 !important;
+  height: auto !important;
+  margin: 0 auto;
+  border-radius: 1.1rem;
+  box-shadow: 0 2px 16px 0 #6c7a9244, 0 1px 8px 0 #1a223a22;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 /* --- Snap Footer Modern Section --- */
 .snap-footer {
   min-height: 100vh;

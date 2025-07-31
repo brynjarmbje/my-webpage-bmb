@@ -3,8 +3,11 @@ import { motion, useInView } from 'framer-motion';
 import { useLanguage } from '../LanguageContext';
 
 import ProjectModal from './ProjectModal';
+
 import dashImg from '../images/Fiix-Neuron_Dash.jpeg';
 import sensImg from '../images/Fiix-Neuron_Sens.jpeg';
+import frumaMain from '../images/Fruma_Main-screen.png';
+import frumaLogin from '../images/Fruma_Log-in.png';
 
 
 const featuredVariants = {
@@ -27,7 +30,9 @@ const descVariants = {
 const AnimatedFeatured = () => {
   const { lang } = useLanguage();
   // 4 projects: Mylla (site), Portfolio (site), Middleware, Hugbotvo
-  const [modalOpen, setModalOpen] = useState(false);
+  // modalOpen: false | 'middleware' | 'fruma'
+  // modalOpen: false | 'middleware' | 'fruma'
+  const [modalOpen, setModalOpen] = useState(/** @type {false | 'middleware' | 'fruma'} */(false));
   const projects = [
     {
       title: lang === 'is' ? 'Mylla – Online' : 'Mylla – Online TicTacToe',
@@ -38,12 +43,16 @@ const AnimatedFeatured = () => {
       onClick: null,
     },
     {
-      title: lang === 'is' ? 'Portfolio – Vefsíða' : 'Portfolio – Website',
-      desc: 'React, Framer Motion',
-      image: require('../images/bmb-logo2.png'),
-      link: 'https://brynjar.dev',
-      linkType: lang === 'is' ? 'Á vefnum' : 'Live site',
-      onClick: null,
+      title: lang === 'is' ? 'Fruma – Heilsudagbók' : 'Fruma – Health Diary',
+      desc:
+        lang === 'is'
+          ? 'React Native, Expo, TypeScript, Android'
+          : 'React Native, Expo, TypeScript, Android',
+      image: frumaMain,
+      link: '#',
+      linkType: lang === 'is' ? 'Skoða' : 'View',
+      onClick: () => setModalOpen('fruma'),
+      extraImages: [frumaLogin],
     },
     {
       title: 'Industrial IoT Middleware',
@@ -51,7 +60,7 @@ const AnimatedFeatured = () => {
       image: dashImg,
       link: '#',
       linkType: lang === 'is' ? 'Skoða' : 'View',
-      onClick: () => setModalOpen(true),
+      onClick: () => setModalOpen('middleware'),
     },
     {
       title: lang === 'is' ? 'Læralærlær – Íslensku leikur' : 'Læralærlær – Language Game',
@@ -89,10 +98,11 @@ const AnimatedFeatured = () => {
           {firstGroup.map((proj, idx) => {
             const isHugbotvo = proj.title.includes('Læralærlær');
             const isMiddleware = proj.title.includes('Middleware');
+            const isFruma = proj.title.includes('Fruma');
             return (
               <motion.a
                 key={proj.title}
-                className={`featured-card${isHugbotvo ? ' hugbotvo-card' : ''}${isMiddleware ? ' middleware-card' : ''}`}
+                className={`featured-card${isHugbotvo ? ' hugbotvo-card' : ''}${isMiddleware ? ' middleware-card' : ''}${isFruma ? ' hugbotvo-card' : ''}`}
                 href={proj.onClick ? undefined : proj.link}
                 target={proj.link && proj.link.startsWith('/') ? '_self' : '_blank'}
                 rel="noopener noreferrer"
@@ -104,13 +114,13 @@ const AnimatedFeatured = () => {
                 onClick={proj.onClick ? (e) => { e.preventDefault(); proj.onClick(); } : undefined}
               >
                 <motion.div
-                  className={`featured-image${isHugbotvo ? ' hugbotvo-image' : ''}${isMiddleware ? ' middleware-image' : ''}`}
+                  className={`featured-image${isHugbotvo ? ' hugbotvo-image' : ''}${isMiddleware ? ' middleware-image' : ''}${isFruma ? ' fruma-image' : ''}`}
                   style={{ backgroundImage: `url(${proj.image})` }}
                   variants={imageVariants}
                   animate={isInView1 ? "visible" : "hidden"}
                   initial="hidden"
                 />
-                <motion.div className="featured-description" variants={descVariants} animate={isInView1 ? "visible" : "hidden"} initial="hidden" style={isHugbotvo || isMiddleware ? { marginTop: '1.1rem', textAlign: 'center' } : {}}>
+                <motion.div className="featured-description" variants={descVariants} animate={isInView1 ? "visible" : "hidden"} initial="hidden" style={isHugbotvo || isMiddleware || isFruma ? { marginTop: '1.1rem', textAlign: 'center' } : {}}>
                   <h3 style={{ color: '#23305a', marginBottom: '0.3rem', fontWeight: 700, fontSize: '1.1rem', textAlign: 'center' }}>{proj.title}</h3>
                   <p style={{ color: '#23305a', marginBottom: '0.5rem', fontSize: '0.98rem', textAlign: 'center' }}>{proj.desc}</p>
                   <span className="featured-linktype" style={{ color: '#1a223a', fontSize: '0.95rem', fontWeight: 500 }}>{proj.linkType}</span>
@@ -120,14 +130,34 @@ const AnimatedFeatured = () => {
           })}
         </div>
         <ProjectModal
-          key={lang}
-          open={modalOpen}
+          key={lang + '-middleware'}
+          open={modalOpen === 'middleware'}
           onClose={() => setModalOpen(false)}
           dashImg={dashImg}
           sensImg={sensImg}
+          dashCaption={(lang) => lang === 'is' ? 'Yfirlit: Byrjaðu að fylgjast með mæligögnum og fáðu viðvaranir' : 'Dashboard: Start monitoring sensor readings and show warnings'}
+          sensCaption={(lang) => lang === 'is' ? 'Skynjarar: Kortleggja skynjara á eignir og stilla viðmiðunarmörk' : 'Sensor page: Map sensors to assets and set thresholds'}
           description={lang === 'is'
             ? 'Middleware lausn sem tengir skynjara við vélar og sendir mæligögn í stjórnunarkerfi. Skrifuð í Python og JavaScript, tengist tveimur API-um, sýnir rauntímagögn og viðvaranir.'
             : 'Middleware project (Python, JavaScript) that connects sensors to machines and sends sensor readings into a management system by connecting to 2 different APIs. Dashboard shows live readings and warnings. Sensor page maps sensors to assets and sets thresholds.'}
+        />
+        <ProjectModal
+          key={lang + '-fruma'}
+          open={modalOpen === 'fruma'}
+          onClose={() => setModalOpen(false)}
+          dashImg={frumaMain}
+          sensImg={frumaLogin}
+          dashCaption={(lang) => lang === 'is' ? 'Aðalskjár: Skráðu nýtt heilsufarsatvik eða skoðaðu söguna þína' : 'Main screen: Log a new health episode or view your history'}
+          sensCaption={(lang) => lang === 'is' ? 'Innskráning: Öruggt aðgangskerfi fyrir notendur' : 'Login screen: Secure user authentication'}
+          description={lang === 'is'
+            ? (<span>
+                Fruma er Android app skrifað í React Native/Expo og TypeScript til að skrá og fylgjast með heilsufarsatvikum, einkennum og lyfjum.<br/>
+                <a href="https://github.com/brynjarmbje/fruma_mobile" target="_blank" rel="noopener noreferrer" style={{color:'#1a223a',fontWeight:600}}>GitHub</a>
+              </span>)
+            : (<span>
+                Fruma is an Android app built with React Native/Expo and TypeScript to log and track health episodes, symptoms, and medications.<br/>
+                <a href="https://github.com/brynjarmbje/fruma_mobile" target="_blank" rel="noopener noreferrer" style={{color:'#1a223a',fontWeight:600}}>GitHub</a>
+              </span>)}
         />
       </motion.section>
       <motion.section

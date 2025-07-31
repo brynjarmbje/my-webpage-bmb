@@ -1,3 +1,16 @@
+/* Smaller images for Fruma modal */
+.fruma-modal-img {
+  max-width: 110px;
+  max-height: 220px;
+  width: 90px;
+  height: auto;
+  border-radius: 1.1rem;
+  box-shadow: 0 2px 16px 0 #6c7a9244, 0 1px 8px 0 #1a223a22;
+  background: #f7f8fa;
+  object-fit: contain;
+  margin: 0.5rem auto 0.2rem auto;
+  display: block;
+}
 .project-modal,
 [data-theme='dark'] .project-modal {
   transition: background 0.3s, color 0.3s;
