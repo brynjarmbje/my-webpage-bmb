@@ -406,10 +406,18 @@ html[data-theme='dark'] .animated-music-player .new-music-item:active:not(.activ
     overflow-x: hidden !important;
     box-sizing: border-box !important;
   }
-  .new-hero, .new-about, .new-featured, .new-music, .new-contact {
+  .new-about, .new-featured, .new-music, .new-contact {
     max-width: 98vw !important;
     padding: 1.2rem 0.7rem !important;
     border-radius: 1rem !important;
+    margin-top: 1.5rem !important;
+    margin-bottom: 1rem !important;
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
+  }
+
+  .new-hero {
+    padding: 1.2rem 0.7rem !important;
     margin-top: 1.5rem !important;
     margin-bottom: 1rem !important;
     box-sizing: border-box !important;
@@ -466,6 +474,15 @@ html[data-theme='dark'] .animated-music-player .new-music-item:active:not(.activ
   }
 }
 @media (max-width: 480px) {
+
+  .middleware-image {
+    width: 110px !important;
+  }
+
+  .hugbotvo-image {
+    width: 50px !important;
+  }
+
   /* Hide music player track counter and song list title on mobile (robust selectors) */
   .animated-music-player > div[style*="margin-top: 0.7rem"][style*="text-align: center"][style*="opacity: 1"] {
     display: none !important;
