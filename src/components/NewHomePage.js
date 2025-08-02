@@ -17,9 +17,26 @@ const NewHomePage = () => {
 
   return (
     <div className="new-homepage-container">
-      <AnimatedHero />
-      <AnimatedFeatured />
-      <AnimatedMusic />
+      {/* Wide Desktop Layout */}
+      <div className="wide-desktop-layout">
+        <div className="left-column">
+          <AnimatedFeatured />
+        </div>
+        <div className="center-column">
+          <AnimatedHero />
+        </div>
+        <div className="right-column">
+          <AnimatedMusic />
+        </div>
+      </div>
+      
+      {/* Standard Mobile/Tablet Layout */}
+      <div className="standard-layout">
+        <AnimatedHero />
+        <AnimatedFeatured />
+        <AnimatedMusic />
+      </div>
+      
       <SnapFooter />
     </div>
   );

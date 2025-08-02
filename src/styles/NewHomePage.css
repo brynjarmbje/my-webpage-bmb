@@ -166,6 +166,456 @@ html, body, #root {
   scroll-behavior: smooth;
 }
 
+/* Wide Desktop Layout - Hidden by default */
+.wide-desktop-layout {
+  display: none;
+}
+
+/* Standard Layout - Visible by default */
+.standard-layout {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Wide Desktop Breakpoint - 1400px and above */
+@media (min-width: 1400px) {
+  .new-homepage-container {
+    scroll-snap-type: none !important;
+    background: linear-gradient(135deg, #e3e7f1 0%, #f7f8fa 50%, #e3e7f1 100%);
+    overflow-y: auto;
+    min-height: 100vh;
+    padding-top: 70px; /* Reduced from 60px */
+  }
+  
+  .wide-desktop-layout {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr 1fr; /* Make hero (center) thinner, more space for projects */
+    gap: 2rem; /* Increased gap for shadow space */
+    padding: 1rem; /* Reduced from 2rem */
+    min-height: calc(100vh - 90px); /* Reduced overall height */
+    align-items: stretch; /* Make all columns same height */
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(20px);
+    border-radius: 2rem;
+    margin: 0.5rem; /* Reduced margin */
+    box-shadow: 0 8px 32px rgba(35, 48, 90, 0.15);
+  }
+  
+  .standard-layout {
+    display: none;
+  }
+  
+  .left-column,
+  .center-column,
+  .right-column {
+    height: 100%; /* Take full column height */
+    overflow: visible;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Align all tops together */
+    align-items: center; /* Center content horizontally */
+    padding: 0; /* Remove padding to allow shadows to extend */
+    background: transparent; /* No background */
+    border-radius: 1.5rem;
+  }
+  
+  .center-column {
+    position: relative;
+    z-index: 2;
+    background: transparent; /* Remove card background */
+    border: none; /* Remove border */
+    box-shadow: none; /* Remove shadow */
+    transform: none; /* Remove scaling */
+    transition: none; /* Remove transitions */
+  }
+  
+  .center-column:hover {
+    transform: none; /* Remove hover effects */
+    box-shadow: none;
+  }
+  
+  .left-column,
+  .right-column {
+    position: relative;
+    z-index: 1;
+    background: transparent; /* Remove backgrounds */
+    border: none; /* Remove borders */
+    transition: none; /* Remove transitions */
+  }
+  
+  .left-column:hover,
+  .right-column:hover {
+    background: transparent; /* Remove hover backgrounds */
+    transform: none; /* Remove hover transforms */
+  }
+}
+
+/* Ultra-wide screens */
+@media (min-width: 1800px) {
+  .wide-desktop-layout {
+    grid-template-columns: 1.4fr 0.8fr 1fr; /* Keep hero thin, more space for projects */
+    gap: 2.5rem; /* More gap on ultra-wide */
+    padding: 1.5rem;
+    max-width: 1600px; /* Prevent content from being too spread out */
+    margin: 0.5rem auto;
+  }
+  
+  .wide-desktop-layout .hero-img-mode {
+    width: min(200px, 50vw) !important; /* Even bigger on ultra-wide */
+    height: min(200px, 50vw) !important;
+  }
+  
+  .wide-desktop-layout .new-hero-subtitle {
+    font-size: 1rem !important; /* Slightly bigger text */
+  }
+  
+  .wide-desktop-layout .featured-image {
+    width: 80px !important; /* Scaled down from base 90px for ultra-wide */
+    height: 80px !important; /* Same proportions as other screen sizes */
+  }
+  
+  /* Maintain aspect ratios for special project images on ultra-wide */
+  .wide-desktop-layout .hugbotvo-image {
+    width: 70px !important; /* Scaled up for ultra-wide but maintain aspect ratio */
+    aspect-ratio: 0.47 !important;
+    height: auto !important;
+  }
+  
+  .wide-desktop-layout .middleware-image {
+    width: 120px !important; /* Scaled up for ultra-wide but maintain aspect ratio */
+    aspect-ratio: 1.29 !important;
+    height: auto !important;
+  }
+  
+  .wide-desktop-layout .fruma-image {
+    width: 70px !important; /* Scaled up for ultra-wide but maintain aspect ratio */
+    aspect-ratio: 0.5 !important;
+    height: auto !important;
+  }
+  
+  .wide-desktop-layout .featured-card {
+    padding: 1.5rem; /* More padding on ultra-wide */
+  }
+  
+  .wide-desktop-layout .animated-music-player {
+    transform: scale(1.05); /* Slightly bigger music player */
+  }
+}
+
+/* Wide Desktop Component Adjustments */
+@media (min-width: 1400px) {
+  /* Hero adjustments for center column */
+  /* Disable all scroll snap behaviors in wide layout */
+  .wide-desktop-layout * {
+    scroll-snap-align: none !important;
+    scroll-snap-stop: normal !important;
+  }
+  
+  /* Hero section in center column */
+  .wide-desktop-layout .new-hero {
+    min-height: auto;
+    height: auto; /* Let content determine height */
+    scroll-snap-align: none;
+    padding: 3rem 0.5rem 1rem 0.5rem; /* Increase top padding to align hero image box */
+    margin: 0; /* Remove margin constraints */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Align to top */
+    align-items: center;
+    text-align: center;
+    width: 100%; /* Full width */
+    max-width: none;
+    background: transparent !important; /* Remove background */
+    border: none !important; /* Remove border */
+    box-shadow: none !important; /* Remove shadow */
+  }
+  
+  /* Ensure hero image is properly sized for desktop layout */
+  .wide-desktop-layout .hero-img-mode {
+    width: min(330px, 75vw) !important; /* Bigger image */
+    height: min(330px, 75vw) !important;
+    margin: 2rem auto 1.2rem auto !important; /* Add top margin to push image down */
+  }
+  
+  /* Hero text sizing - compact 2-line approach */
+  .wide-desktop-layout .new-hero-subtitle {
+    font-size: 0.95rem !important; /* Smaller text */
+    margin-bottom: 1rem !important;
+    line-height: 1.3 !important;
+    max-width: 95% !important;
+    /* Force text into 2 lines */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  /* Hero buttons - more compact, only resume button on desktop */
+  .wide-desktop-layout .new-hero-cta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem; /* Reduced gap */
+    width: 100%;
+    max-width: 180px; /* Smaller width */
+  }
+  
+  /* Hide projects and music buttons on desktop since they're visible */
+  .wide-desktop-layout .new-btn:not(.resume-btn) {
+    display: none !important;
+  }
+  
+  .wide-desktop-layout .new-btn {
+    padding: 0.6rem 0.8rem !important; /* Smaller padding */
+    font-size: 0.8rem !important; /* Smaller font */
+    border-radius: 0.6rem !important;
+    font-weight: 600 !important;
+  }
+  
+  /* Featured projects in left column - now with more space */
+  .wide-desktop-layout .new-featured {
+    padding: 2rem 0.5rem 1rem 0.5rem; /* Add top padding to align with music player */
+    margin: 0; /* Remove margin constraints */
+    width: 100%; /* Full width for shadow blending */
+    height: auto; /* Let content determine height */
+    overflow: visible; /* Allow shadows to extend */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Align to top */
+  }
+  
+  .wide-desktop-layout .animated-section-title {
+    display: none !important; /* Hide projects title on desktop */
+  }
+  
+  .wide-desktop-layout .featured-grid,
+  .wide-desktop-layout .featured-grid-2x2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Back to 2 columns with more space */
+    gap: 1rem; /* Increased gap for hover effects */
+    max-width: 100%;
+    width: 100%;
+    max-height: none; /* Remove height restriction */
+    min-height: auto; /* Remove min height */
+    overflow: visible; /* No clipping */
+    scrollbar-width: thin;
+    scrollbar-color: rgba(35, 48, 90, 0.2) transparent;
+    background: transparent; /* Blend with page background */
+    padding: 0; /* Remove padding - let shadows extend naturally */
+    margin: 0; /* Remove margin that might cause issues */
+    margin-top: 0 !important; /* Remove any top margin to move projects up */
+  }
+  
+  .wide-desktop-layout .featured-grid::-webkit-scrollbar {
+    width: 4px;
+  }
+  
+  .wide-desktop-layout .featured-grid::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .wide-desktop-layout .featured-grid::-webkit-scrollbar-thumb {
+    background: rgba(35, 48, 90, 0.2);
+    border-radius: 2px;
+  }
+  
+  .wide-desktop-layout .featured-grid::-webkit-scrollbar-thumb:hover {
+    background: rgba(35, 48, 90, 0.3);
+  }
+  
+  .wide-desktop-layout .featured-card {
+    padding: 1.2rem; /* Slightly more padding for better proportions */
+    border-radius: 1.2rem;
+    background: rgba(247, 248, 250, 0.7); /* Slightly more opaque */
+    border: 1px solid rgba(35, 48, 90, 0.08); /* Subtle border */
+    box-shadow: 0 4px 12px rgba(35, 48, 90, 0.1); /* More prominent shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    cursor: pointer;
+    backdrop-filter: blur(15px); /* More blur for glass effect */
+    margin: 0; /* Remove margin - let shadows extend naturally */
+  }
+  
+  .wide-desktop-layout .featured-card:hover {
+    transform: translateY(-4px) scale(1.02); /* More dramatic hover */
+    box-shadow: 0 8px 24px rgba(35, 48, 90, 0.18); /* Enhanced shadow on hover */
+    background: rgba(247, 248, 250, 0.9); /* More opaque on hover */
+  }
+  
+  .wide-desktop-layout .featured-image {
+    width: 70px !important; /* Scaled down from base 90px */
+    height: 70px !important; /* Same proportions as other screen sizes */
+    margin: 0 auto 0.8rem auto !important;
+  }
+  
+  /* Maintain aspect ratios for special project images on desktop */
+  .wide-desktop-layout .hugbotvo-image {
+    width: 60px !important; /* Scaled down but maintain aspect ratio */
+    aspect-ratio: 0.47 !important;
+    height: auto !important;
+  }
+  
+  .wide-desktop-layout .middleware-image {
+    width: 110px !important; /* Scaled down but maintain aspect ratio */
+    aspect-ratio: 1.29 !important;
+    height: auto !important;
+  }
+  
+  .wide-desktop-layout .fruma-image {
+    width: 60px !important; /* Scaled down but maintain aspect ratio */
+    aspect-ratio: 0.5 !important;
+    height: auto !important;
+  }
+  
+  .wide-desktop-layout .featured-description h3 {
+    font-size: 1.05rem !important; /* Bigger with more space */
+    margin-bottom: 0.6rem !important;
+    font-weight: 600 !important;
+    color: #23305a !important;
+    line-height: 1.2 !important;
+  }
+  
+  .wide-desktop-layout .featured-description p {
+    font-size: 0.9rem !important; /* Better readability */
+    margin-bottom: 0.8rem !important;
+    line-height: 1.4 !important;
+    color: #1a223a !important;
+    opacity: 0.8;
+  }
+  
+  .wide-desktop-layout .featured-linktype {
+    font-size: 0.8rem !important;
+    padding: 0.4rem 0.8rem !important;
+    border-radius: 0.5rem !important;
+    background: rgba(35, 48, 90, 0.1) !important;
+    color: #23305a !important;
+    font-weight: 500 !important;
+  }
+  
+  /* Hero section in center column - simplified */
+  .wide-desktop-layout .new-hero {
+    padding: 0;
+    text-align: center;
+  }
+  
+  .wide-desktop-layout .featured-project-card {
+    max-width: none;
+    width: 100%;
+  }
+  
+  /* Music player in right column - optimized for space */
+  .wide-desktop-layout .new-music {
+    padding: 2rem 0.5rem 1rem 0.5rem; /* Consistent top padding with hero and projects */
+    margin: 0; /* Remove margin constraints */
+    width: 100%; /* Full width for shadow blending */
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Align to top */
+    overflow: visible; /* Allow shadows to extend */
+  }
+  
+  /* Optimize music player for wide layout */
+  .wide-desktop-layout .animated-music-player {
+    transform: scale(1); /* Full size now */
+    transform-origin: center;
+    width: 100%;
+    max-width: none;
+    max-height: calc(100vh - 160px); /* More space */
+    overflow: visible; /* Allow shadows to extend beyond container */
+    background: transparent; /* Remove background to avoid constraint */
+    border: none; /* Remove border */
+    box-shadow: none; /* Remove shadow - let inner elements handle shadows */
+  }
+  
+  .wide-desktop-layout .music-section-title {
+    font-size: 1.2rem !important; /* Bigger title */
+    margin-bottom: 0.6rem !important; /* Reduced margin */
+    margin-top: 0 !important; /* Remove top margin */
+    text-align: center;
+    font-weight: 700 !important;
+    background: linear-gradient(135deg, #23305a, #1a223a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .wide-desktop-layout .music-track-list {
+    max-height: 280px; /* More height */
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(35, 48, 90, 0.3) transparent;
+  }
+  
+  /* Music player controls scaling */
+  .wide-desktop-layout .rhap_container {
+    padding: 0.8rem !important; /* Reduced padding */
+    border-radius: 1rem !important;
+    background: rgba(255, 255, 255, 0.6) !important; /* More transparent */
+    margin-bottom: 0.8rem !important; /* Reduced margin */
+    box-shadow: 0 2px 8px rgba(35, 48, 90, 0.08) !important; /* Subtle shadow */
+  }
+  
+  .wide-desktop-layout .music-track-item {
+    padding: 0.5rem !important;
+    margin-bottom: 0.3rem !important;
+    font-size: 0.8rem !important;
+  }
+  
+  .wide-desktop-layout .music-player-card {
+    max-width: none;
+    width: 100%;
+  }
+  
+  /* Smooth transitions for layout changes */
+  .wide-desktop-layout .new-hero,
+  .wide-desktop-layout .new-featured,
+  .wide-desktop-layout .new-music {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* Hide footer in wide desktop layout */
+  .wide-desktop-layout .snap-footer {
+    display: none !important;
+  }
+  
+  /* Dark theme support for wide layout */
+  [data-theme='dark'] .new-homepage-container {
+    background: linear-gradient(135deg, #181c27 0%, #23313e 50%, #181c27 100%);
+  }
+  
+  [data-theme='dark'] .left-column,
+  [data-theme='dark'] .center-column,
+  [data-theme='dark'] .right-column {
+    background: transparent; /* Remove dark theme backgrounds */
+    border: none; /* Remove borders */
+    box-shadow: none; /* Remove shadows */
+  }
+  
+  [data-theme='dark'] .center-column {
+    background: transparent; /* Remove dark theme background */
+  }
+  
+  [data-theme='dark'] .left-column:hover,
+  [data-theme='dark'] .right-column:hover {
+    box-shadow: none; /* Remove hover shadows */
+  }
+  
+  /* Fix project card text colors in dark mode desktop */
+  [data-theme='dark'] .wide-desktop-layout .featured-description h3 {
+    color: #f7f8fa !important;
+  }
+  
+  [data-theme='dark'] .wide-desktop-layout .featured-description p {
+    color: #e3e7f1 !important;
+  }
+  
+  [data-theme='dark'] .wide-desktop-layout .featured-linktype {
+    color: #ffe082 !important;
+    background: rgba(255, 224, 130, 0.15) !important;
+  }
+}
+
 /* Make hamburger menu lines visible on light background (always apply) */
 .hamburger span,
 .hamburger .line,
@@ -179,6 +629,17 @@ html, body, #root {
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
   margin-top: 1.2rem;
+}
+
+.featured-grid-2x2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 1.2rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 .featured-card {
   display: flex;
@@ -234,6 +695,14 @@ html, body, #root {
     grid-template-columns: 1fr;
     gap: 1.2rem;
   }
+  
+  .featured-grid-2x2 {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    gap: 1.2rem;
+    max-width: 340px;
+  }
+  
   .featured-card {
     padding: 1.1rem 0.7rem 1rem 0.7rem;
     max-width: 340px;
@@ -286,6 +755,11 @@ html, body, #root {
 .animated-music-player:hover {
   box-shadow: 0 12px 36px 0 #6c7a9218, 0 8px 32px 0 #1a223a37;
   border: 1.5px solid #6c7a92;
+}
+
+/* Hide light effect in dark mode */
+[data-theme='dark'] .animated-music-player::before {
+  display: none !important;
 }
 
 .animated-music-player .rhap_container {
@@ -923,7 +1397,7 @@ body.no-indexcss {
 
 /* Scroll down indicator for hero */
 
-/* Minimal scroll indicator for hero */
+/* Minimal scroll indicator for hero - hidden on desktop */
 .hero-scroll-indicator {
   position: absolute;
   left: 50%;
@@ -936,6 +1410,13 @@ body.no-indexcss {
   justify-content: center;
   pointer-events: none;
   z-index: 10;
+}
+
+/* Hide scroll indicator on desktop */
+@media (min-width: 1400px) {
+  .hero-scroll-indicator {
+    display: none !important;
+  }
 }
 .hero-scroll-dot {
   width: 8px;

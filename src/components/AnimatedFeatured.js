@@ -73,29 +73,25 @@ const AnimatedFeatured = () => {
       onClick: null,
     },
   ];
-  const ref1 = useRef(null);
-  const ref2 = useRef(null);
-  const isInView1 = useInView(ref1, { once: true, margin: '-40px' });
-  const isInView2 = useInView(ref2, { once: true, margin: '-40px' });
-  // Split projects into two groups for mobile
-  const firstGroup = projects.slice(0, 2);
-  const secondGroup = projects.slice(2);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: '-40px' });
+
   return (
     <>
       <motion.section
-        ref={ref1}
-        key={lang + '-1'}
+        ref={ref}
+        key={lang}
         id="featured-section"
-        className="new-featured animated-featured mobile-featured-group"
+        className="new-featured animated-featured"
         initial="hidden"
-        animate={isInView1 ? "visible" : "hidden"}
+        animate={isInView ? "visible" : "hidden"}
         variants={featuredVariants}
       >
-        <motion.h2 className="animated-section-title" variants={cardVariants} animate={isInView1 ? "visible" : "hidden"} initial="hidden">
+        <motion.h2 className="animated-section-title" variants={cardVariants} animate={isInView ? "visible" : "hidden"} initial="hidden">
           {lang === 'is' ? 'Verkefni' : 'Projects'}
         </motion.h2>
-        <div className="featured-grid">
-          {firstGroup.map((proj, idx) => {
+        <div className="featured-grid-2x2">
+          {projects.map((proj, idx) => {
             const isHugbotvo = proj.title.includes('Læralærlær');
             const isMiddleware = proj.title.includes('Middleware');
             const isFruma = proj.title.includes('Fruma');
@@ -107,20 +103,24 @@ const AnimatedFeatured = () => {
                 target={proj.link && proj.link.startsWith('/') ? '_self' : '_blank'}
                 rel="noopener noreferrer"
                 variants={cardVariants}
-                animate={isInView1 ? "visible" : "hidden"}
+                animate={isInView ? "visible" : "hidden"}
                 initial="hidden"
                 whileHover={{ scale: 1.04, boxShadow: '0 4px 24px #6c7a9255' }}
-                style={{ textDecoration: 'none', cursor: proj.onClick ? 'pointer' : 'pointer' }}
+                style={{ 
+                  textDecoration: 'none', 
+                  cursor: proj.onClick ? 'pointer' : 'pointer',
+                  animationDelay: `${idx * 0.15}s`
+                }}
                 onClick={proj.onClick ? (e) => { e.preventDefault(); proj.onClick(); } : undefined}
               >
                 <motion.div
                   className={`featured-image${isHugbotvo ? ' hugbotvo-image' : ''}${isMiddleware ? ' middleware-image' : ''}${isFruma ? ' fruma-image' : ''}`}
                   style={{ backgroundImage: `url(${proj.image})` }}
                   variants={imageVariants}
-                  animate={isInView1 ? "visible" : "hidden"}
+                  animate={isInView ? "visible" : "hidden"}
                   initial="hidden"
                 />
-                <motion.div className="featured-description" variants={descVariants} animate={isInView1 ? "visible" : "hidden"} initial="hidden" style={isHugbotvo || isMiddleware || isFruma ? { marginTop: '1.1rem', textAlign: 'center' } : {}}>
+                <motion.div className="featured-description" variants={descVariants} animate={isInView ? "visible" : "hidden"} initial="hidden" style={isHugbotvo || isMiddleware || isFruma ? { marginTop: '1.1rem', textAlign: 'center' } : {}}>
                   <h3 style={{ color: '#23305a', marginBottom: '0.3rem', fontWeight: 700, fontSize: '1.1rem', textAlign: 'center' }}>{proj.title}</h3>
                   <p style={{ color: '#23305a', marginBottom: '0.5rem', fontSize: '0.98rem', textAlign: 'center' }}>{proj.desc}</p>
                   <span className="featured-linktype" style={{ color: '#1a223a', fontSize: '0.95rem', fontWeight: 500 }}>{proj.linkType}</span>
@@ -159,50 +159,6 @@ const AnimatedFeatured = () => {
                 <a href="https://github.com/brynjarmbje/fruma_mobile" target="_blank" rel="noopener noreferrer" style={{color:'#1a223a',fontWeight:600}}>GitHub</a>
               </span>)}
         />
-      </motion.section>
-      <motion.section
-        ref={ref2}
-        key={lang + '-2'}
-        id="featured-section-2"
-        className="new-featured animated-featured mobile-featured-group"
-        initial="hidden"
-        animate={isInView2 ? "visible" : "hidden"}
-        variants={featuredVariants}
-      >
-        <div className="featured-grid">
-          {secondGroup.map((proj, idx) => {
-            const isHugbotvo = proj.title.includes('Læralærlær');
-            const isMiddleware = proj.title.includes('Middleware');
-            return (
-              <motion.a
-                key={proj.title}
-                className={`featured-card${isHugbotvo ? ' hugbotvo-card' : ''}${isMiddleware ? ' middleware-card' : ''}`}
-                href={proj.onClick ? undefined : proj.link}
-                target={proj.link && proj.link.startsWith('/') ? '_self' : '_blank'}
-                rel="noopener noreferrer"
-                variants={cardVariants}
-                animate={isInView2 ? "visible" : "hidden"}
-                initial="hidden"
-                whileHover={{ scale: 1.04, boxShadow: '0 4px 24px #6c7a9255' }}
-                style={{ textDecoration: 'none', cursor: proj.onClick ? 'pointer' : 'pointer' }}
-                onClick={proj.onClick ? (e) => { e.preventDefault(); proj.onClick(); } : undefined}
-              >
-                <motion.div
-                  className={`featured-image${isHugbotvo ? ' hugbotvo-image' : ''}${isMiddleware ? ' middleware-image' : ''}`}
-                  style={{ backgroundImage: `url(${proj.image})` }}
-                  variants={imageVariants}
-                  animate={isInView2 ? "visible" : "hidden"}
-                  initial="hidden"
-                />
-                <motion.div className="featured-description" variants={descVariants} animate={isInView2 ? "visible" : "hidden"} initial="hidden" style={isHugbotvo || isMiddleware ? { marginTop: '1.1rem', textAlign: 'center' } : {}}>
-                  <h3 style={{ color: '#23305a', marginBottom: '0.3rem', fontWeight: 700, fontSize: '1.1rem', textAlign: 'center' }}>{proj.title}</h3>
-                  <p style={{ color: '#23305a', marginBottom: '0.5rem', fontSize: '0.98rem', textAlign: 'center' }}>{proj.desc}</p>
-                  <span className="featured-linktype" style={{ color: '#1a223a', fontSize: '0.95rem', fontWeight: 500 }}>{proj.linkType}</span>
-                </motion.div>
-              </motion.a>
-            );
-          })}
-        </div>
       </motion.section>
     </>
   );

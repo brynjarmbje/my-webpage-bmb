@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useLanguage } from '../LanguageContext';
-import { FaGithub, FaSoundcloud, FaLinkedin, FaGamepad } from 'react-icons/fa';
+import { FaGithub, FaSoundcloud, FaLinkedin, FaGamepad, FaPhoneAlt, FaEnvelope } from 'react-icons/fa';
 import { NavLink } from 'react-router-dom';
 import '../styles/header.css';
 import { ReactComponent as IcelandFlag } from '../images/iceland-flag.svg';
@@ -134,16 +134,41 @@ function Header({ isMyllaPage, hideLogo }) {
               </div>
             </div>
             {isNavVisible && (
-                <nav ref={menuRef} className={`mobile-nav ${isNavVisible ? 'open' : ''}`}>
-                    <ul>
-                        <li><NavLink to="/" onClick={() => setIsNavVisible(false)}>Home</NavLink></li>
-                        {/* Removed: New Home (Preview), Music, Music CV, Bio */}
-                        <li className='myllaLink'><NavLink to="/mylla" onClick={() => setIsNavVisible(false)}><FaGamepad /> Mylla</NavLink></li>
-                        <li className='line'></li>
-                        <li><a href="https://github.com/brynjarmbje" target="_blank" rel="noopener noreferrer" onClick={() => setIsNavVisible(false)}><FaGithub /> GitHub</a></li>
-                        <li><a href="https://soundcloud.com/brynjar-mar-bjornsson" target="_blank" rel="noopener noreferrer" onClick={() => setIsNavVisible(false)}><FaSoundcloud /> SoundCloud</a></li>
-                        <li><a href="https://linkedin.com/in/brynjarmb" target="_blank" rel="noopener noreferrer" onClick={() => setIsNavVisible(false)}><FaLinkedin /> Linkedin</a></li>
-                    </ul>
+                <nav ref={menuRef} className={`mobile-nav ${isNavVisible ? 'active' : ''}`}>
+                    <div className="mobile-nav-content">
+                        <ul className="mobile-nav-links">
+                            <li><NavLink to="/" onClick={() => setIsNavVisible(false)}>Home</NavLink></li>
+                            <li><NavLink to="/music-video-cv" onClick={() => setIsNavVisible(false)}>Music Video CV</NavLink></li>
+                            {/* Removed: New Home (Preview), Music, Music CV, Bio */}
+                            <li className='myllaLink'><NavLink to="/mylla" onClick={() => setIsNavVisible(false)}><FaGamepad /> Mylla</NavLink></li>
+                            <li className='line'></li>
+                            <li><a href="https://github.com/brynjarmbje" target="_blank" rel="noopener noreferrer" onClick={() => setIsNavVisible(false)}><FaGithub /> GitHub</a></li>
+                            <li><a href="https://soundcloud.com/brynjar-mar-bjornsson" target="_blank" rel="noopener noreferrer" onClick={() => setIsNavVisible(false)}><FaSoundcloud /> SoundCloud</a></li>
+                            <li><a href="https://linkedin.com/in/brynjarmb" target="_blank" rel="noopener noreferrer" onClick={() => setIsNavVisible(false)}><FaLinkedin /> Linkedin</a></li>
+                        </ul>
+                        
+                        <div className="mobile-nav-contact">
+                            <h3 className="mobile-nav-contact-title">{lang === 'is' ? 'Hafðu samband' : 'Get in Touch'}</h3>
+                            <div className="mobile-nav-contact-buttons">
+                                <a
+                                    href="tel:+354 847 5643"
+                                    className="mobile-nav-contact-btn"
+                                    onClick={() => setIsNavVisible(false)}
+                                    aria-label={lang === 'is' ? 'Hringja í Brynjar' : 'Call Brynjar'}
+                                >
+                                    <FaPhoneAlt size={18} /> <span>+354 847 5643</span>
+                                </a>
+                                <a
+                                    href="mailto:brynjarbmb@gmail.com"
+                                    className="mobile-nav-contact-btn"
+                                    onClick={() => setIsNavVisible(false)}
+                                    aria-label={lang === 'is' ? 'Senda Brynjari tölvupóst' : 'Email Brynjar'}
+                                >
+                                    <FaEnvelope size={18} /> <span>brynjarbmb@gmail.com</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </nav>
             )}
         </header>
