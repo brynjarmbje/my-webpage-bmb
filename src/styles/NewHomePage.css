@@ -742,7 +742,7 @@ html, body, #root {
   }
   
   .featured-grid-2x2 {
-    padding-bottom: 2.5rem;
+    padding-bottom: 4rem;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
