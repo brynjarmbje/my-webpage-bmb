@@ -55,7 +55,7 @@ const AnimatedFeatured = () => {
       extraImages: [frumaLogin],
     },
     {
-      title: 'Industrial IoT Middleware',
+      title: lang === 'is' ? 'API Middleware Forrit' : 'Industrial IoT Middleware',
       desc: 'Python, JavaScript, Flask, Watchdog',
       image: dashImg,
       link: '#',
