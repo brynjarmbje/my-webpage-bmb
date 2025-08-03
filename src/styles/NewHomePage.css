@@ -181,7 +181,7 @@ html, body, #root {
 /* Wide Desktop Breakpoint - 1400px and above */
 @media (min-width: 1400px) {
   .new-homepage-container {
-    scroll-snap-type: none !important;
+    scroll-snap-type: none !important; /* Disable scroll-snap on desktop */
     background: linear-gradient(135deg, #e3e7f1 0%, #f7f8fa 50%, #e3e7f1 100%);
     overflow-y: auto;
     min-height: 100vh;
@@ -1660,4 +1660,35 @@ html[data-theme='dark'] .new-music-item {
 html[data-theme='dark'] .new-music-item:hover {
   background: #ffe082 !important;
   color: #232526 !important;
+}
+
+/* Mobile sections scroll-snap alignment (only apply when NOT in desktop layout) */
+@media (max-width: 1399px) {
+  .standard-layout .new-hero,
+  .standard-layout .new-featured,
+  .standard-layout .new-music {
+    scroll-snap-align: start;
+    min-height: 100vh;
+  }
+  
+  .snap-footer {
+    scroll-snap-align: start;
+  }
+  
+  /* Hide navigation buttons on mobile - users can scroll naturally */
+  .new-hero-cta .new-btn {
+    display: none;
+  }
+  
+  /* If there are no buttons, hide the entire CTA container on mobile */
+  .new-hero-cta:empty {
+    display: none;
+  }
+}
+
+/* Desktop - hide all navigation buttons since everything is visible in grid */
+@media (min-width: 1400px) {
+  .new-hero-cta {
+    display: none;
+  }
 }

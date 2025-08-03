@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLanguage } from '../LanguageContext';
-import { FaGithub, FaLinkedin, FaSoundcloud, FaPhoneAlt, FaEnvelope } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaSoundcloud, FaPhoneAlt, FaEnvelope, FaFileAlt } from 'react-icons/fa';
 import '../styles/NewHomePage.css';
 
 const links = [
@@ -24,6 +24,16 @@ const email = 'brynjarbmb@gmail.com';
 const SnapFooter = () => {
   const { lang } = useLanguage();
   const getInTouch = lang === 'is' ? 'Hafðu samband' : 'Get in Touch';
+  
+  // Resume function
+  const openResume = () => {
+    const pdfLinks = {
+      is: '/data/Ferilskra_Brynjar.pdf',
+      en: '/data/Ferilskra_Brynjar_Eng.pdf',
+    };
+    window.open(pdfLinks[lang], '_blank');
+  };
+  
   return (
     <section className="snap-footer new-contact" id="snap-footer">
       <div className="footer-content">
@@ -50,6 +60,13 @@ const SnapFooter = () => {
           >
             <FaEnvelope size={22} /> <span>{email}</span>
           </a>
+          <button
+            onClick={openResume}
+            className="footer-contact-btn"
+            aria-label={lang === 'is' ? 'Sækja ferilskrá' : 'Download Resume'}
+          >
+            <FaFileAlt size={22} /> <span>{lang === 'is' ? 'Ferilskrá' : 'Resume'}</span>
+          </button>
         </div>
       </div>
     </section>

@@ -32,23 +32,16 @@ const AnimatedHero = () => {
     transition: 'box-shadow 0.22s',
   };
   const { lang } = useLanguage();
-  // PDF links
-  const pdfLinks = {
-    is: '/data/Ferilskra_Brynjar.pdf',
-    en: '/data/Ferilskra_Brynjar_Eng.pdf',
-  };
   const content = {
     is: {
       message: `Hæ! Brynjar Már Björnsson hér. Endilega skoðaðu þig um`,
       btn1: 'Verkefni',
       btn2: 'Tónlist',
-      btn3: 'Ferilskrá',
     },
     en: {
       message: `Hi! Brynjar Már Björnsson here. Feel free to look around`,
       btn1: 'Projects',
       btn2: 'Music',
-      btn3: 'Resume',
     }
   };
   const t = content[lang];
@@ -57,13 +50,9 @@ const AnimatedHero = () => {
   const scrollToSection = (id) => {
     const el = document.getElementById(id);
     if (el) {
+      // Use scrollIntoView which works perfectly with scroll-snap
       el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
-  };
-
-  // Open PDF in new tab
-  const openResume = () => {
-    window.open(pdfLinks[lang], '_blank');
   };
 
   return (
@@ -81,7 +70,6 @@ const AnimatedHero = () => {
       <motion.div className="new-hero-cta animated-cta" variants={ctaVariants}>
         <button className="new-btn secondary" type="button" onClick={() => scrollToSection('featured-section')}>{t.btn1}</button>
         <button className="new-btn secondary" onClick={() => scrollToSection('music-section')}>{t.btn2}</button>
-        <button className="new-btn secondary" onClick={openResume}>{t.btn3}</button>
       </motion.div>
       <div className="hero-scroll-indicator">
         <div className="hero-scroll-dot" />

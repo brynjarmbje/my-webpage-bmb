@@ -24,8 +24,8 @@ const MusicVideoCV = () => {
         is: "24 Klukkustunda Verkefni"
       },
       description: {
-        en: "A composition created for a 24-hour project showcase",
-        is: "Tónsmíð búin til fyrir 24 klukkustunda verkefnasýningu"
+        en: "Original composition scored to a movie scene as part of a 24-hour challenge",
+        is: "Upprunaleg tónsmíð við mynd í vinnslu sem hluti af 24 klukkustunda áskorun"
       },
       type: "gcs", // Google Cloud Storage
       url: "https://storage.googleapis.com/music-files-mycreations-bmb/Brynjar-Mar-Bjornsson_CV_Composer/Scenes/Brynjar_24hourProject.mov",
@@ -35,12 +35,12 @@ const MusicVideoCV = () => {
     {
       id: 2,
       title: {
-        en: "Featured Composition",
-        is: "Útvalin Tónsmíð"
+        en: "Trailer music \"Oppenheimer\"",
+        is: "Trailer tónlist \"Oppenheimer\""
       },
       description: {
-        en: "A featured composition showcasing musical storytelling",
-        is: "Útvalin tónsmíð sem sýnir tónlistarlega frásögn"
+        en: "Original music composition synchronized to the trailer of \"Oppenheimer\"",
+        is: "Upprunaleg tónsmíð við \"Oppenheimer\" trailer"
       },
       type: "youtube",
       url: "https://www.youtube.com/embed/mlUvBIheVMc?si=6dS18SlLmSJniPV0",
@@ -89,12 +89,12 @@ const MusicVideoCV = () => {
     <div className="music-video-cv">
       <div className="cv-header">
         <h1 className="cv-title">
-          {lang === 'is' ? 'Tónlist í Myndbönd' : 'Music for Video'}
+          {lang === 'is' ? 'Kvikmyndatónlist' : 'Film Scoring Portfolio'}
         </h1>
         <p className="cv-subtitle">
           {lang === 'is' 
-            ? 'Safn tónlistar sem ég hef búið til fyrir myndbönd og verkefni'
-            : 'A collection of music I have created for videos and projects'
+            ? 'Upprunalegar tónsmíðar mínar við ýmiss bíómynda atriði'
+            : 'My original music compositions scored to movie scenes and trailers for practice'
           }
         </p>
       </div>
