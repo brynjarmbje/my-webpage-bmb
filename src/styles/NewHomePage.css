@@ -155,6 +155,19 @@ html, body, #root {
   background-repeat: no-repeat;
 }
 
+/* Cyber Yolks card image: portrait game art like other mobile shots */
+.cyber-yolks-image {
+  width: 70px !important;
+  aspect-ratio: 0.61 !important;
+  height: auto !important;
+  margin: 0 auto;
+  border-radius: 1.1rem;
+  box-shadow: 0 2px 16px 0 #6c7a9244, 0 1px 8px 0 #1a223a22;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 /* Mylla card content centering for non-mobile sizes */
 @media (min-width: 481px) {
   .featured-card:first-child {
@@ -300,6 +313,12 @@ html, body, #root {
     aspect-ratio: 0.5 !important;
     height: auto !important;
   }
+
+  .wide-desktop-layout .cyber-yolks-image {
+    width: 66px !important; /* Scaled up for ultra-wide but maintain aspect ratio */
+    aspect-ratio: 0.61 !important;
+    height: auto !important;
+  }
   
   .wide-desktop-layout .featured-card {
     padding: 1.5rem; /* More padding on ultra-wide */
@@ -399,17 +418,18 @@ html, body, #root {
   .wide-desktop-layout .featured-grid,
   .wide-desktop-layout .featured-grid-2x2 {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Back to 2 columns with more space */
+    grid-template-columns: 1fr 1fr; /* 2 columns with scrollable rows */
     gap: 1rem; /* Increased gap for hover effects */
     max-width: 100%;
     width: 100%;
-    max-height: none; /* Remove height restriction */
-    min-height: auto; /* Remove min height */
-    overflow: visible; /* No clipping */
+    max-height: 640px; /* Allow vertical scrolling */
+    min-height: 0;
+    overflow-y: auto;
+    justify-items: center;
     scrollbar-width: thin;
     scrollbar-color: rgba(35, 48, 90, 0.2) transparent;
     background: transparent; /* Blend with page background */
-    padding: 0; /* Remove padding - let shadows extend naturally */
+    padding: 0.4rem 0.6rem 0.6rem; /* Room to show card edges/shadows */
     margin: 0; /* Remove margin that might cause issues */
     margin-top: 0 !important; /* Remove any top margin to move projects up */
   }
@@ -432,7 +452,10 @@ html, body, #root {
   }
   
   .wide-desktop-layout .featured-card {
-    padding: 1.2rem; /* Slightly more padding for better proportions */
+    width: 100%;
+    max-width: 220px; /* Keep cards from stretching wider */
+    padding: 1.2rem; /* More room for content */
+    min-height: 220px; /* Ensure content fits */
     border-radius: 1.2rem;
     background: rgba(247, 248, 250, 0.7); /* Slightly more opaque */
     border: 1px solid rgba(35, 48, 90, 0.08); /* Subtle border */
@@ -450,49 +473,79 @@ html, body, #root {
   }
   
   .wide-desktop-layout .featured-image {
-    width: 70px !important; /* Scaled down from base 90px */
-    height: 70px !important; /* Same proportions as other screen sizes */
-    margin: 0 auto 0.8rem auto !important;
+    width: 66px !important; /* Slightly larger image */
+    height: 66px !important;
+    margin: 0 auto 0.45rem auto !important;
   }
   
   /* Maintain aspect ratios for special project images on desktop */
   .wide-desktop-layout .hugbotvo-image {
-    width: 60px !important; /* Scaled down but maintain aspect ratio */
+    width: 58px !important; /* Balanced to match card height */
     aspect-ratio: 0.47 !important;
     height: auto !important;
   }
   
   .wide-desktop-layout .middleware-image {
-    width: 110px !important; /* Scaled down but maintain aspect ratio */
+    width: 104px !important; /* Balanced to match card height */
     aspect-ratio: 1.29 !important;
     height: auto !important;
   }
   
   .wide-desktop-layout .fruma-image {
-    width: 60px !important; /* Scaled down but maintain aspect ratio */
+    width: 58px !important; /* Balanced to match card height */
     aspect-ratio: 0.5 !important;
+    height: auto !important;
+  }
+
+  .wide-desktop-layout .cyber-yolks-image {
+    width: 58px !important; /* Balanced to match card height */
+    aspect-ratio: 0.61 !important;
     height: auto !important;
   }
   
   .wide-desktop-layout .featured-description h3 {
-    font-size: 1.05rem !important; /* Bigger with more space */
-    margin-bottom: 0.6rem !important;
+    font-size: 0.98rem !important; /* Scale down to fit */
+    margin-top: 0rem !important;
+    margin-bottom: 0.1rem !important;
     font-weight: 600 !important;
     color: #23305a !important;
     line-height: 1.2 !important;
   }
   
   .wide-desktop-layout .featured-description p {
-    font-size: 0.9rem !important; /* Better readability */
-    margin-bottom: 0.8rem !important;
+    font-size: 0.82rem !important; /* Scale down to fit */
+    margin-bottom: 0.4rem !important;
     line-height: 1.4 !important;
     color: #1a223a !important;
     opacity: 0.8;
   }
+
+  /* Tighter spacing for Læralærlær card so all text fits */
+  .wide-desktop-layout .hugbotvo-card .featured-image {
+    margin-bottom: 0.3rem !important;
+  }
+
+  .wide-desktop-layout .hugbotvo-card .featured-description h3 {
+    margin-bottom: 0.2rem !important;
+  }
+
+  .wide-desktop-layout .hugbotvo-card .featured-description p {
+    margin-bottom: 0.3rem !important;
+  }
+
+  .wide-desktop-layout .hugbotvo-card .featured-linktype {
+    font-size: 0.68rem !important;
+    padding: 0.24rem 0.6rem !important;
+    margin-top: 0.1rem !important;
+  }
+
+  .wide-desktop-layout .hugbotvo-card {
+    min-height: 235px;
+  }
   
   .wide-desktop-layout .featured-linktype {
-    font-size: 0.8rem !important;
-    padding: 0.4rem 0.8rem !important;
+    font-size: 0.72rem !important;
+    padding: 0.32rem 0.7rem !important;
     border-radius: 0.5rem !important;
     background: rgba(35, 48, 90, 0.1) !important;
     color: #23305a !important;
@@ -687,6 +740,46 @@ html, body, #root {
   flex-direction: column;
   align-items: center;
   width: 100%;
+}
+.projectTitle {
+  font-family: "Orbitron", "Rajdhani", "Arial Black", sans-serif;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: clamp(20px, 3vw, 36px);
+  margin-bottom: 0.35rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.3rem;
+}
+.projectTitle-cyber,
+.projectTitle-yolks {
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: inherit;
+}
+.projectTitle-cyber {
+  background: linear-gradient(90deg, #2dfcff, #2e6bff);
+  text-shadow: 0 0 10px rgba(45, 252, 255, 0.25), 0 0 18px rgba(46, 107, 255, 0.18);
+  color: #2dfcff;
+}
+.projectTitle-yolks {
+  background: linear-gradient(90deg, #ff2dff, #9b2dff);
+  text-shadow: 0 0 10px rgba(255, 45, 255, 0.25), 0 0 18px rgba(155, 45, 255, 0.18);
+  color: #ff2dff;
+}
+
+@supports (-webkit-background-clip: text) or (background-clip: text) {
+  .projectTitle-cyber,
+  .projectTitle-yolks {
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+  }
 }
 .featured-linktype {
   margin-top: 0.2rem;

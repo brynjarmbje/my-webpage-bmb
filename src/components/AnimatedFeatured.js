@@ -8,6 +8,7 @@ import dashImg from '../images/Fiix-Neuron_Dash.jpeg';
 import sensImg from '../images/Fiix-Neuron_Sens.jpeg';
 import frumaMain from '../images/Fruma_Main-screen.png';
 import frumaLogin from '../images/Fruma_Log-in.png';
+import cyberYolksImg from '../images/cyber_yolks_main.png';
 
 
 const featuredVariants = {
@@ -40,6 +41,14 @@ const AnimatedFeatured = () => {
       image: require('../images/mylla.png'),
       link: '/mylla',
       linkType: lang === 'is' ? 'Á vefnum' : 'On this site',
+      onClick: null,
+    },
+    {
+      title: 'Cyber Yolks',
+      desc: lang === 'is' ? 'Html/Css/Es Modules, Three.js' : 'Html/Css/Es Modules, Three.js',
+      image: cyberYolksImg,
+      link: 'https://brynjarmbje.github.io/Cyber-Blobs/',
+      linkType: lang === 'is' ? 'Spila' : 'Play',
       onClick: null,
     },
     {
@@ -95,10 +104,11 @@ const AnimatedFeatured = () => {
             const isHugbotvo = proj.title.includes('Læralærlær');
             const isMiddleware = proj.title.includes('Middleware');
             const isFruma = proj.title.includes('Fruma');
+            const isCyberYolks = proj.title.includes('Cyber Yolks');
             return (
               <motion.a
                 key={proj.title}
-                className={`featured-card${isHugbotvo ? ' hugbotvo-card' : ''}${isMiddleware ? ' middleware-card' : ''}${isFruma ? ' hugbotvo-card' : ''}`}
+                className={`featured-card${isHugbotvo ? ' hugbotvo-card' : ''}${isMiddleware ? ' middleware-card' : ''}${isFruma ? ' hugbotvo-card' : ''}${isCyberYolks ? ' hugbotvo-card' : ''}`}
                 href={proj.onClick ? undefined : proj.link}
                 target={proj.link && proj.link.startsWith('/') ? '_self' : '_blank'}
                 rel="noopener noreferrer"
@@ -114,15 +124,18 @@ const AnimatedFeatured = () => {
                 onClick={proj.onClick ? (e) => { e.preventDefault(); proj.onClick(); } : undefined}
               >
                 <motion.div
-                  className={`featured-image${isHugbotvo ? ' hugbotvo-image' : ''}${isMiddleware ? ' middleware-image' : ''}${isFruma ? ' fruma-image' : ''}`}
+                  className={`featured-image${isHugbotvo ? ' hugbotvo-image' : ''}${isMiddleware ? ' middleware-image' : ''}${isFruma ? ' fruma-image' : ''}${isCyberYolks ? ' cyber-yolks-image' : ''}`}
                   style={{ backgroundImage: `url(${proj.image})` }}
                   variants={imageVariants}
                   animate={isInView ? "visible" : "hidden"}
                   initial="hidden"
                 />
-                <motion.div className="featured-description" variants={descVariants} animate={isInView ? "visible" : "hidden"} initial="hidden" style={isHugbotvo || isMiddleware || isFruma ? { marginTop: '1.1rem', textAlign: 'center' } : {}}>
+                <motion.div className="featured-description" variants={descVariants} animate={isInView ? "visible" : "hidden"} initial="hidden" style={isHugbotvo || isMiddleware || isFruma || isCyberYolks ? { marginTop: '1.1rem', textAlign: 'center' } : {}}>
                   <h3 style={{ color: '#23305a', marginBottom: '0.3rem', fontWeight: 700, fontSize: '1.1rem', textAlign: 'center' }}>{proj.title}</h3>
-                  <p style={{ color: '#23305a', marginBottom: '0.5rem', fontSize: '0.98rem', textAlign: 'center' }}>{proj.desc}</p>
+                  <p style={{ color: '#23305a', marginBottom: proj.stack ? '0.35rem' : '0.5rem', fontSize: '0.98rem', textAlign: 'center' }}>{proj.desc}</p>
+                  {proj.stack ? (
+                    <p style={{ color: '#23305a', marginBottom: '0.5rem', fontSize: '0.9rem', textAlign: 'center' }}>{proj.stack}</p>
+                  ) : null}
                   <span className="featured-linktype" style={{ color: '#1a223a', fontSize: '0.95rem', fontWeight: 500 }}>{proj.linkType}</span>
                 </motion.div>
               </motion.a>
