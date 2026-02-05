@@ -4,7 +4,6 @@ import GameStatus from './GameStatus';
 import { useAuth } from '../../AuthContext';
 import { doc, getDoc, onSnapshot, updateDoc } from '@firebase/firestore';
 import { db } from '../../firebase-config';
-import GameFinder from './GameFinder';
 
 const GameController = ({ sessionId, onSessionCreated }) => {
     const { currentUser } = useAuth();

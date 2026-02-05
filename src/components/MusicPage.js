@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { throttle } from 'lodash';
 import '../styles/MusicPage.css';
 import bmbLogo1 from '../images/bmb-logo1.png';
@@ -58,7 +58,7 @@ const MusicPage = () => {
     const audioRef = useRef(new Audio(currentSong.url));
   
     // Throttled function to update progress
-    const throttledSetProgress = useCallback(throttle((value) => {
+    const throttledSetProgress = useMemo(() => throttle((value) => {
       setProgress(value);
     }, 1000), []);
   

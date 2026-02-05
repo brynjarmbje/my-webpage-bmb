@@ -1,5 +1,5 @@
 // pages/MusicCompositionsPage.jsx
-import React, { useState, useRef, useCallback, useEffect } from 'react';
+import React, { useState, useRef, useMemo, useEffect } from 'react';
 import { throttle } from 'lodash';
 import { musicData } from '../data/musicData';
 import '../styles/MusicCompositionsPage.css';
@@ -17,8 +17,8 @@ const MusicCompositionsPage = () => {
   const videoRef = useRef(null);
 
   // Throttle audio progress updates
-  const throttledSetAudioProgress = useCallback(
-    throttle((value) => {
+  const throttledSetAudioProgress = useMemo(
+    () => throttle((value) => {
       setAudioProgress(value);
     }, 1000),
     []

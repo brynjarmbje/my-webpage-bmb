@@ -27,17 +27,9 @@ const authorVariants = {
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.7, delay: 1.4 } },
 };
-const trackInfoVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, delay: 1.5 } },
-};
 const songListVariants = {
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.7, delay: 1.6 } },
-};
-const songItemVariants = {
-  hidden: { opacity: 0, x: -30 },
-  visible: (i) => ({ opacity: 1, x: 0, transition: { duration: 0.5, delay: 1.7 + i * 0.07 } }),
 };
 
 
