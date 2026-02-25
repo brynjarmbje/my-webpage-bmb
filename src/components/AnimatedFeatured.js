@@ -9,6 +9,7 @@ import sensImg from '../images/Fiix-Neuron_Sens.jpeg';
 import frumaMain from '../images/Fruma_Main-screen.png';
 import frumaLogin from '../images/Fruma_Log-in.png';
 import cyberYolksImg from '../images/cyber_yolks_main.png';
+import auroraSpyImg from '../images/auroraspy-512.png';
 
 
 const featuredVariants = {
@@ -30,8 +31,6 @@ const descVariants = {
 
 const AnimatedFeatured = () => {
   const { lang } = useLanguage();
-  // 4 projects: Mylla (site), Portfolio (site), Middleware, Hugbotvo
-  // modalOpen: false | 'middleware' | 'fruma'
   // modalOpen: false | 'middleware' | 'fruma'
   const [modalOpen, setModalOpen] = useState(/** @type {false | 'middleware' | 'fruma'} */(false));
   const projects = [
@@ -62,6 +61,15 @@ const AnimatedFeatured = () => {
       linkType: lang === 'is' ? 'Skoða' : 'View',
       onClick: () => setModalOpen('fruma'),
       extraImages: [frumaLogin],
+    },
+    {
+      title: 'AuroraSpy',
+      desc: lang === 'is' ? 'Northern Lights Forecast and Guiding' : 'Northern Lights Forecast and Guiding',
+      stack: 'React Expo, Python, SQL, Docker',
+      image: auroraSpyImg,
+      link: 'https://auroraspy.com',
+      linkType: lang === 'is' ? 'Vefsíða' : 'Website',
+      onClick: null,
     },
     {
       title: lang === 'is' ? 'API Middleware Forrit' : 'Industrial IoT Middleware',
